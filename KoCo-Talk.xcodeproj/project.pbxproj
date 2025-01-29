@@ -22,6 +22,17 @@
 		7D7E67A42D49E3630037BD36 /* NanumSquareL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67A02D49E3630037BD36 /* NanumSquareL.ttf */; };
 		7D7E67A52D49E3630037BD36 /* NanumSquareB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67A12D49E3630037BD36 /* NanumSquareB.ttf */; };
 		7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67A82D49F7C70037BD36 /* ChattingListRowView.swift */; };
+		7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67AD2D4A0C8E0037BD36 /* NetworkManager.swift */; };
+		7D7E67B12D4A0CE30037BD36 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7E67B02D4A0CE30037BD36 /* Alamofire */; };
+		7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67B22D4A0D1F0037BD36 /* TargetType.swift */; };
+		7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67B42D4A0D4B0037BD36 /* Router.swift */; };
+		7D7E67B72D4A0D800037BD36 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67B62D4A0D800037BD36 /* .gitignore */; };
+		7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67BA2D4A0DB90037BD36 /* APIURL.swift */; };
+		7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67BC2D4A0DC90037BD36 /* APIKEY.swift */; };
+		7D7E67C02D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67BF2D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift */; };
+		7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */; };
+		7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */; };
+		7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +53,16 @@
 		7D7E67A12D49E3630037BD36 /* NanumSquareB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareB.ttf; sourceTree = "<group>"; };
 		7D7E67A62D49E3C80037BD36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7D7E67A82D49F7C70037BD36 /* ChattingListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListRowView.swift; sourceTree = "<group>"; };
+		7D7E67AD2D4A0C8E0037BD36 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7D7E67B22D4A0D1F0037BD36 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		7D7E67B42D4A0D4B0037BD36 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7D7E67B62D4A0D800037BD36 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7D7E67BA2D4A0DB90037BD36 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
+		7D7E67BC2D4A0DC90037BD36 /* APIKEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKEY.swift; sourceTree = "<group>"; };
+		7D7E67BF2D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreInfoResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatContentsResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7E67B12D4A0CE30037BD36 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +80,7 @@
 		7D7E67712D49146A0037BD36 = {
 			isa = PBXGroup;
 			children = (
+				7D7E67B62D4A0D800037BD36 /* .gitignore */,
 				7D7E677C2D49146A0037BD36 /* KoCo-Talk */,
 				7D7E677B2D49146A0037BD36 /* Products */,
 			);
@@ -74,6 +97,7 @@
 		7D7E677C2D49146A0037BD36 /* KoCo-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67AA2D4A0C2D0037BD36 /* Data */,
 				7D7E67A62D49E3C80037BD36 /* Info.plist */,
 				7D7E678E2D491E0A0037BD36 /* Presentation */,
 				7D7E678B2D491BB30037BD36 /* Resources */,
@@ -158,6 +182,54 @@
 			path = ChattingRoom;
 			sourceTree = "<group>";
 		};
+		7D7E67AA2D4A0C2D0037BD36 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67AB2D4A0C570037BD36 /* RemoteData */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7D7E67AB2D4A0C570037BD36 /* RemoteData */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67C12D4A0EF60037BD36 /* RequestModel */,
+				7D7E67BE2D4A0E3F0037BD36 /* DataMapping */,
+				7D7E67AC2D4A0C5A0037BD36 /* Networking */,
+			);
+			path = RemoteData;
+			sourceTree = "<group>";
+		};
+		7D7E67AC2D4A0C5A0037BD36 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67AD2D4A0C8E0037BD36 /* NetworkManager.swift */,
+				7D7E67B22D4A0D1F0037BD36 /* TargetType.swift */,
+				7D7E67B42D4A0D4B0037BD36 /* Router.swift */,
+				7D7E67BA2D4A0DB90037BD36 /* APIURL.swift */,
+				7D7E67BC2D4A0DC90037BD36 /* APIKEY.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7D7E67BE2D4A0E3F0037BD36 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67BF2D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift */,
+				7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */,
+				7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		7D7E67C12D4A0EF60037BD36 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,6 +246,9 @@
 			dependencies = (
 			);
 			name = "KoCo-Talk";
+			packageProductDependencies = (
+				7D7E67B02D4A0CE30037BD36 /* Alamofire */,
+			);
 			productName = "KoCo-Talk";
 			productReference = 7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +277,9 @@
 				Base,
 			);
 			mainGroup = 7D7E67712D49146A0037BD36;
+			packageReferences = (
+				7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 7D7E677B2D49146A0037BD36 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7E67B72D4A0D800037BD36 /* .gitignore in Resources */,
 				7D7E67A22D49E3630037BD36 /* NanumSquareEB.ttf in Resources */,
 				7D7E678D2D491BCA0037BD36 /* Colors.xcassets in Resources */,
 				7D7E67A32D49E3630037BD36 /* NanumSquareR.ttf in Resources */,
@@ -233,10 +312,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
+				7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */,
+				7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */,
+				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
+				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
 				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
+				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
+				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
+				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
 				7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */,
+				7D7E67C02D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
 				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
@@ -450,6 +538,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D7E67B02D4A0CE30037BD36 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7D7E67722D49146A0037BD36 /* Project object */;
 }
