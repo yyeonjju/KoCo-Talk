@@ -17,6 +17,11 @@
 		7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67962D49D1700037BD36 /* SettingsView.swift */; };
 		7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67992D49D34E0037BD36 /* Namespace.swift */; };
 		7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E679B2D49D5F50037BD36 /* MapView.swift */; };
+		7D7E67A22D49E3630037BD36 /* NanumSquareEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E679E2D49E3620037BD36 /* NanumSquareEB.ttf */; };
+		7D7E67A32D49E3630037BD36 /* NanumSquareR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E679F2D49E3630037BD36 /* NanumSquareR.ttf */; };
+		7D7E67A42D49E3630037BD36 /* NanumSquareL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67A02D49E3630037BD36 /* NanumSquareL.ttf */; };
+		7D7E67A52D49E3630037BD36 /* NanumSquareB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67A12D49E3630037BD36 /* NanumSquareB.ttf */; };
+		7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67A82D49F7C70037BD36 /* ChattingListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,12 @@
 		7D7E67962D49D1700037BD36 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7D7E67992D49D34E0037BD36 /* Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
 		7D7E679B2D49D5F50037BD36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		7D7E679E2D49E3620037BD36 /* NanumSquareEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareEB.ttf; sourceTree = "<group>"; };
+		7D7E679F2D49E3630037BD36 /* NanumSquareR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareR.ttf; sourceTree = "<group>"; };
+		7D7E67A02D49E3630037BD36 /* NanumSquareL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareL.ttf; sourceTree = "<group>"; };
+		7D7E67A12D49E3630037BD36 /* NanumSquareB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareB.ttf; sourceTree = "<group>"; };
+		7D7E67A62D49E3C80037BD36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7D7E67A82D49F7C70037BD36 /* ChattingListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,7 @@
 		7D7E677C2D49146A0037BD36 /* KoCo-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67A62D49E3C80037BD36 /* Info.plist */,
 				7D7E678E2D491E0A0037BD36 /* Presentation */,
 				7D7E678B2D491BB30037BD36 /* Resources */,
 				7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */,
@@ -83,6 +95,7 @@
 		7D7E678B2D491BB30037BD36 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E679D2D49E0BE0037BD36 /* Fonts */,
 				7D7E67812D49146C0037BD36 /* Assets.xcassets */,
 				7D7E678C2D491BCA0037BD36 /* Colors.xcassets */,
 				7D7E67992D49D34E0037BD36 /* Namespace.swift */,
@@ -93,20 +106,21 @@
 		7D7E678E2D491E0A0037BD36 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67A72D49F7B00037BD36 /* ChattingRoom */,
 				7D7E67912D491EA80037BD36 /* Settings */,
 				7D7E67902D491E730037BD36 /* Map */,
-				7D7E678F2D491E6A0037BD36 /* Chatting */,
+				7D7E678F2D491E6A0037BD36 /* ChattingList */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		7D7E678F2D491E6A0037BD36 /* Chatting */ = {
+		7D7E678F2D491E6A0037BD36 /* ChattingList */ = {
 			isa = PBXGroup;
 			children = (
 				7D7E67922D491FD40037BD36 /* ChattingListView.swift */,
-				7D7E67942D49209E0037BD36 /* ChattingRoomView.swift */,
+				7D7E67A82D49F7C70037BD36 /* ChattingListRowView.swift */,
 			);
-			path = Chatting;
+			path = ChattingList;
 			sourceTree = "<group>";
 		};
 		7D7E67902D491E730037BD36 /* Map */ = {
@@ -123,6 +137,25 @@
 				7D7E67962D49D1700037BD36 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		7D7E679D2D49E0BE0037BD36 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67A12D49E3630037BD36 /* NanumSquareB.ttf */,
+				7D7E679E2D49E3620037BD36 /* NanumSquareEB.ttf */,
+				7D7E67A02D49E3630037BD36 /* NanumSquareL.ttf */,
+				7D7E679F2D49E3630037BD36 /* NanumSquareR.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7D7E67A72D49F7B00037BD36 /* ChattingRoom */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67942D49209E0037BD36 /* ChattingRoomView.swift */,
+			);
+			path = ChattingRoom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,8 +216,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7E67A22D49E3630037BD36 /* NanumSquareEB.ttf in Resources */,
 				7D7E678D2D491BCA0037BD36 /* Colors.xcassets in Resources */,
+				7D7E67A32D49E3630037BD36 /* NanumSquareR.ttf in Resources */,
+				7D7E67A52D49E3630037BD36 /* NanumSquareB.ttf in Resources */,
 				7D7E67852D49146C0037BD36 /* Preview Assets.xcassets in Resources */,
+				7D7E67A42D49E3630037BD36 /* NanumSquareL.ttf in Resources */,
 				7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +238,7 @@
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
 				7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
+				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
 				7D7E67952D49209E0037BD36 /* ChattingRoomView.swift in Sources */,
 			);
@@ -339,6 +377,7 @@
 				DEVELOPMENT_TEAM = 5B4DDA3JD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KoCo-Talk/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -369,6 +408,7 @@
 				DEVELOPMENT_TEAM = 5B4DDA3JD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KoCo-Talk/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

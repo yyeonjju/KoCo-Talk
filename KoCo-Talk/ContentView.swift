@@ -11,37 +11,41 @@ struct ContentView: View {
     @State private var selectedTab = 1
     
     var body: some View {
-        NavigationStack{
-            TabView(selection: $selectedTab) {
+        TabView(selection: $selectedTab) {
+            NavigationView{
                 MapView()
-                    .tabItem {
-                        Assets.SystemImage.mapFill
-                        Text("Map")
-                    }
-                    .tag(0)
-                
-                ChattingListView()
-                    .tabItem {
-                        Assets.SystemImage.messageFill
-                        Text("Chat")
-                    }
-                    .tag(1)
-                
-                SettingsView()
-                    .tabItem {
-                        Assets.SystemImage.gearshapeFill
-                        Text("Settings")
-                    }
-                    .tag(2)
-    //                .badge(10)
             }
-            .tint(.pointGreen1)
-            .font(.headline)
+            .tint(Assets.Colors.black)
+            .tabItem {
+                Assets.SystemImage.mapFill
+                Text("Map")
+            }
+            .tag(0)
+            
+            NavigationView{
+                ChattingListView()
+                    .navigationTitle("채팅")
+            }
+            .tint(Assets.Colors.black)
+            .tabItem {
+                Assets.SystemImage.messageFill
+                Text("Chat")
+            }
+            .tag(1)
+            
+            NavigationView{
+                SettingsView()
+            }
+            .tint(Assets.Colors.black)
+            .tabItem {
+                Assets.SystemImage.gearshapeFill
+                Text("Settings")
+            }
+            .tag(2)
+            //                .badge(10)
         }
-
+        .tint(Assets.Colors.pointGreen1)
+        .font(.headline)
+        
     }
-}
-
-#Preview {
-    ContentView()
 }
