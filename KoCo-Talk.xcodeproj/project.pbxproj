@@ -11,6 +11,12 @@
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
 		7D7E67852D49146C0037BD36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67842D49146C0037BD36 /* Preview Assets.xcassets */; };
+		7D7E678D2D491BCA0037BD36 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E678C2D491BCA0037BD36 /* Colors.xcassets */; };
+		7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67922D491FD40037BD36 /* ChattingListView.swift */; };
+		7D7E67952D49209E0037BD36 /* ChattingRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67942D49209E0037BD36 /* ChattingRoomView.swift */; };
+		7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67962D49D1700037BD36 /* SettingsView.swift */; };
+		7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67992D49D34E0037BD36 /* Namespace.swift */; };
+		7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E679B2D49D5F50037BD36 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7D7E67812D49146C0037BD36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D7E67842D49146C0037BD36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7D7E678C2D491BCA0037BD36 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		7D7E67922D491FD40037BD36 /* ChattingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListView.swift; sourceTree = "<group>"; };
+		7D7E67942D49209E0037BD36 /* ChattingRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomView.swift; sourceTree = "<group>"; };
+		7D7E67962D49D1700037BD36 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7D7E67992D49D34E0037BD36 /* Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
+		7D7E679B2D49D5F50037BD36 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +63,10 @@
 		7D7E677C2D49146A0037BD36 /* KoCo-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E678E2D491E0A0037BD36 /* Presentation */,
+				7D7E678B2D491BB30037BD36 /* Resources */,
 				7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */,
 				7D7E677F2D49146A0037BD36 /* ContentView.swift */,
-				7D7E67812D49146C0037BD36 /* Assets.xcassets */,
 				7D7E67832D49146C0037BD36 /* Preview Content */,
 			);
 			path = "KoCo-Talk";
@@ -65,6 +78,51 @@
 				7D7E67842D49146C0037BD36 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7D7E678B2D491BB30037BD36 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67812D49146C0037BD36 /* Assets.xcassets */,
+				7D7E678C2D491BCA0037BD36 /* Colors.xcassets */,
+				7D7E67992D49D34E0037BD36 /* Namespace.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7D7E678E2D491E0A0037BD36 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67912D491EA80037BD36 /* Settings */,
+				7D7E67902D491E730037BD36 /* Map */,
+				7D7E678F2D491E6A0037BD36 /* Chatting */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		7D7E678F2D491E6A0037BD36 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67922D491FD40037BD36 /* ChattingListView.swift */,
+				7D7E67942D49209E0037BD36 /* ChattingRoomView.swift */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		7D7E67902D491E730037BD36 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E679B2D49D5F50037BD36 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		7D7E67912D491EA80037BD36 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67962D49D1700037BD36 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7E678D2D491BCA0037BD36 /* Colors.xcassets in Resources */,
 				7D7E67852D49146C0037BD36 /* Preview Assets.xcassets in Resources */,
 				7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */,
 			);
@@ -137,8 +196,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
+				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
+				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
 				7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
+				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
+				7D7E67952D49209E0037BD36 /* ChattingRoomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +344,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +374,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
