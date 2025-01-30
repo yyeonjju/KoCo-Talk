@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct ChattingListRowView  : View {
+    let chatRoom : ChatRoom
+    
     var body: some View {
         HStack {
             VStack {
-                
+                if let imageString = chatRoom.opponentProfileImage {
+                    
+                }else {
+                    Assets.Images.defaultProfile
+                        .resizable()
+                }
             }
             .frame(width: 48, height: 48)
             .background(Assets.Colors.gray3)
@@ -23,22 +30,22 @@ struct ChattingListRowView  : View {
             
             VStack(alignment : .leading){
                 HStack {
-                    Text("상대방 이름")
-                        .font(.custom("NanumSquareEB", size: 13))
+                    Text(chatRoom.opponentNickname)
+                        .font(.custom("NanumSquareEB", size: 14))
                         .foregroundStyle(Assets.Colors.gray1)
                     
                     Spacer()
                     
-                    Text("오전 11:10")
+                    Text(chatRoom.updatedAt)
                         .font(.custom("NanumSquareB", size: 11))
                         .foregroundStyle(Assets.Colors.gray1)
                 }
                 .padding(.bottom,4)
 
-                Text("최근 톡 내용입니다. 하하하하하하 이런건 어때 이런 톡내용은 어디까지 해야 줄이 넘어갈까. 하하하하하하 이런건 어때 이런 톡내용은 어디까지 해야 줄이 넘어갈까. ")
+                Text(chatRoom.lastChatText)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                    .font(.custom("NanumSquareB", size: 11))
+                    .font(.custom("NanumSquareB", size: 12))
                     .foregroundStyle(Assets.Colors.gray2)
                     
                 

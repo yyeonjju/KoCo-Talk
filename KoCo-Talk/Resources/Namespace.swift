@@ -22,10 +22,13 @@ enum Assets {
         static let white = Color("white")
     }
     
-    enum SystemImage {
+    enum SystemImages {
         static let mapFill = Image(systemName: "map.fill")
         static let messageFill = Image(systemName: "message.fill")
         static let gearshapeFill = Image(systemName: "gearshape.fill")
     }
     
+    enum Images {
+        static let defaultProfile = Image("defaultProfile")
+    }
 }

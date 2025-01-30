@@ -130,15 +130,3 @@ extension NetworkManager {
     }
 }
 
-
-
-
-
-
-///domain
-struct ChatRoomEntity  {
-    let roomId : String
-    let opponentId : String
-    let opponentNickname : String
-}
-

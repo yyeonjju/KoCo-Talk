@@ -17,18 +17,18 @@ struct ContentView: View {
             }
             .tint(Assets.Colors.black)
             .tabItem {
-                Assets.SystemImage.mapFill
+                Assets.SystemImages.mapFill
                 Text("Map")
             }
             .tag(0)
             
             NavigationView{
-                ChattingListView()
+                ChattingListView.build()
                     .navigationTitle("채팅")
             }
             .tint(Assets.Colors.black)
             .tabItem {
-                Assets.SystemImage.messageFill
+                Assets.SystemImages.messageFill
                 Text("Chat")
             }
             .tag(1)
@@ -38,7 +38,7 @@ struct ContentView: View {
             }
             .tint(Assets.Colors.black)
             .tabItem {
-                Assets.SystemImage.gearshapeFill
+                Assets.SystemImages.gearshapeFill
                 Text("Settings")
             }
             .tag(2)

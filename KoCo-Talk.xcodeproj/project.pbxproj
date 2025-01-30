@@ -33,6 +33,11 @@
 		7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */; };
 		7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */; };
 		7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */; };
+		7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C82D4A13010037BD36 /* ChattingListIntent.swift */; };
+		7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67CA2D4A131F0037BD36 /* ChattingListModel.swift */; };
+		7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */; };
+		7D7E67D32D4B114C0037BD36 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D22D4B114C0037BD36 /* Chatting.swift */; };
+		7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +68,11 @@
 		7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatContentsResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7D7E67C82D4A13010037BD36 /* ChattingListIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListIntent.swift; sourceTree = "<group>"; };
+		7D7E67CA2D4A131F0037BD36 /* ChattingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListModel.swift; sourceTree = "<group>"; };
+		7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
+		7D7E67D22D4B114C0037BD36 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
+		7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 		7D7E677C2D49146A0037BD36 /* KoCo-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67D42D4B16FD0037BD36 /* Common */,
 				7D7E67AA2D4A0C2D0037BD36 /* Data */,
 				7D7E67A62D49E3C80037BD36 /* Info.plist */,
 				7D7E678E2D491E0A0037BD36 /* Presentation */,
@@ -130,6 +141,7 @@
 		7D7E678E2D491E0A0037BD36 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67CD2D4A135C0037BD36 /* Base */,
 				7D7E67A72D49F7B00037BD36 /* ChattingRoom */,
 				7D7E67912D491EA80037BD36 /* Settings */,
 				7D7E67902D491E730037BD36 /* Map */,
@@ -143,6 +155,8 @@
 			children = (
 				7D7E67922D491FD40037BD36 /* ChattingListView.swift */,
 				7D7E67A82D49F7C70037BD36 /* ChattingListRowView.swift */,
+				7D7E67C82D4A13010037BD36 /* ChattingListIntent.swift */,
+				7D7E67CA2D4A131F0037BD36 /* ChattingListModel.swift */,
 			);
 			path = ChattingList;
 			sourceTree = "<group>";
@@ -185,6 +199,7 @@
 		7D7E67AA2D4A0C2D0037BD36 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67D02D4B10D60037BD36 /* Domain */,
 				7D7E67AB2D4A0C570037BD36 /* RemoteData */,
 			);
 			path = Data;
@@ -228,6 +243,46 @@
 				7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */,
 			);
 			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		7D7E67CD2D4A135C0037BD36 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7D7E67D02D4B10D60037BD36 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67D12D4B10E10037BD36 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		7D7E67D12D4B10E10037BD36 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67D22D4B114C0037BD36 /* Chatting.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7D7E67D42D4B16FD0037BD36 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67D52D4B17020037BD36 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7D7E67D52D4B17020037BD36 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,13 +368,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
+				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
 				7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */,
 				7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */,
+				7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */,
+				7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */,
+				7D7E67D32D4B114C0037BD36 /* Chatting.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
 				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
+				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
 				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
 				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,

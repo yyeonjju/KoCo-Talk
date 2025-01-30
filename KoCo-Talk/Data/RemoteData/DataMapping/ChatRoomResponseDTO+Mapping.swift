@@ -25,17 +25,35 @@ struct ChatRoomResponseDTO : Decodable {
         case createdAt, updatedAt, participants, lastChat
     }
     
-    func toDomain() -> ChatRoomEntity {
+    func toDomain() -> ChatRoom {
         let opponent = participants.filter{
             $0.userId != APIKEY.myUserId
         }.first
-        let opponentId = opponent?.userId
-        let opponentNickname = opponent?.nick
+        var presentationDate = "-"
         
-        return ChatRoomEntity(
+        //서버의 날짜 형식을 변환
+        let serverDateFormatter = DateFormatter.getServerDateFormatter()
+        let date = serverDateFormatter.date(from: updatedAt)
+        
+        if let date {
+            if Calendar.current.isDateInToday(date) {
+                //오늘 날짜라면 시간으로 포맷팅
+                let presentationTimeFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatTimeFormat)
+                presentationDate = presentationTimeFormatter.string(from: date)
+            } else {
+                //오늘 날짜 아니라면 날짜로 포맷팅
+                let presentationDateFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatDateFormat)
+                presentationDate = presentationDateFormatter.string(from: date)
+            }
+        }
+        
+        return ChatRoom(
             roomId: roomId,
-            opponentId: opponentId ?? "-",
-            opponentNickname : opponentNickname ?? "-"
+            updatedAt : presentationDate,
+            opponentId: opponent?.userId ?? "-",
+            opponentNickname : opponent?.nick ?? "-",
+            opponentProfileImage : opponent?.profileImage,
+            lastChatText : lastChat?.content ?? "지난 대화가 없습니다"
         )
     }
     
