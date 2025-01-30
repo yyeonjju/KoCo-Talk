@@ -18,7 +18,9 @@ struct ChattingListView: View {
             LazyVStack {
                 ForEach(state.chatRoomList, id : \.roomId) { item in
                     NavigationLink{
-                        Text("\(item)")
+                        ChattingRoomView.build(roomId : item.roomId)
+                            .navigationTitle(item.opponentNickname)
+                            .navigationBarTitleDisplayMode(.inline)
                     } label  : {
                         ChattingListRowView(chatRoom : item)
                     }

@@ -38,6 +38,8 @@
 		7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */; };
 		7D7E67D32D4B114C0037BD36 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D22D4B114C0037BD36 /* Chatting.swift */; };
 		7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */; };
+		7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D82D4B2BF50037BD36 /* ChattingRoomModel.swift */; };
+		7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
 		7D7E67D22D4B114C0037BD36 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++.swift"; sourceTree = "<group>"; };
+		7D7E67D82D4B2BF50037BD36 /* ChattingRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomModel.swift; sourceTree = "<group>"; };
+		7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				7D7E67942D49209E0037BD36 /* ChattingRoomView.swift */,
+				7D7E67D82D4B2BF50037BD36 /* ChattingRoomModel.swift */,
+				7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */,
 			);
 			path = ChattingRoom;
 			sourceTree = "<group>";
@@ -380,12 +386,14 @@
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
+				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
 				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
 				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
 				7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */,
 				7D7E67C02D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
+				7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */,
 				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
 				7D7E67952D49209E0037BD36 /* ChattingRoomView.swift in Sources */,

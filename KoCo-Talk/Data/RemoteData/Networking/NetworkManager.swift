@@ -124,9 +124,9 @@ extension NetworkManager {
         return fetch(fetchRouter: router, model: ChatRoomListResponseDTO.self)
     }
     
-    static func getChatRoomContents(roomId : String, cursorDate : String) -> AnyPublisher<ChatRoomContentsResponseDTO, FetchError> {
+    static func getChatRoomContents(roomId : String, cursorDate : String) -> AnyPublisher<ChatRoomContentListResponseDTO, FetchError> {
         let router = Router.getChatContents(roomId: roomId, cursorDate: cursorDate)
-        return fetch(fetchRouter: router, model: ChatRoomContentsResponseDTO.self)
+        return fetch(fetchRouter: router, model: ChatRoomContentListResponseDTO.self)
     }
 }
 

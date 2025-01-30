@@ -42,7 +42,7 @@ struct ChatRoomResponseDTO : Decodable {
                 presentationDate = presentationTimeFormatter.string(from: date)
             } else {
                 //오늘 날짜 아니라면 날짜로 포맷팅
-                let presentationDateFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatDateFormat)
+                let presentationDateFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatListDateFormat)
                 presentationDate = presentationDateFormatter.string(from: date)
             }
         }
