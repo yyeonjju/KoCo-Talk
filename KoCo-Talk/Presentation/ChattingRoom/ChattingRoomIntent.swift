@@ -42,7 +42,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
 
                 //TODO: 로컬에 저장
                 
-                model.updateChatRoomContents(result.toDomain())
+                model.updateChatRoomRows(result.toDomain())
                 
 //                print("🍀🍀🍀🍀🍀🍀")
 //                dump(result.toDomain())

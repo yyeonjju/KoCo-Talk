@@ -9,18 +9,18 @@ import Foundation
 
 
 protocol ChattingRoomModelStateProtocol {
-    var chatRoomContents : [ChatRoomContentRow] {get}
+    var chatRoomRows : [ChatRoomContentRow] {get}
 }
 protocol ChattingRoomModelActionProtocol : AnyObject {
-    func updateChatRoomContents(_ contents : [ChatRoomContentRow])
+    func updateChatRoomRows(_ contents : [ChatRoomContentRow])
 }
 
 final class ChattingRoomModel : ChattingRoomModelStateProtocol, ObservableObject {
-    @Published var chatRoomContents : [ChatRoomContentRow] = []
+    @Published var chatRoomRows : [ChatRoomContentRow] = []
 }
 
 extension ChattingRoomModel : ChattingRoomModelActionProtocol {
-    func updateChatRoomContents(_ contents : [ChatRoomContentRow]) {
-        chatRoomContents = contents
+    func updateChatRoomRows(_ contents : [ChatRoomContentRow]) {
+        chatRoomRows = contents
     }
 }

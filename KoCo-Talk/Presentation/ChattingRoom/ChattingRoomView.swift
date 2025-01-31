@@ -16,17 +16,23 @@ struct ChattingRoomView: View {
     
     
     var body: some View {
-        Text("ChattingRoomView")
-
-            .onAppear{
-                intent.fetchChatRoomContents(roomId: roomId, cursorDate: "")
+        ScrollView {
+            LazyVStack{
+                ForEach(state.chatRoomRows, id : \.chats) { row in
+                    ChattingRoomRowView(row: row)
+                }
             }
-            //채팅방 들어왔을 때는 탭바 보이지 않고, .onDisappear 시점에는 (이전 페이지로 돌아갈 떄) 다시 탭바 뜰 수 있도록
-            .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
-            .onDisappear{
-                showTabBar = true
-            }
-
+        }
+        
+        .onAppear{
+            intent.fetchChatRoomContents(roomId: roomId, cursorDate: "")
+        }
+        //채팅방 들어왔을 때는 탭바 보이지 않고, .onDisappear 시점에는 (이전 페이지로 돌아갈 떄) 다시 탭바 뜰 수 있도록
+        .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
+        .onDisappear{
+            showTabBar = true
+        }
+        
         
     }
 }

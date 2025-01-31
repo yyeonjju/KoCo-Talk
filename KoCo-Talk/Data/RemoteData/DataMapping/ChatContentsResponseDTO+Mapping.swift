@@ -95,7 +95,7 @@ extension ChatRoomContentListResponseDTO{
                         createdTime: presentationtTime,
                         opponentNickname: element.sender.nick,
                         
-                        data: chatContents
+                        chats: chatContents
                     )
                 )
                 

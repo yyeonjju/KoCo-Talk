@@ -34,10 +34,10 @@ struct ChatRoomContentRow {
     let createdTime : String // Row마다 하단에 이 컨텐츠들의 시간 표시를 위함
     let opponentNickname : String
     
-    let data : [ChatRoomContent]
+    let chats : [ChatRoomContent]
 }
 
-struct ChatRoomContent {
+struct ChatRoomContent : Hashable {
     let chatId : String
     let content : String
     let files : [String]
