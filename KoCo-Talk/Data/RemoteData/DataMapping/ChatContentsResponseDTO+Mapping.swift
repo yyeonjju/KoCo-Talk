@@ -44,6 +44,7 @@ extension ChatRoomContentListResponseDTO{
                 nextIndexSenderId = data[offset+1].sender.userId
             }
             
+            
             ///✅ 다음 index와 날짜/시간 비교하여 Row 분리를 위해
             //서버에서 받는 날짜 형태의 DateFormatter
             // String -> Date
@@ -53,20 +54,10 @@ extension ChatRoomContentListResponseDTO{
             if offset+1 < data.count {
                 nextIndexDate = serverDateFormatter.date(from: data[offset+1].createdAt) ?? Date()
             }
-            var prevIndexDate : Date = Date()
-            if offset-1 >= 0 {
-                prevIndexDate = serverDateFormatter.date(from: data[offset-1].createdAt) ?? Date()
-            }
             //Date -> String
             let dateFormatterForComparison = DateFormatter.getKRLocaleDateFormatter(format: .yyyyMMddhhmm)
-            let currentIndexDateString = dateFormatterForComparison.string(from: currentIndexDate)
-            let nextIndexDateString = dateFormatterForComparison.string(from: nextIndexDate)
-            
-            ///✅ 이전 index와 날짜 비교하여 날짜 표시 여부를 판단
-            //날짜 표시를 위함
-            let chatDateFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatRoomDateFormat)
-            let currentIndexPresentationDate = chatDateFormatter.string(from: currentIndexDate)
-            let prevIndexPresentationDate = chatDateFormatter.string(from: prevIndexDate)
+            let currentIndexDateTimeString = dateFormatterForComparison.string(from: currentIndexDate)
+            let nextIndexDateTimeString = dateFormatterForComparison.string(from: nextIndexDate)
             
             
             //채팅 내역(ChatRoomContent)을 추가
@@ -80,7 +71,14 @@ extension ChatRoomContentListResponseDTO{
             
             //다음 인덱스 요소와 날짜/시간이 다르거나, 유저가 다르면 현재까지의 chatContents를 갖는 Row 생성하여 append
             if currentIndexSenderId != nextIndexSenderId ||
-                currentIndexDateString != nextIndexDateString {
+                currentIndexDateTimeString != nextIndexDateTimeString
+            {
+                ///✅이전 row의 날짜와 비교해서 날짜 표시 여부를 판단
+                let chatDateFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatRoomDateFormat)
+                let currentIndexPresentationDate = chatDateFormatter.string(from: currentIndexDate)
+                //이전 row의 날짜
+                let prevRowDate = result.last?.createdDate
+
                 
                 //시간 표시를 위함
                 let chatTimeFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatTimeFormat)
@@ -90,7 +88,7 @@ extension ChatRoomContentListResponseDTO{
                 result.append(
                     ChatRoomContentRow(
                         isMyChat: currentIndexSenderId == APIKEY.myUserId,
-                        isDateShown : currentIndexPresentationDate != prevIndexPresentationDate,
+                        isDateShown : prevRowDate == nil || currentIndexPresentationDate != prevRowDate,
                         createdDate: currentIndexPresentationDate,
                         createdTime: presentationtTime,
                         opponentNickname: element.sender.nick,

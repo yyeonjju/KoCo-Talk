@@ -24,12 +24,14 @@ struct ChattingRoomRowView: View {
         }
         
         HStack(alignment : .bottom){
+            //채팅 시간
             if row.isMyChat {
                 Text(row.createdTime)
                     .font(.system(size: 10))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(Assets.Colors.gray2)
             }
             
+            //상대방 프로필 이미지
             if !row.isMyChat {
                 VStack{
                     VStack{
@@ -50,11 +52,11 @@ struct ChattingRoomRowView: View {
                         .padding()
                         .background(
                             row.isMyChat
-                            ? Color.green
+                            ? Assets.Colors.pointGreen2
                                 .clipShape(
                                     RoundedCorner(radius: 18, corners: [.topLeft, .topRight , .bottomLeft])
                                 )
-                            : Color.yellow
+                            : Assets.Colors.gray5
                                 .clipShape(
                                     RoundedCorner(radius: 18, corners: [.topRight, .bottomLeft, .bottomRight])
                                 )
@@ -64,10 +66,11 @@ struct ChattingRoomRowView: View {
                 
             }
             
+            //채팅 시간
             if !row.isMyChat {
                 Text(row.createdTime)
                     .font(.system(size: 10))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(Assets.Colors.gray2)
             }
         }
         .frame(
