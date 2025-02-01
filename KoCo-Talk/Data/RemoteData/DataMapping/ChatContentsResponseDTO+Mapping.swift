@@ -46,18 +46,12 @@ extension ChatRoomContentListResponseDTO{
             
             
             ///✅ 다음 index와 날짜/시간 비교하여 Row 분리를 위해
-            //서버에서 받는 날짜 형태의 DateFormatter
-            // String -> Date
-            let serverDateFormatter = DateFormatter.getServerDateFormatter()
-            let currentIndexDate : Date = serverDateFormatter.date(from: data[offset].createdAt) ?? Date()
-            var nextIndexDate : Date = Date()
+            let currentIndexDateTimeString = data[offset].createdAt.serverDateConvertTo(.yyyyMMddhhmm)
+            var nextIndexDateTimeString = ""
             if offset+1 < data.count {
-                nextIndexDate = serverDateFormatter.date(from: data[offset+1].createdAt) ?? Date()
+                nextIndexDateTimeString = data[offset+1].createdAt.serverDateConvertTo(.yyyyMMddhhmm)
             }
-            //Date -> String
-            let dateFormatterForComparison = DateFormatter.getKRLocaleDateFormatter(format: .yyyyMMddhhmm)
-            let currentIndexDateTimeString = dateFormatterForComparison.string(from: currentIndexDate)
-            let nextIndexDateTimeString = dateFormatterForComparison.string(from: nextIndexDate)
+
             
             
             //채팅 내역(ChatRoomContent)을 추가
@@ -74,15 +68,13 @@ extension ChatRoomContentListResponseDTO{
                 currentIndexDateTimeString != nextIndexDateTimeString
             {
                 ///✅이전 row의 날짜와 비교해서 날짜 표시 여부를 판단
-                let chatDateFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatRoomDateFormat)
-                let currentIndexPresentationDate = chatDateFormatter.string(from: currentIndexDate)
+                let currentIndexPresentationDate = data[offset].createdAt.serverDateConvertTo(.chatRoomDateFormat)
                 //이전 row의 날짜
                 let prevRowDate = result.last?.createdDate
 
                 
                 //시간 표시를 위함
-                let chatTimeFormatter = DateFormatter.getKRLocaleDateFormatter(format: .chatTimeFormat)
-                let presentationtTime = chatTimeFormatter.string(from: currentIndexDate)
+                let presentationtTime = data[offset].createdAt.serverDateConvertTo(.chatTimeFormat)
 
                 //현재까지 쌓인 chatContents를 담은 ChatRoomContentRow를 append
                 result.append(
@@ -91,7 +83,7 @@ extension ChatRoomContentListResponseDTO{
                         isDateShown : prevRowDate == nil || currentIndexPresentationDate != prevRowDate,
                         createdDate: currentIndexPresentationDate,
                         createdTime: presentationtTime,
-                        opponentNickname: element.sender.nick,
+                        senderNickname: element.sender.nick,
                         
                         chats: chatContents
                     )

@@ -42,6 +42,9 @@
 		7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */; };
 		7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67DD2D4C6D510037BD36 /* ChattingRoomRowView.swift */; };
 		7D7E67E12D4C6FCD0037BD36 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67E02D4C6FCD0037BD36 /* RoundedCorner.swift */; };
+		7D7E67E32D4CC8320037BD36 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67E22D4CC8320037BD36 /* SocketIOManager.swift */; };
+		7D7E67E62D4CCDE90037BD36 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7E67E52D4CCDE90037BD36 /* SocketIO */; };
+		7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67E72D4CE2390037BD36 /* String++.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,8 @@
 		7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomIntent.swift; sourceTree = "<group>"; };
 		7D7E67DD2D4C6D510037BD36 /* ChattingRoomRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomRowView.swift; sourceTree = "<group>"; };
 		7D7E67E02D4C6FCD0037BD36 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		7D7E67E22D4CC8320037BD36 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		7D7E67E72D4CE2390037BD36 /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D7E67B12D4A0CE30037BD36 /* Alamofire in Frameworks */,
+				7D7E67E62D4CCDE90037BD36 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +241,7 @@
 				7D7E67B42D4A0D4B0037BD36 /* Router.swift */,
 				7D7E67BA2D4A0DB90037BD36 /* APIURL.swift */,
 				7D7E67BC2D4A0DC90037BD36 /* APIKEY.swift */,
+				7D7E67E22D4CC8320037BD36 /* SocketIOManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -293,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */,
+				7D7E67E72D4CE2390037BD36 /* String++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,6 +339,7 @@
 			name = "KoCo-Talk";
 			packageProductDependencies = (
 				7D7E67B02D4A0CE30037BD36 /* Alamofire */,
+				7D7E67E52D4CCDE90037BD36 /* SocketIO */,
 			);
 			productName = "KoCo-Talk";
 			productReference = 7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */;
@@ -362,6 +371,7 @@
 			mainGroup = 7D7E67712D49146A0037BD36;
 			packageReferences = (
 				7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7D7E67E42D4CCDE90037BD36 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = 7D7E677B2D49146A0037BD36 /* Products */;
 			projectDirPath = "";
@@ -408,6 +418,8 @@
 				7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */,
 				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
+				7D7E67E32D4CC8320037BD36 /* SocketIOManager.swift in Sources */,
+				7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
 				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
@@ -640,6 +652,14 @@
 				minimumVersion = 5.10.2;
 			};
 		};
+		7D7E67E42D4CCDE90037BD36 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 16.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -647,6 +667,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		7D7E67E52D4CCDE90037BD36 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D7E67E42D4CCDE90037BD36 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -32,9 +32,9 @@ struct ChatRoomContentRow {
     let isDateShown : Bool // 날짜 달라졌을 때 날짜 표시 여부
     let createdDate : String // 날짜 변경되었을 때 날짜 표시를 위함
     let createdTime : String // Row마다 하단에 이 컨텐츠들의 시간 표시를 위함
-    let opponentNickname : String
+    let senderNickname : String
     
-    let chats : [ChatRoomContent]
+    var chats : [ChatRoomContent]
 }
 
 struct ChatRoomContent : Hashable {
