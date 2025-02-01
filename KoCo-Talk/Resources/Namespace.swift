@@ -26,6 +26,8 @@ enum Assets {
         static let mapFill = Image(systemName: "map.fill")
         static let messageFill = Image(systemName: "message.fill")
         static let gearshapeFill = Image(systemName: "gearshape.fill")
+        static let plus = Image(systemName: "plus")
+        static let arrowUp = Image(systemName: "arrow.up")
     }
     
     enum Images {

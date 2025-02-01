@@ -14,16 +14,20 @@ struct ChattingRoomView: View {
     private var state : ChattingRoomModelStateProtocol {container.model}
     private var intent : ChattingRoomIntentProtocol {container.intent}
     
+    @FocusState private var textFieldFocused: Bool
+    @State private var text = ""
     
     var body: some View {
-        ScrollView {
-            LazyVStack{
-                ForEach(state.chatRoomRows, id : \.chats) { row in
-                    ChattingRoomRowView(row: row)
-                }
+        VStack{
+            
+            chatsScrollView
+            .onTapGesture {
+                textFieldFocused = false
             }
+            
+            textInputView
+
         }
-        
         .onAppear{
             intent.fetchChatRoomContents(roomId: roomId, cursorDate: "")
         }
@@ -49,5 +53,64 @@ extension ChattingRoomView {
         )
         
         return ChattingRoomView(roomId: roomId, container: container)
+    }
+}
+
+
+extension ChattingRoomView {
+    var chatsScrollView : some View {
+        ScrollViewReader { proxy in
+            if !state.chatRoomRows.isEmpty {
+                ScrollView {
+                    LazyVStack{
+                        ForEach(state.chatRoomRows, id : \.chats) { row in
+                            ChattingRoomRowView(row: row)
+                                .id(row.chats.last?.chatId)
+                        }
+                    }
+                }
+                .onAppear{
+                    print("🌸🌸🌸🌸🌸 scroll to bottom 🌸🌸🌸🌸")
+                    if let lastRow = state.chatRoomRows.last, let lastChatId = lastRow.chats.last?.chatId{
+                        proxy.scrollTo(lastChatId, anchor: .bottom)
+                    }
+
+                }
+            } else {
+                ScrollView{} // 채팅이 없을 떄 ScrollView가 없으면 하단 메시지 입력 뷰의 위치를 조절해주어야 하는 것을 방지하기 위해 빈 ScrollView 임의 생성
+            }
+        }
+    }
+    var textInputView : some View {
+        HStack(alignment : .bottom) {
+            Assets.SystemImages.plus
+                .font(.system(size: 14, weight: .regular))
+                .foregroundStyle(Assets.Colors.gray1)
+                .padding(8)
+                .background(Assets.Colors.gray5)
+                .clipShape(Circle())
+            
+            TextField(
+                "메시지 입력",
+                text: $text,
+                axis: .vertical
+            )
+            .font(.system(size: 14, weight: .regular))
+            .padding(10)
+            .frame(maxWidth : .infinity)
+            .background(Assets.Colors.gray5)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .focused($textFieldFocused)
+            .lineLimit(6)
+            
+            Assets.SystemImages.arrowUp
+                .font(.system(size: 14, weight: .regular))
+                .foregroundStyle(Assets.Colors.gray1)
+                .padding(8)
+                .background(Assets.Colors.pointGreen2)
+                .clipShape(Circle())
+        }
+        .padding(6)
+        .background(Assets.Colors.pointGreen3)
     }
 }
