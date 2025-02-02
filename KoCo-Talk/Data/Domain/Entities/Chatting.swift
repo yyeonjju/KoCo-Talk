@@ -27,7 +27,7 @@ struct ChatRoom  {
 // MARK: - 채팅 내역 정보 ( 채팅 룸 내부 )
 
 //시간 & 상대방 여부에 따라 채팅 내역을 묶어 하나의 Row로 관리하기위해
-struct ChatRoomContentRow {
+struct ChatRoomContentRow : Equatable {
     let isMyChat : Bool // 채팅 UI의 말풍선 방향 결정을 위함
     let isDateShown : Bool // 날짜 달라졌을 때 날짜 표시 여부
     let createdDate : String // 날짜 변경되었을 때 날짜 표시를 위함

@@ -15,7 +15,7 @@ struct ChattingRoomView: View {
     private var intent : ChattingRoomIntentProtocol {container.intent}
     
     @FocusState private var textFieldFocused: Bool
-    @State private var text = ""
+    @State private var inputText = ""
     
     var body: some View {
         VStack{
@@ -35,6 +35,8 @@ struct ChattingRoomView: View {
         .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
         .onDisappear{
             showTabBar = true
+            
+            intent.stopDMReceive()
         }
         
         
@@ -60,24 +62,19 @@ extension ChattingRoomView {
 extension ChattingRoomView {
     var chatsScrollView : some View {
         ScrollViewReader { proxy in
-            if !state.chatRoomRows.isEmpty {
-                ScrollView {
-                    LazyVStack{
-                        ForEach(state.chatRoomRows, id : \.chats) { row in
-                            ChattingRoomRowView(row: row)
-                                .id(row.chats.last?.chatId)
-                        }
+            ScrollView {
+                LazyVStack{
+                    ForEach(state.chatRoomRows, id : \.chats) { row in
+                        ChattingRoomRowView(row: row)
+                            .id(row.chats.last?.chatId)
                     }
                 }
-                .onAppear{
-                    print("🌸🌸🌸🌸🌸 scroll to bottom 🌸🌸🌸🌸")
-                    if let lastRow = state.chatRoomRows.last, let lastChatId = lastRow.chats.last?.chatId{
-                        proxy.scrollTo(lastChatId, anchor: .bottom)
-                    }
-
+            }
+            .onChange(of: state.chatRoomRows) { _ in
+                print("🌸 scroll to bottom 🌸")
+                if let lastRow = state.chatRoomRows.last, let lastChatId = lastRow.chats.last?.chatId{
+                    proxy.scrollTo(lastChatId, anchor: .bottom)
                 }
-            } else {
-                ScrollView{} // 채팅이 없을 떄 ScrollView가 없으면 하단 메시지 입력 뷰의 위치를 조절해주어야 하는 것을 방지하기 위해 빈 ScrollView 임의 생성
             }
         }
     }
@@ -92,7 +89,7 @@ extension ChattingRoomView {
             
             TextField(
                 "메시지 입력",
-                text: $text,
+                text: $inputText,
                 axis: .vertical
             )
             .font(.system(size: 14, weight: .regular))
@@ -103,12 +100,18 @@ extension ChattingRoomView {
             .focused($textFieldFocused)
             .lineLimit(6)
             
-            Assets.SystemImages.arrowUp
-                .font(.system(size: 14, weight: .regular))
-                .foregroundStyle(Assets.Colors.gray1)
-                .padding(8)
-                .background(Assets.Colors.pointGreen2)
-                .clipShape(Circle())
+            Button {
+                intent.submitMessage(roomId: roomId, text: inputText)
+                inputText = ""
+            } label: {
+                Assets.SystemImages.arrowUp
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundStyle(Assets.Colors.gray1)
+                    .padding(8)
+                    .background(Assets.Colors.pointGreen2)
+                    .clipShape(Circle())
+            }
+
         }
         .padding(6)
         .background(Assets.Colors.pointGreen3)

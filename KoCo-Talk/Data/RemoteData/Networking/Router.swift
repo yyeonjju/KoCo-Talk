@@ -14,7 +14,7 @@ enum Router {
     case createChatRoom(body : CreateChatRoomBody)
     case getChatRoomList
 //
-//    case postChat
+    case postChat(roomId : String, body : PostChatBody)
     case getChatContents(roomId : String, cursorDate : String)
 }
 
@@ -23,7 +23,7 @@ extension Router : TargetType {
         switch self {
         case .getStores, .getChatRoomList, .getChatContents :
                 .get
-        case .createChatRoom :
+        case .createChatRoom, .postChat :
                 .post
         }
     }
@@ -44,6 +44,8 @@ extension Router : TargetType {
 //            return APIURL.postChat
         case .getChatContents(let roomId, _) :
             return APIURL.getChatContents + "/\(roomId)"
+        case .postChat(let roomId, _) :
+            return APIURL.postChat + "/\(roomId)"
         }
     }
     
@@ -55,7 +57,7 @@ extension Router : TargetType {
                 APIKEY.productId_key : APIKEY.productId_value,
                 APIKEY.accessToken_key : APIKEY.accessToken_value
             ]
-        case .createChatRoom :
+        case .createChatRoom, .postChat :
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
@@ -103,7 +105,13 @@ extension Router : TargetType {
             }catch{
                 return nil
             }
-        
+        case .postChat(_, let body) :
+            do{
+                let data = try encoder.encode(body)
+                return data
+            }catch{
+                return nil
+            }
         default :
             return nil
             

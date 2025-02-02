@@ -128,5 +128,10 @@ extension NetworkManager {
         let router = Router.getChatContents(roomId: roomId, cursorDate: cursorDate)
         return fetch(fetchRouter: router, model: ChatRoomContentListResponseDTO.self)
     }
+    
+    static func postChat(roomId : String, body : PostChatBody) -> AnyPublisher<ChatRoomContentDTO, FetchError> {
+        let router = Router.postChat(roomId: roomId, body: body)
+        return fetch(fetchRouter: router, model: ChatRoomContentDTO.self)
+    }
 }
 

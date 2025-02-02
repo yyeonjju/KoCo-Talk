@@ -10,6 +10,8 @@ import Combine
 
 protocol ChattingRoomIntentProtocol {
     func fetchChatRoomContents(roomId : String,cursorDate : String)
+    func stopDMReceive()
+    func submitMessage(roomId : String, text : String)
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
@@ -76,5 +78,30 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
             })
             .store(in: &cancellables)
 
+    }
+    
+    func stopDMReceive() {
+        SocketIOManager.shared.closeConnection()
+    }
+    
+    func submitMessage(roomId : String, text : String) {
+        let body = PostChatBody(content: text, files: [])
+       
+        NetworkManager.postChat(roomId: roomId, body: body)
+            .sink(receiveCompletion: {[weak self] completion in
+                guard let self else { return }
+                switch completion {
+                case .failure(let error):
+                    print("⭐️receiveCompletion - failure", error)
+                case .finished:
+                    break
+                }
+                
+            }, receiveValue: {[weak self]  result in
+                guard let self, let model else { return }
+                print("💕💕💕 메세지 보내기 완료!!", result)
+                
+            })
+            .store(in: &cancellables)
     }
 }
