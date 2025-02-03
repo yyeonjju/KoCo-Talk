@@ -16,7 +16,7 @@ struct ChatRoomContentListResponseDTO : Decodable {
 struct ChatRoomContentDTO : Decodable {
     let roomId : String
     let chatId : String
-    let content : String
+    let content : String?
     let createdAt : String
     let sender : ChatRoomParticipantDTO
     let files : [String]
@@ -58,7 +58,7 @@ extension ChatRoomContentListResponseDTO{
             chatContents.append(
                 ChatRoomContent(
                     chatId: element.chatId,
-                    content: element.content,
+                    content: element.content ?? "-",
                     files: element.files
                 )
             )

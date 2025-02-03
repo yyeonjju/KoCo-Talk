@@ -74,7 +74,7 @@ struct ChatRoomParticipantDTO : Decodable {
 struct LastChatDTO : Decodable {
     let chatId : String
     let roomId : String
-    let content : String
+    let content : String?
     let sender : ChatRoomParticipantDTO
     let files : [String]
 

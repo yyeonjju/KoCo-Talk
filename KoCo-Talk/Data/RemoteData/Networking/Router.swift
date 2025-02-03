@@ -9,6 +9,12 @@ import Foundation
 import Alamofire
 
 enum Router {
+    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) static var userInfo : LoginResponse?
+    
+    case tokenRefresh
+    case login(body : LoginBody)
+    
+    
     case getStores(next : String, limit : String, category : String)
 //    case getLocationBasedStores
     case createChatRoom(body : CreateChatRoomBody)
@@ -21,9 +27,9 @@ enum Router {
 extension Router : TargetType {
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .getStores, .getChatRoomList, .getChatContents :
+        case .tokenRefresh, .getStores, .getChatRoomList, .getChatContents :
                 .get
-        case .createChatRoom, .postChat :
+        case .createChatRoom, .postChat, .login :
                 .post
         }
     }
@@ -34,6 +40,12 @@ extension Router : TargetType {
     
     var path: String {
         switch self {
+        case .tokenRefresh :
+            return APIURL.tokenRefresh
+        case .login :
+            return APIURL.login
+            
+            
         case .getStores:
             return APIURL.getStores
         case .createChatRoom :
@@ -51,17 +63,29 @@ extension Router : TargetType {
     
     var header: [String : String] {
         switch self {
+        case .login :
+            return [
+                APIKEY.sesacKey_key : APIKEY.sesacKey_value,
+                APIKEY.productId_key : APIKEY.productId_value,
+                APIKEY.contentType_key : APIKEY.contentType_applicationJson
+            ]
+        case .tokenRefresh :
+            return [
+                APIKEY.sesacKey_key : APIKEY.sesacKey_value,
+                APIKEY.productId_key : APIKEY.productId_value,
+                APIKEY.tokenRefresh_key : Router.userInfo?.refresh ?? "-"
+            ]
         case .getStores, .getChatRoomList, .getChatContents:
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
-                APIKEY.accessToken_key : APIKEY.accessToken_value
+                APIKEY.accessToken_key : Router.userInfo?.access ?? "-"
             ]
         case .createChatRoom, .postChat :
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
-                APIKEY.accessToken_key : APIKEY.accessToken_value,
+                APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
                 APIKEY.contentType_key : APIKEY.contentType_applicationJson
             ]
         }
@@ -98,6 +122,13 @@ extension Router : TargetType {
         let encoder = JSONEncoder()
         
         switch self {
+        case .login(let body ) :
+            do{
+                let data = try encoder.encode(body)
+                return data
+            }catch{
+                return nil
+            }
         case .createChatRoom(let body) :
             do{
                 let data = try encoder.encode(body)

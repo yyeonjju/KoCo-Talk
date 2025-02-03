@@ -45,7 +45,7 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
                 createdDate: dateString,
                 createdTime: timeString,
                 senderNickname: content.sender.nick,
-                chats: [ChatRoomContent(chatId: content.chatId, content: content.content, files: content.files)]
+                chats: [ChatRoomContent(chatId: content.chatId, content: content.content ?? "-", files: content.files)]
             )
             
             newChatRoomRows.append(newRow)
@@ -60,7 +60,7 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
         lastRow.createdDate == dateString &&
         lastRow.createdTime == timeString {
             var chats = lastRow.chats
-            chats.append(ChatRoomContent(chatId: content.chatId, content: content.content, files: content.files))
+            chats.append(ChatRoomContent(chatId: content.chatId, content: content.content ?? "-", files: content.files))
             
             let newRow = ChatRoomContentRow(
                 isMyChat: lastRow.isMyChat,
@@ -89,7 +89,7 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
             createdDate: dateString,
             createdTime: timeString,
             senderNickname: content.sender.nick,
-            chats: [ChatRoomContent(chatId: content.chatId, content: content.content, files: content.files)]
+            chats: [ChatRoomContent(chatId: content.chatId, content: content.content ?? "-", files: content.files)]
         )
         
         newChatRoomRows.append(newRow)

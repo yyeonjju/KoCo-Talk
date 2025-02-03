@@ -36,7 +36,7 @@
 		7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67C82D4A13010037BD36 /* ChattingListIntent.swift */; };
 		7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67CA2D4A131F0037BD36 /* ChattingListModel.swift */; };
 		7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */; };
-		7D7E67D32D4B114C0037BD36 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D22D4B114C0037BD36 /* Chatting.swift */; };
+		7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D22D4B114C0037BD36 /* ChattingEntities.swift */; };
 		7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */; };
 		7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67D82D4B2BF50037BD36 /* ChattingRoomModel.swift */; };
 		7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */; };
@@ -45,6 +45,11 @@
 		7D7E67E32D4CC8320037BD36 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67E22D4CC8320037BD36 /* SocketIOManager.swift */; };
 		7D7E67E62D4CCDE90037BD36 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7E67E52D4CCDE90037BD36 /* SocketIO */; };
 		7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67E72D4CE2390037BD36 /* String++.swift */; };
+		7D7E67EC2D4F532A0037BD36 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67EB2D4F532A0037BD36 /* EmailLoginView.swift */; };
+		7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67EE2D4F60450037BD36 /* UserDefaultsWrapper.swift */; };
+		7D7E67F12D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67F02D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift */; };
+		7D7E67F32D50D1910037BD36 /* AuthEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67F22D50D1910037BD36 /* AuthEntities.swift */; };
+		7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67F42D50D1D60037BD36 /* Auth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,7 +83,7 @@
 		7D7E67C82D4A13010037BD36 /* ChattingListIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListIntent.swift; sourceTree = "<group>"; };
 		7D7E67CA2D4A131F0037BD36 /* ChattingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingListModel.swift; sourceTree = "<group>"; };
 		7D7E67CE2D4A137F0037BD36 /* MVIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
-		7D7E67D22D4B114C0037BD36 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
+		7D7E67D22D4B114C0037BD36 /* ChattingEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingEntities.swift; sourceTree = "<group>"; };
 		7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++.swift"; sourceTree = "<group>"; };
 		7D7E67D82D4B2BF50037BD36 /* ChattingRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomModel.swift; sourceTree = "<group>"; };
 		7D7E67DA2D4B2C030037BD36 /* ChattingRoomIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomIntent.swift; sourceTree = "<group>"; };
@@ -86,6 +91,11 @@
 		7D7E67E02D4C6FCD0037BD36 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		7D7E67E22D4CC8320037BD36 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		7D7E67E72D4CE2390037BD36 /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
+		7D7E67EB2D4F532A0037BD36 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		7D7E67EE2D4F60450037BD36 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		7D7E67F02D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7D7E67F22D50D1910037BD36 /* AuthEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntities.swift; sourceTree = "<group>"; };
+		7D7E67F42D50D1D60037BD36 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +167,7 @@
 			children = (
 				7D7E67DF2D4C6FAD0037BD36 /* Components */,
 				7D7E67CD2D4A135C0037BD36 /* Base */,
+				7D7E67E92D4F51240037BD36 /* Auth */,
 				7D7E67A72D49F7B00037BD36 /* ChattingRoom */,
 				7D7E67912D491EA80037BD36 /* Settings */,
 				7D7E67902D491E730037BD36 /* Map */,
@@ -217,6 +228,7 @@
 		7D7E67AA2D4A0C2D0037BD36 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7D7E67ED2D4F60250037BD36 /* LocalData */,
 				7D7E67D02D4B10D60037BD36 /* Domain */,
 				7D7E67AB2D4A0C570037BD36 /* RemoteData */,
 			);
@@ -252,6 +264,7 @@
 				7D7E67BF2D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift */,
 				7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */,
 				7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */,
+				7D7E67F02D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -260,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */,
+				7D7E67F42D50D1D60037BD36 /* Auth.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -283,7 +297,8 @@
 		7D7E67D12D4B10E10037BD36 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				7D7E67D22D4B114C0037BD36 /* Chatting.swift */,
+				7D7E67D22D4B114C0037BD36 /* ChattingEntities.swift */,
+				7D7E67F22D50D1910037BD36 /* AuthEntities.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -319,6 +334,30 @@
 				7D7E67E02D4C6FCD0037BD36 /* RoundedCorner.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		7D7E67E92D4F51240037BD36 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67EA2D4F512A0037BD36 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		7D7E67EA2D4F512A0037BD36 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67EB2D4F532A0037BD36 /* EmailLoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7D7E67ED2D4F60250037BD36 /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E67EE2D4F60450037BD36 /* UserDefaultsWrapper.swift */,
+			);
+			path = LocalData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,11 +447,12 @@
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
 				7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */,
+				7D7E67F12D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift in Sources */,
 				7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */,
 				7D7E67E12D4C6FCD0037BD36 /* RoundedCorner.swift in Sources */,
 				7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */,
 				7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */,
-				7D7E67D32D4B114C0037BD36 /* Chatting.swift in Sources */,
+				7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
 				7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */,
@@ -421,13 +461,17 @@
 				7D7E67E32D4CC8320037BD36 /* SocketIOManager.swift in Sources */,
 				7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
+				7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */,
+				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
 				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
 				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
 				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
+				7D7E67F32D50D1910037BD36 /* AuthEntities.swift in Sources */,
 				7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */,
 				7D7E67C02D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift in Sources */,
+				7D7E67EC2D4F532A0037BD36 /* EmailLoginView.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
 				7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */,
 				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
