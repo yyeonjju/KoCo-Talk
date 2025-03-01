@@ -23,6 +23,7 @@ enum Assets {
     }
     
     enum SystemImages {
+        static let photo = Image(systemName: "photo")
         static let mapFill = Image(systemName: "map.fill")
         static let messageFill = Image(systemName: "message.fill")
         static let gearshapeFill = Image(systemName: "gearshape.fill")

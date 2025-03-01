@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaisicAsyncImage.swift; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D68FBB82D73173900B9B013 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		7D7E67712D49146A0037BD36 = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +341,7 @@
 		7D7E67DF2D4C6FAD0037BD36 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7D68FBB82D73173900B9B013 /* Image */,
 				7D7E67E02D4C6FCD0037BD36 /* RoundedCorner.swift */,
 			);
 			path = Components;
@@ -455,6 +466,7 @@
 				7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
+				7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */,
 				7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */,
 				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
