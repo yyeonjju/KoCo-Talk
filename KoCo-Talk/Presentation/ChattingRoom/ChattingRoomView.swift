@@ -10,24 +10,39 @@ import SwiftUI
 struct ChattingRoomView: View {
     let roomId : String
     @State private var showTabBar : Bool = false
+    
+    @State private var moreOptionsButtonTapped = false
+//    @State private var keyboardHeight : CGFloat = 0.0
+    
     @StateObject var container : Container<ChattingRoomIntentProtocol, ChattingRoomModelStateProtocol>
     private var state : ChattingRoomModelStateProtocol {container.model}
     private var intent : ChattingRoomIntentProtocol {container.intent}
     
     @FocusState private var textFieldFocused: Bool
     @State private var inputText = ""
+
     
     var body: some View {
         VStack{
-            
             chatsScrollView
-            .onTapGesture {
-                textFieldFocused = false
-            }
+                .background(Assets.Colors.white)
+                .onTapGesture {
+                    textFieldFocused = false
+                    withAnimation{
+                        moreOptionsButtonTapped = false
+                    }
+                }
+            
+            Spacer()
             
             textInputView
-
+                .background(Assets.Colors.pointGreen3)
+            
+            moreOptionsView
+                .frame(height: moreOptionsButtonTapped ? 290 : 0 )
+                .opacity(moreOptionsButtonTapped ? 1 : 0)
         }
+        .background(Assets.Colors.pointGreen3)
         .onAppear{
             intent.fetchChatRoomContents(roomId: roomId, cursorDate: "")
         }
@@ -38,7 +53,7 @@ struct ChattingRoomView: View {
             
             intent.stopDMReceive()
         }
-        
+//        .asKeyboardAdaptive(keyboardHeight : $keyboardHeight)
         
     }
 }
@@ -79,13 +94,23 @@ extension ChattingRoomView {
         }
     }
     var textInputView : some View {
-        HStack(alignment : .bottom) {
-            Assets.SystemImages.plus
-                .font(.system(size: 14, weight: .regular))
-                .foregroundStyle(Assets.Colors.gray1)
-                .padding(8)
-                .background(Assets.Colors.gray5)
-                .clipShape(Circle())
+        HStack(alignment : .bottom) { 
+            Button {
+                withAnimation{
+                    moreOptionsButtonTapped.toggle()
+                    textFieldFocused = !moreOptionsButtonTapped
+
+                }
+            } label : {
+                Assets.SystemImages.plus
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundStyle(Assets.Colors.gray1)
+                    .padding(8)
+                    .background(Assets.Colors.gray5)
+                    .clipShape(Circle())
+                    .rotationEffect(.degrees(moreOptionsButtonTapped ? 45: 0))
+                
+            }
             
             TextField(
                 "메시지 입력",
@@ -99,6 +124,11 @@ extension ChattingRoomView {
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .focused($textFieldFocused)
             .lineLimit(6)
+            .onTapGesture {
+                if moreOptionsButtonTapped {
+                    moreOptionsButtonTapped.toggle()
+                }
+            }
             
             Button {
                 intent.submitMessage(roomId: roomId, text: inputText)
@@ -114,6 +144,22 @@ extension ChattingRoomView {
 
         }
         .padding(6)
-        .background(Assets.Colors.pointGreen3)
+    }
+    
+    var moreOptionsView : some View {
+        //TODO: Grid 형태로 바꾸기
+        VStack{
+            Button{
+                
+            } label : {
+                Assets.SystemImages.photo
+                    .imageScale(.large)
+                    .foregroundStyle(Assets.Colors.pointGreen1)
+                    .frame(width: 60, height: 60)
+                    .background(Assets.Colors.white)
+                    .clipShape(Circle())
+                
+            }
+        }
     }
 }
