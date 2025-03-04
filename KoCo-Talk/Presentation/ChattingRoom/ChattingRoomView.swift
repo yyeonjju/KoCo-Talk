@@ -9,17 +9,19 @@ import SwiftUI
 
 struct ChattingRoomView: View {
     let roomId : String
-    @State private var showTabBar : Bool = false
-    
-    @State private var moreOptionsButtonTapped = false
-//    @State private var keyboardHeight : CGFloat = 0.0
     
     @StateObject var container : Container<ChattingRoomIntentProtocol, ChattingRoomModelStateProtocol>
     private var state : ChattingRoomModelStateProtocol {container.model}
     private var intent : ChattingRoomIntentProtocol {container.intent}
     
+    @UserDefaultsWrapper(key : .portraitKeyboardHeight, defaultValue: 0.0) var portraitKeyboardHeight : CGFloat
+    @UserDefaultsWrapper(key : .landscapeKeyboardHeight, defaultValue: 0.0) var landscapeKeyboardHeight : CGFloat
+    @Orientation var orientation
+    
     @FocusState private var textFieldFocused: Bool
     @State private var inputText = ""
+    @State private var showTabBar : Bool = false
+    @State private var moreOptionsButtonTapped = false
 
     
     var body: some View {
@@ -35,12 +37,14 @@ struct ChattingRoomView: View {
             
             Spacer()
             
+//            Text("\(orientation.rawValue)")
             textInputView
                 .background(Assets.Colors.pointGreen3)
             
             moreOptionsView
-                .frame(height: moreOptionsButtonTapped ? 290 : 0 )
+                .frame(height:  moreOptionsButtonTapped ? returnMoreOptionsViewHeight() : 0 )
                 .opacity(moreOptionsButtonTapped ? 1 : 0)
+            
         }
         .background(Assets.Colors.pointGreen3)
         .onAppear{
@@ -53,8 +57,27 @@ struct ChattingRoomView: View {
             
             intent.stopDMReceive()
         }
-//        .asKeyboardAdaptive(keyboardHeight : $keyboardHeight)
+    }
+    
+    func returnMoreOptionsViewHeight() -> CGFloat {
+        let height : CGFloat
+        let type : UIDeviceOrientation
         
+        //방향이 flat일 경우에 이전 방향에 대한걸 유지
+        if orientation.isFlat {
+            type = OrientationManager.shared.prevType
+        }else {
+            type = orientation
+        }
+        
+        //가로, 세로 방향에 따라 추가 옵션 뷰의 높이 설정
+        if type.isPortrait {
+            height = portraitKeyboardHeight > 0 ? portraitKeyboardHeight : 300
+        }else {
+            height = landscapeKeyboardHeight > 0 ? landscapeKeyboardHeight : 200
+        }
+
+        return height
     }
 }
 

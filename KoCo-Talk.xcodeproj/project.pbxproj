@@ -10,6 +10,8 @@
 		7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */; };
 		7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */; };
 		7D68FBC12D757A1500B9B013 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC02D757A1500B9B013 /* View++.swift */; };
+		7D68FBC32D75AB8700B9B013 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC22D75AB8700B9B013 /* OrientationManager.swift */; };
+		7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC52D75E58800B9B013 /* AppDelegate.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -59,6 +61,8 @@
 		7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaisicAsyncImage.swift; sourceTree = "<group>"; };
 		7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModifier.swift; sourceTree = "<group>"; };
 		7D68FBC02D757A1500B9B013 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
+		7D68FBC22D75AB8700B9B013 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
+		7D68FBC52D75E58800B9B013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,6 +137,14 @@
 			path = CustomViewModifier;
 			sourceTree = "<group>";
 		};
+		7D68FBC42D75E57500B9B013 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7D68FBC52D75E58800B9B013 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		7D7E67712D49146A0037BD36 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +165,7 @@
 		7D7E677C2D49146A0037BD36 /* KoCo-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				7D68FBC42D75E57500B9B013 /* Application */,
 				7D7E67D42D4B16FD0037BD36 /* Common */,
 				7D7E67AA2D4A0C2D0037BD36 /* Data */,
 				7D7E67A62D49E3C80037BD36 /* Info.plist */,
@@ -330,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				7D7E67D52D4B17020037BD36 /* Extensions */,
+				7D68FBC22D75AB8700B9B013 /* OrientationManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -471,6 +485,7 @@
 			files = (
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
+				7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */,
 				7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */,
 				7D7E67F12D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift in Sources */,
 				7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */,
@@ -482,6 +497,7 @@
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
 				7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */,
+				7D68FBC32D75AB8700B9B013 /* OrientationManager.swift in Sources */,
 				7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */,
 				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,

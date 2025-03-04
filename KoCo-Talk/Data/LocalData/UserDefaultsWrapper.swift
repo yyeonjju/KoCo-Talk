@@ -9,6 +9,8 @@ import Foundation
 
 enum UserDefaultsKey : String {
     case userInfo // LoginResponse
+    case portraitKeyboardHeight
+    case landscapeKeyboardHeight
 }
 
 @propertyWrapper
