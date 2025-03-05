@@ -50,8 +50,12 @@ final class OrientationManager : ObservableObject {
 @propertyWrapper 
 struct Orientation: DynamicProperty {
     @StateObject private var manager = OrientationManager.shared
-    
+    //isFlat은 이 프로젝트에서 의미 없으므로 이전에 저장해둔 방향 그대로 리턴
     var wrappedValue: UIDeviceOrientation {
-        manager.type
+        if manager.type.isFlat {
+            return manager.prevType
+        }else {
+            return manager.type
+        }
     }
 }

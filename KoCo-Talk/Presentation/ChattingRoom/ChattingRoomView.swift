@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ChattingRoomView: View {
     let roomId : String
@@ -21,11 +22,22 @@ struct ChattingRoomView: View {
     @FocusState private var textFieldFocused: Bool
     @State private var inputText = ""
     @State private var showTabBar : Bool = false
-    @State private var moreOptionsButtonTapped = false
+    @State private var moreOptionsButtonTapped = false {
+        didSet{
+            if !moreOptionsButtonTapped {
+                albumButtonTapped = false
+            }
+        }
+    }
+    @State private var albumButtonTapped = false
+    
+    @State private var photoAssets: [PHAsset] = []
+    @State private var isPhotoPickerPresented = false
+    @State private var selectedPhotos: [UIImage] = []
 
     
     var body: some View {
-        VStack{
+        VStack(spacing : 0){
             chatsScrollView
                 .background(Assets.Colors.white)
                 .onTapGesture {
@@ -34,18 +46,27 @@ struct ChattingRoomView: View {
                         moreOptionsButtonTapped = false
                     }
                 }
-            
             Spacer()
             
-//            Text("\(orientation.rawValue)")
+            //            Text("\(orientation.rawValue)")
             textInputView
                 .background(Assets.Colors.pointGreen3)
             
-            moreOptionsView
-                .frame(height:  moreOptionsButtonTapped ? returnMoreOptionsViewHeight() : 0 )
-                .opacity(moreOptionsButtonTapped ? 1 : 0)
-            
+            ZStack{
+                moreOptionsView
+                    .frame(height:  moreOptionsButtonTapped ? returnMoreOptionsViewHeight() : 0 )
+                    .frame(maxWidth : .infinity)
+//                    .background(.red)
+                    .opacity(moreOptionsButtonTapped ? 1 : 0)
+                
+                
+                photoSelectView
+                    .frame(height:  moreOptionsButtonTapped&&albumButtonTapped ? returnMoreOptionsViewHeight() : 0 )
+                    .opacity(moreOptionsButtonTapped&&albumButtonTapped ? 1 : 0)
+                
+            }
         }
+        
         .background(Assets.Colors.pointGreen3)
         .onAppear{
             intent.fetchChatRoomContents(roomId: roomId, cursorDate: "")
@@ -61,17 +82,9 @@ struct ChattingRoomView: View {
     
     func returnMoreOptionsViewHeight() -> CGFloat {
         let height : CGFloat
-        let type : UIDeviceOrientation
-        
-        //방향이 flat일 경우에 이전 방향에 대한걸 유지
-        if orientation.isFlat {
-            type = OrientationManager.shared.prevType
-        }else {
-            type = orientation
-        }
         
         //가로, 세로 방향에 따라 추가 옵션 뷰의 높이 설정
-        if type.isPortrait {
+        if orientation.isPortrait {
             height = portraitKeyboardHeight > 0 ? portraitKeyboardHeight : 300
         }else {
             height = landscapeKeyboardHeight > 0 ? landscapeKeyboardHeight : 200
@@ -117,7 +130,7 @@ extension ChattingRoomView {
         }
     }
     var textInputView : some View {
-        HStack(alignment : .bottom) { 
+        HStack(alignment : .bottom) {
             Button {
                 withAnimation{
                     moreOptionsButtonTapped.toggle()
@@ -173,7 +186,9 @@ extension ChattingRoomView {
         //TODO: Grid 형태로 바꾸기
         VStack{
             Button{
-                
+                withAnimation{
+                    albumButtonTapped.toggle()
+                }
             } label : {
                 Assets.SystemImages.photo
                     .imageScale(.large)
@@ -185,4 +200,31 @@ extension ChattingRoomView {
             }
         }
     }
+    
+    var photoSelectView : some View {
+        //moreOptionsButtonTapped&&albumButtonTapped 일 때
+        BottomSheetView(
+            isOpen: $isPhotoPickerPresented,
+            maxHeight: (UIScreen.main.bounds.height*0.8),
+            backgroundColor : Assets.Colors.gray5,
+            showIndicator: true,
+            minHeight : returnMoreOptionsViewHeight()
+        ) {
+            
+            
+//            ZStack{
+////                Assets.Colors.gray5
+//            }
+//            .frame(maxWidth : .infinity, maxHeight : .infinity)
+
+            PhotoSelectView(
+                columnAmount : orientation.isPortrait ? 3 : 5,
+                photoAssets: $photoAssets
+            )
+        }
+    }
+
 }
+
+
+

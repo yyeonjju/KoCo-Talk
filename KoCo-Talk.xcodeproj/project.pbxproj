@@ -12,6 +12,9 @@
 		7D68FBC12D757A1500B9B013 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC02D757A1500B9B013 /* View++.swift */; };
 		7D68FBC32D75AB8700B9B013 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC22D75AB8700B9B013 /* OrientationManager.swift */; };
 		7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC52D75E58800B9B013 /* AppDelegate.swift */; };
+		7D68FBC92D76E88500B9B013 /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC82D76E88500B9B013 /* PhotoSelectView.swift */; };
+		7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBCD2D76ED8F00B9B013 /* PhotoGridItem.swift */; };
+		7D68FBD22D77528600B9B013 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD12D77528600B9B013 /* BottomSheetView.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		7D68FBC02D757A1500B9B013 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
 		7D68FBC22D75AB8700B9B013 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
 		7D68FBC52D75E58800B9B013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7D68FBC82D76E88500B9B013 /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
+		7D68FBCD2D76ED8F00B9B013 /* PhotoGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridItem.swift; sourceTree = "<group>"; };
+		7D68FBD12D77528600B9B013 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +149,23 @@
 				7D68FBC52D75E58800B9B013 /* AppDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7D68FBC72D76E86D00B9B013 /* PhotoSelect */ = {
+			isa = PBXGroup;
+			children = (
+				7D68FBC82D76E88500B9B013 /* PhotoSelectView.swift */,
+				7D68FBCD2D76ED8F00B9B013 /* PhotoGridItem.swift */,
+			);
+			path = PhotoSelect;
+			sourceTree = "<group>";
+		};
+		7D68FBCC2D76ECE600B9B013 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				7D68FBD12D77528600B9B013 /* BottomSheetView.swift */,
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		7D7E67712D49146A0037BD36 = {
@@ -369,6 +392,8 @@
 		7D7E67DF2D4C6FAD0037BD36 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7D68FBCC2D76ECE600B9B013 /* BottomSheet */,
+				7D68FBC72D76E86D00B9B013 /* PhotoSelect */,
 				7D68FBB82D73173900B9B013 /* Image */,
 				7D7E67E02D4C6FCD0037BD36 /* RoundedCorner.swift */,
 			);
@@ -486,6 +511,7 @@
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
 				7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */,
+				7D68FBD22D77528600B9B013 /* BottomSheetView.swift in Sources */,
 				7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */,
 				7D7E67F12D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift in Sources */,
 				7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */,
@@ -504,6 +530,7 @@
 				7D7E67E32D4CC8320037BD36 /* SocketIOManager.swift in Sources */,
 				7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
+				7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */,
 				7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */,
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
@@ -517,6 +544,7 @@
 				7D7E67C02D4A0E950037BD36 /* StoreInfoResponseDTO+Mapping.swift in Sources */,
 				7D7E67EC2D4F532A0037BD36 /* EmailLoginView.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
+				7D68FBC92D76E88500B9B013 /* PhotoSelectView.swift in Sources */,
 				7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */,
 				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
@@ -658,6 +686,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "KoCo-Talk/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -689,6 +718,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "KoCo-Talk/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
