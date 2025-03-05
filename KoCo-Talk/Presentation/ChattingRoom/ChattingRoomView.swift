@@ -56,13 +56,13 @@ struct ChattingRoomView: View {
                 moreOptionsView
                     .frame(height:  moreOptionsButtonTapped ? returnMoreOptionsViewHeight() : 0 )
                     .frame(maxWidth : .infinity)
-//                    .background(.red)
                     .opacity(moreOptionsButtonTapped ? 1 : 0)
                 
-                
-                photoSelectView
-                    .frame(height:  moreOptionsButtonTapped&&albumButtonTapped ? returnMoreOptionsViewHeight() : 0 )
-                    .opacity(moreOptionsButtonTapped&&albumButtonTapped ? 1 : 0)
+                if moreOptionsButtonTapped&&albumButtonTapped{
+                    photoSelectView
+                        .frame(height:  moreOptionsButtonTapped&&albumButtonTapped ? returnMoreOptionsViewHeight() : 0 )
+                }
+
                 
             }
         }
@@ -210,15 +210,10 @@ extension ChattingRoomView {
             showIndicator: true,
             minHeight : returnMoreOptionsViewHeight()
         ) {
-            
-            
-//            ZStack{
-////                Assets.Colors.gray5
-//            }
-//            .frame(maxWidth : .infinity, maxHeight : .infinity)
 
             PhotoSelectView(
                 columnAmount : orientation.isPortrait ? 3 : 5,
+                progressYOffset : returnMoreOptionsViewHeight()/2,
                 photoAssets: $photoAssets
             )
         }

@@ -12,7 +12,11 @@ import Photos
 
 struct PhotoSelectView : View {
     var columnAmount : Int
+    var progressYOffset : CGFloat = 0
     @Binding var photoAssets: [PHAsset]
+    
+    @State private var isLoading : Bool = false
+    
     
     private var columns: [GridItem] {
         Array(repeating: GridItem(.flexible()), count: columnAmount)
@@ -20,21 +24,27 @@ struct PhotoSelectView : View {
     
     var body: some View {
         VStack{
-            // 사진 그리드
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 2) {
-                    ForEach(photoAssets, id: \.localIdentifier) { asset in
-                        //                        Text(asset.localIdentifier)
-                        PhotoGridItem(asset: asset)
-                            .aspectRatio(1, contentMode: .fill)
-                            .clipped()
+            if isLoading {
+                ProgressView()
+                    .offset(y : progressYOffset)
+            } else {
+                // 사진 그리드
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 2) {
+                        ForEach(photoAssets, id: \.localIdentifier) { asset in
+                            //                        Text(asset.localIdentifier)
+                            PhotoGridItem(asset: asset)
+                                .aspectRatio(1, contentMode: .fill)
+                                .clipped()
+                        }
                     }
+                    .padding(.horizontal, 2)
                 }
-                .padding(.horizontal, 2)
             }
         }
         .frame(maxWidth : .infinity)
         .onAppear {
+            isLoading  = true
             checkPhotoLibraryPermission()
         }
     }
@@ -53,12 +63,17 @@ extension PhotoSelectView {
         switch status {
         case .authorized, .limited:
             print("authorized, limited")
-            self.loadPhotos()
+            DispatchQueue.global().async {
+                self.loadPhotos()
+            }
+
         case .notDetermined:
             print("notDetermined")
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized || newStatus == .limited {
-                    self.loadPhotos()
+                    DispatchQueue.global().async{
+                        self.loadPhotos()
+                    }
                 }
             }
         case .denied, .restricted:
@@ -86,6 +101,7 @@ extension PhotoSelectView {
         
         DispatchQueue.main.async {
             self.photoAssets = assets
+            self.isLoading = false
         }
     }
 }
