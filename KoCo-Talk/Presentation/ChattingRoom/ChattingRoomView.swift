@@ -31,7 +31,7 @@ struct ChattingRoomView: View {
     }
     @State private var albumButtonTapped = false
     
-    @State private var photoAssets: [PHAsset] = []
+//    @State private var photoAssets: [PHAsset] = []
     @State private var isPhotoPickerPresented = false
     @State private var selectedPhotos: [UIImage] = []
 
@@ -130,7 +130,7 @@ extension ChattingRoomView {
         }
     }
     var textInputView : some View {
-        HStack(alignment : .bottom) {
+        HStack(alignment : .center) {
             Button {
                 withAnimation{
                     moreOptionsButtonTapped.toggle()
@@ -148,21 +148,28 @@ extension ChattingRoomView {
                 
             }
             
-            TextField(
-                "메시지 입력",
-                text: $inputText,
-                axis: .vertical
-            )
-            .font(.system(size: 14, weight: .regular))
-            .padding(10)
-            .frame(maxWidth : .infinity)
-            .background(Assets.Colors.gray5)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-            .focused($textFieldFocused)
-            .lineLimit(6)
-            .onTapGesture {
-                if moreOptionsButtonTapped {
-                    moreOptionsButtonTapped.toggle()
+            if albumButtonTapped {
+                Text("앨범")
+                    .font(.custom("NanumSquareEB", size: 14))
+                    .frame(maxWidth : .infinity)
+                
+            } else {
+                TextField(
+                    "메시지 입력",
+                    text: $inputText,
+                    axis: .vertical
+                )
+                .font(.system(size: 14, weight: .regular))
+                .padding(10)
+                .frame(maxWidth : .infinity)
+                .background(Assets.Colors.gray5)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .focused($textFieldFocused)
+                .lineLimit(6)
+                .onTapGesture {
+                    if moreOptionsButtonTapped {
+                        moreOptionsButtonTapped.toggle()
+                    }
                 }
             }
             
@@ -206,15 +213,17 @@ extension ChattingRoomView {
         BottomSheetView(
             isOpen: $isPhotoPickerPresented,
             maxHeight: (UIScreen.main.bounds.height*0.8),
-            backgroundColor : Assets.Colors.gray5,
+            backgroundColor : Assets.Colors.white,
             showIndicator: true,
             minHeight : returnMoreOptionsViewHeight()
         ) {
-
+            
+            //TODO: maxHeight이 아닐 때는 scroll 하단 끝까지 안보이기 떄문에 예외처리 필요
+            
             PhotoSelectView(
                 columnAmount : orientation.isPortrait ? 3 : 5,
-                progressYOffset : returnMoreOptionsViewHeight()/2,
-                photoAssets: $photoAssets
+                progressYOffset : returnMoreOptionsViewHeight()/2
+//                photoAssets: $photoAssets
             )
         }
     }

@@ -13,8 +13,10 @@ import Photos
 struct PhotoSelectView : View {
     var columnAmount : Int
     var progressYOffset : CGFloat = 0
-    @Binding var photoAssets: [PHAsset]
+//    @Binding var photoAssets: [PHAsset]
     
+    @State private var photoAssets: [PHAsset] = []
+    @State private var seletedPhotos : [String] = []
     @State private var isLoading : Bool = false
     
     
@@ -33,7 +35,7 @@ struct PhotoSelectView : View {
                     LazyVGrid(columns: columns, spacing: 2) {
                         ForEach(photoAssets, id: \.localIdentifier) { asset in
                             //                        Text(asset.localIdentifier)
-                            PhotoGridItem(asset: asset)
+                            PhotoGridItem(asset: asset, seletedPhotos : $seletedPhotos)
                                 .aspectRatio(1, contentMode: .fill)
                                 .clipped()
                         }
