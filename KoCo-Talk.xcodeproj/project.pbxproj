@@ -15,6 +15,8 @@
 		7D68FBC92D76E88500B9B013 /* PhotoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC82D76E88500B9B013 /* PhotoSelectView.swift */; };
 		7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBCD2D76ED8F00B9B013 /* PhotoGridItem.swift */; };
 		7D68FBD22D77528600B9B013 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD12D77528600B9B013 /* BottomSheetView.swift */; };
+		7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD32D79D41600B9B013 /* FileResponse.swift */; };
+		7D68FBD62D79D6D500B9B013 /* PHAsset++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD52D79D6D400B9B013 /* PHAsset++.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -69,6 +71,8 @@
 		7D68FBC82D76E88500B9B013 /* PhotoSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectView.swift; sourceTree = "<group>"; };
 		7D68FBCD2D76ED8F00B9B013 /* PhotoGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridItem.swift; sourceTree = "<group>"; };
 		7D68FBD12D77528600B9B013 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		7D68FBD32D79D41600B9B013 /* FileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileResponse.swift; sourceTree = "<group>"; };
+		7D68FBD52D79D6D400B9B013 /* PHAsset++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset++.swift"; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				7D7E67C42D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift */,
 				7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */,
 				7D7E67F02D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift */,
+				7D68FBD32D79D41600B9B013 /* FileResponse.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				7D7E67D62D4B170B0037BD36 /* DateFormatter++.swift */,
 				7D7E67E72D4CE2390037BD36 /* String++.swift */,
 				7D68FBC02D757A1500B9B013 /* View++.swift */,
+				7D68FBD52D79D6D400B9B013 /* PHAsset++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */,
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
 				7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */,
@@ -545,6 +552,7 @@
 				7D7E67EC2D4F532A0037BD36 /* EmailLoginView.swift in Sources */,
 				7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */,
 				7D68FBC92D76E88500B9B013 /* PhotoSelectView.swift in Sources */,
+				7D68FBD62D79D6D500B9B013 /* PHAsset++.swift in Sources */,
 				7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */,
 				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,

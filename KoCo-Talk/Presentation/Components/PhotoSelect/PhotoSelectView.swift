@@ -13,10 +13,10 @@ import Photos
 struct PhotoSelectView : View {
     var columnAmount : Int
     var progressYOffset : CGFloat = 0
-//    @Binding var photoAssets: [PHAsset]
-    
-    @State private var photoAssets: [PHAsset] = []
-    @State private var seletedPhotos : [String] = []
+    @Binding var photoAssets: [PHAsset]
+    @Binding var seletedPhotos: [PHAsset]
+//    @State private var photoAssets: [PHAsset] = []
+//    @State private var seletedPhotos : [String] = []
     @State private var isLoading : Bool = false
     
     

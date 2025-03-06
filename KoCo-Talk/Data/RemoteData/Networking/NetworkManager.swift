@@ -44,6 +44,54 @@ enum FetchError : Error {
 
 
 enum NetworkManager {
+//    private static func handleResponse<M : Decodable> (_ response : DataResponse<M, AFError>) -> AnyPublisher<M,FetchError> {
+//        
+//    }
+    
+    // 공통된 응답 처리 로직을 메서드로 분리
+    private static func handleResponse<M: Decodable>(response: AFDataResponse<M>, promise: @escaping (Result<M, Error>) -> Void) {
+        guard response.response != nil else {
+            return promise(.failure(FetchError.invalidResponse))
+        }
+        
+        guard let statusCode = response.response?.statusCode else {
+            return promise(.failure(FetchError.failedRequest))
+        }
+        
+        guard let data = response.data else {
+            return promise(.failure(FetchError.noData))
+        }
+        
+        
+        if statusCode != 200 {
+            var errorMessage: String?
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                errorMessage = json["message"] as? String
+            }
+            
+            return promise(.failure(FetchError.failResponse(code: statusCode, message: errorMessage ?? "")))
+        }
+        
+        
+        
+        switch response.result {
+        case .success(let value):
+            return promise(.success(value))
+            
+        case .failure:
+            return promise(.failure(FetchError.invalidData))
+        }
+    }
+    
+    // 공통 에러 처리 로직을 메서드로 분리
+    private static func mapToFetchError(_ error: Error) -> FetchError {
+        if let error = error as? FetchError {
+            return error
+        } else {
+            return FetchError.unknownError
+        }
+    }
+    
     static func fetch<M : Decodable>(fetchRouter : Router, model : M.Type) -> AnyPublisher<M,FetchError> {
         
         let future = Future<M,Error> { promise in
@@ -55,53 +103,58 @@ enum NetworkManager {
             
             AF.request(request, interceptor: APIRequestInterceptor())
                 .responseDecodable(of: model.self) { response in
-                    
-                    guard response.response != nil else {
-                        return promise(.failure(FetchError.invalidResponse))
-                    }
-                    
-                    guard let statusCode = response.response?.statusCode else {
-                        return promise(.failure(FetchError.failedRequest))
-                    }
-                    
-                    guard let data = response.data else {
-                        return promise(.failure(FetchError.noData))
-                    }
-                    
-                    
-                    if statusCode != 200 {
-                        var errorMessage: String?
-                        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                            errorMessage = json["message"] as? String
-                        }
-                        
-                        return promise(.failure(FetchError.failResponse(code: statusCode, message: errorMessage ?? "")))
-                    }
-                    
-                    
-                    
-                    switch response.result {
-                    case .success(let value):
-                        return promise(.success(value))
-                        
-                    case .failure:
-                        return promise(.failure(FetchError.invalidData))
-                    }
-                    
+                    handleResponse(response: response, promise: promise)
                 }
         }
 
         
         return future
-            .mapError { error -> FetchError in
-                if let error = error as? FetchError {
-                    return error
-                } else {
-                    return FetchError.unknownError
-                }
-            }
+            .mapError { mapToFetchError($0) }
             .eraseToAnyPublisher()
         
+        
+        
+    }
+    
+    static func uploadFile<M : Decodable>(fetchRouter : Router, fileDatas : [Data], model : M.Type) -> AnyPublisher<M,FetchError>  {
+        
+        let future = Future<M,Error> { promise in
+            guard let request = try? fetchRouter.asURLRequest() else {
+                return promise(.failure(FetchError.invalidRequest))
+            }
+            
+            guard let url = request.url else {
+                return promise(.failure(FetchError.url))
+            }
+            
+            let header : HTTPHeaders? = request.headers
+            
+            AF.upload(
+                multipartFormData: { multipartFormData in
+                    // mimeType : 폼데이터  중에 어떤 파일로 분기해줄 것인지
+                    
+                    fileDatas.forEach{
+                        multipartFormData.append(
+                            $0,
+                            withName: "files",
+                            fileName: "image.jpeg",
+                            mimeType: "image/jpeg"
+                        )
+                    }
+
+                },
+                to: url,
+                headers: header,
+                interceptor: APIRequestInterceptor()
+            )
+            .responseDecodable(of: model.self) { response in
+                handleResponse(response: response, promise: promise)
+            }
+            
+        }
+        return future
+            .mapError { mapToFetchError($0) }
+            .eraseToAnyPublisher()
         
     }
 }
@@ -133,6 +186,12 @@ extension NetworkManager {
         return fetch(fetchRouter: router, model: ChatRoomContentDTO.self)
     }
     
+    //Upload Files
+    static func uploadFiles(fileDatas : [Data]) -> AnyPublisher<FileResponse, FetchError> {
+        let router = Router.uploadFiles
+        return NetworkManager.uploadFile(fetchRouter: router, fileDatas: fileDatas, model : FileResponse.self)
+    }
+    
     
     //Auth
     static func tokenRefresh() -> AnyPublisher<TokenRefreshResponse, FetchError> {
@@ -145,7 +204,6 @@ extension NetworkManager {
         return fetch(fetchRouter: router, model : LoginResponseDTO.self)
     }
 }
-
 
 
 

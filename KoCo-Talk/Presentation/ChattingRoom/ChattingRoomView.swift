@@ -31,9 +31,10 @@ struct ChattingRoomView: View {
     }
     @State private var albumButtonTapped = false
     
-//    @State private var photoAssets: [PHAsset] = []
     @State private var isPhotoPickerPresented = false
-    @State private var selectedPhotos: [UIImage] = []
+//    @State private var selectedPhotos: [UIImage] = []
+    @State private var photoAssets: [PHAsset] = []
+    @State private var seletedPhotos : [PHAsset] = []
 
     
     var body: some View {
@@ -174,8 +175,21 @@ extension ChattingRoomView {
             }
             
             Button {
-                intent.submitMessage(roomId: roomId, text: inputText)
-                inputText = ""
+                if albumButtonTapped{
+                    let datas : [Data] = seletedPhotos.map {
+                        var uiimage : UIImage = UIImage()
+                        $0.convertPHAssetToUIImage{image in
+                            uiimage = image
+                        }
+                        return uiimage.jpegData(compressionQuality: 0.1)
+                    }.compactMap{$0}
+
+                    intent.submitFiles(fileDatas: datas)
+                }else {
+                    intent.submitMessage(roomId: roomId, text: inputText)
+                    inputText = ""
+                }
+
             } label: {
                 Assets.SystemImages.arrowUp
                     .font(.system(size: 14, weight: .regular))
@@ -222,8 +236,9 @@ extension ChattingRoomView {
             
             PhotoSelectView(
                 columnAmount : orientation.isPortrait ? 3 : 5,
-                progressYOffset : returnMoreOptionsViewHeight()/2
-//                photoAssets: $photoAssets
+                progressYOffset : returnMoreOptionsViewHeight()/2,
+                photoAssets: $photoAssets,
+                seletedPhotos: $seletedPhotos
             )
         }
     }

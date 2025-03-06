@@ -10,12 +10,12 @@ import Photos
 
 struct PhotoGridItem: View {
     let asset: PHAsset
-    @Binding var seletedPhotos : [String]
+    @Binding var seletedPhotos : [PHAsset]
     
     @State private var image: UIImage? = nil
     
     var body: some View {
-        let isSelected = seletedPhotos.contains(asset.localIdentifier)
+        let isSelected = seletedPhotos.contains(asset)
         
         ZStack{
             if let image {
@@ -28,7 +28,7 @@ struct PhotoGridItem: View {
                     .border(isSelected ? Color.yellow : .clear, width: 4)
                     .overlay(alignment: .topTrailing) {
                         
-                        if isSelected, let index = seletedPhotos.firstIndex(of: asset.localIdentifier)   {
+                        if isSelected, let index = seletedPhotos.firstIndex(of: asset)   {
                             
                                  // 선택된 경우 노란색 원과 숫자 표시
                                  ZStack {
@@ -52,7 +52,7 @@ struct PhotoGridItem: View {
                                      .frame(width: 30, height: 30)
                                      .padding(8)
                                      .onTapGesture {
-                                         seletedPhotos.append(asset.localIdentifier)
+                                         seletedPhotos.append(asset)
                                      }
                              }
 
@@ -68,30 +68,13 @@ struct PhotoGridItem: View {
             }
         }
         .onAppear {
-            loadImage()
-        }
-
-
-    }
-    
-    private func loadImage() {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        option.isSynchronous = false // false로 설정하여 비동기적으로 이미지 로드 (UI 블로킹 방지)
-        option.deliveryMode = .opportunistic // .opportunistic: 빠른 저품질 이미지를 먼저 제공하고 나중에 고품질 이미지 제공
-        option.resizeMode = .exact // .exact: 요청한 targetSize에 정확히 맞는 이미지 반환
-        
-        manager.requestImage(
-            for: asset,
-            targetSize: CGSize(width: 300, height: 300),
-            contentMode: .aspectFill,
-            options: option
-        ) { result, _ in
-            if let image = result {
+            asset.convertPHAssetToUIImage{ uiimage in
                 DispatchQueue.main.async {
-                    self.image = image
+                    self.image = uiimage
                 }
             }
         }
+
+
     }
 }

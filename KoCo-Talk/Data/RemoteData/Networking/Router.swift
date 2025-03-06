@@ -22,6 +22,9 @@ enum Router {
 //
     case postChat(roomId : String, body : PostChatBody)
     case getChatContents(roomId : String, cursorDate : String)
+    
+    //파일업로드
+    case uploadFiles
 }
 
 extension Router : TargetType {
@@ -29,7 +32,7 @@ extension Router : TargetType {
         switch self {
         case .tokenRefresh, .getStores, .getChatRoomList, .getChatContents :
                 .get
-        case .createChatRoom, .postChat, .login :
+        case .createChatRoom, .postChat, .login, .uploadFiles :
                 .post
         }
     }
@@ -58,6 +61,8 @@ extension Router : TargetType {
             return APIURL.getChatContents + "/\(roomId)"
         case .postChat(let roomId, _) :
             return APIURL.postChat + "/\(roomId)"
+        case .uploadFiles :
+            return APIURL.uploadFiles
         }
     }
     
@@ -81,7 +86,7 @@ extension Router : TargetType {
                 APIKEY.productId_key : APIKEY.productId_value,
                 APIKEY.accessToken_key : Router.userInfo?.access ?? "-"
             ]
-        case .createChatRoom, .postChat :
+        case .createChatRoom, .postChat, .uploadFiles :
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
