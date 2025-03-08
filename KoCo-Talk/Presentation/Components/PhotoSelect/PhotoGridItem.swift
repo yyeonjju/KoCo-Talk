@@ -10,25 +10,27 @@ import Photos
 
 struct PhotoGridItem: View {
     let asset: PHAsset
-    @Binding var seletedPhotos : [UIImage]
+    @Binding var seletedPhotos : [SelectedPhoto]
     
     @State private var image: UIImage? = nil
     
     var body: some View {
-        let isSelected = seletedPhotos.contains(image ?? UIImage())
+        let isSelected = seletedPhotos.map{$0.id}.contains(asset.localIdentifier)
         
         ZStack{
             if let image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
+//                    .scaledToFill()
+//                    .scaledToFit()
+//                    .aspectRatio(contentMode: .fill)
                     .overlay{
                         Assets.Colors.black.opacity(isSelected ? 0.4 : 0.0)
                     }
                     .border(isSelected ? Color.yellow : .clear, width: 4)
                     .overlay(alignment: .topTrailing) {
                         
-                        if isSelected, let index = seletedPhotos.firstIndex(of: image)   {
+                        if isSelected, let index = seletedPhotos.firstIndex(where:{$0.id == asset.localIdentifier})   {
                             
                                  // 선택된 경우 노란색 원과 숫자 표시
                                  ZStack {
@@ -52,7 +54,7 @@ struct PhotoGridItem: View {
                                      .frame(width: 30, height: 30)
                                      .padding(8)
                                      .onTapGesture {
-                                         seletedPhotos.append(image)
+                                         seletedPhotos.append(SelectedPhoto(id: asset.localIdentifier, image: image))
                                      }
                              }
 

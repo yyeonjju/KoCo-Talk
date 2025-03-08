@@ -34,7 +34,7 @@ struct ChattingRoomView: View {
     @State private var isPhotoPickerPresented = false
 //    @State private var selectedPhotos: [UIImage] = []
     @State private var photoAssets: [PHAsset] = []
-    @State private var seletedPhotos : [UIImage] = []
+    @State private var seletedPhotos : [SelectedPhoto] = []
 
     
     var body: some View {
@@ -189,7 +189,7 @@ extension ChattingRoomView {
                      */
                     
                     let datas : [Data] = seletedPhotos.map {
-                        $0.jpegData(compressionQuality: 1.0)
+                        $0.image.jpegData(compressionQuality: 1.0)
                     }.compactMap{$0}
                     
                     intent.uploadFiles(roomId : roomId, fileDatas: datas)

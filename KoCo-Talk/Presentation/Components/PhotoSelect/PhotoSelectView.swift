@@ -8,13 +8,18 @@
 import SwiftUI
 import Photos
 
+struct SelectedPhoto {
+    let id : String
+    let image : UIImage
+}
+
 // MARK: - Grid 형태로 최신 사진부터 띄워주는 사진 셀렉터
 
 struct PhotoSelectView : View {
     var columnAmount : Int
     var progressYOffset : CGFloat = 0
     @Binding var photoAssets: [PHAsset]
-    @Binding var seletedPhotos: [UIImage]
+    @Binding var seletedPhotos: [SelectedPhoto]
 //    @State private var photoAssets: [PHAsset] = []
 //    @State private var seletedPhotos : [String] = []
     @State private var isLoading : Bool = false
@@ -37,7 +42,7 @@ struct PhotoSelectView : View {
                             //                        Text(asset.localIdentifier)
                             PhotoGridItem(asset: asset, seletedPhotos : $seletedPhotos)
                                 .aspectRatio(1, contentMode: .fill)
-                                .clipped()
+//                                .clipped()
                         }
                     }
                     .padding(.horizontal, 2)
@@ -91,7 +96,7 @@ extension PhotoSelectView {
         // 최근 사진 순으로 가져오기 위한 옵션 설정
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchOptions.fetchLimit = 20
+        fetchOptions.fetchLimit = 30
         
         // 사진 가져오기
         let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
