@@ -34,7 +34,7 @@ struct ChattingRoomView: View {
     @State private var isPhotoPickerPresented = false
 //    @State private var selectedPhotos: [UIImage] = []
     @State private var photoAssets: [PHAsset] = []
-    @State private var seletedPhotos : [PHAsset] = []
+    @State private var seletedPhotos : [UIImage] = []
 
     
     var body: some View {
@@ -176,14 +176,22 @@ extension ChattingRoomView {
             
             Button {
                 if albumButtonTapped{
+                    /*
+                     let datas : [Data] = seletedPhotos.map {
+                     var uiimage : UIImage = UIImage()
+                     $0.convertPHAssetToUIImage{image in
+                     uiimage = image
+                     }
+                     return uiimage.jpegData(compressionQuality: 1.0)
+                     }.compactMap{$0}
+                     
+                     intent.uploadFiles(roomId : roomId, fileDatas: datas)
+                     */
+                    
                     let datas : [Data] = seletedPhotos.map {
-                        var uiimage : UIImage = UIImage()
-                        $0.convertPHAssetToUIImage{image in
-                            uiimage = image
-                        }
-                        return uiimage.jpegData(compressionQuality: 1.0)
+                        $0.jpegData(compressionQuality: 1.0)
                     }.compactMap{$0}
-
+                    
                     intent.uploadFiles(roomId : roomId, fileDatas: datas)
                 }else {
                     intent.submitMessage(roomId: roomId, text: inputText, files : [])

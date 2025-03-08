@@ -14,7 +14,7 @@ struct PhotoSelectView : View {
     var columnAmount : Int
     var progressYOffset : CGFloat = 0
     @Binding var photoAssets: [PHAsset]
-    @Binding var seletedPhotos: [PHAsset]
+    @Binding var seletedPhotos: [UIImage]
 //    @State private var photoAssets: [PHAsset] = []
 //    @State private var seletedPhotos : [String] = []
     @State private var isLoading : Bool = false
