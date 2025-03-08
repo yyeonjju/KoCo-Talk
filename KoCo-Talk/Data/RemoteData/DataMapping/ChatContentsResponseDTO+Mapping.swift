@@ -31,72 +31,76 @@ struct ChatRoomContentDTO : Decodable {
 
 extension ChatRoomContentListResponseDTO{
     func toDomain() -> [ChatRoomContentRow] {
+        ConvertChatContentsToChatRows(data: data)
+    }
+}
+
+func ConvertChatContentsToChatRows(data : [ChatRoomContentDTO]) -> [ChatRoomContentRow] {
+    
+    var result : [ChatRoomContentRow] = []
+    var chatContents : [ChatRoomContent] = []
+    
+    for (offset, element) in data.enumerated() {
         
-        var result : [ChatRoomContentRow] = []
-        var chatContents : [ChatRoomContent] = []
+        ///✅ 유저 비교하여 Row 분리를 위해
+        let currentIndexSenderId = data[offset].sender.userId
+        var nextIndexSenderId = ""
+        if offset+1 < data.count {
+            nextIndexSenderId = data[offset+1].sender.userId
+        }
         
-        for (offset, element) in data.enumerated() {
-            
-            ///✅ 유저 비교하여 Row 분리를 위해
-            let currentIndexSenderId = data[offset].sender.userId
-            var nextIndexSenderId = ""
-            if offset+1 < data.count {
-                nextIndexSenderId = data[offset+1].sender.userId
-            }
-            
-            
-            ///✅ 다음 index와 날짜/시간 비교하여 Row 분리를 위해
-            let currentIndexDateTimeString = data[offset].createdAt.serverDateConvertTo(.yyyyMMddhhmm)
-            var nextIndexDateTimeString = ""
-            if offset+1 < data.count {
-                nextIndexDateTimeString = data[offset+1].createdAt.serverDateConvertTo(.yyyyMMddhhmm)
-            }
-
-            
-            
-            //채팅 내역(ChatRoomContent)을 추가
-            chatContents.append(
-                ChatRoomContent(
-                    chatId: element.chatId,
-                    content: element.content ?? "-",
-                    files: element.files
-                )
-            )
-            
-            //다음 인덱스 요소와 날짜/시간이 다르거나, 유저가 다르면 현재까지의 chatContents를 갖는 Row 생성하여 append
-            if currentIndexSenderId != nextIndexSenderId ||
-                currentIndexDateTimeString != nextIndexDateTimeString
-            {
-                ///✅이전 row의 날짜와 비교해서 날짜 표시 여부를 판단
-                let currentIndexPresentationDate = data[offset].createdAt.serverDateConvertTo(.chatRoomDateFormat)
-                //이전 row의 날짜
-                let prevRowDate = result.last?.createdDate
-
-                
-                //시간 표시를 위함
-                let presentationtTime = data[offset].createdAt.serverDateConvertTo(.chatTimeFormat)
-
-                //현재까지 쌓인 chatContents를 담은 ChatRoomContentRow를 append
-                result.append(
-                    ChatRoomContentRow(
-                        isMyChat: currentIndexSenderId == APIKEY.myUserId,
-                        isDateShown : prevRowDate == nil || currentIndexPresentationDate != prevRowDate,
-                        createdDate: currentIndexPresentationDate,
-                        createdTime: presentationtTime,
-                        senderNickname: element.sender.nick,
-                        
-                        chats: chatContents
-                    )
-                )
-                
-                //현재까지 쌓인 chatContents 초기화
-                chatContents.removeAll()
-                
-            }
+        
+        ///✅ 다음 index와 날짜/시간 비교하여 Row 분리를 위해
+        let currentIndexDateTimeString = data[offset].createdAt.serverDateConvertTo(.yyyyMMddhhmm)
+        var nextIndexDateTimeString = ""
+        if offset+1 < data.count {
+            nextIndexDateTimeString = data[offset+1].createdAt.serverDateConvertTo(.yyyyMMddhhmm)
         }
 
         
-        return result
+        
+        //채팅 내역(ChatRoomContent)을 추가
+        chatContents.append(
+            ChatRoomContent(
+                chatId: element.chatId,
+                content: element.content ?? "-",
+                files: element.files
+            )
+        )
+        
+        //다음 인덱스 요소와 날짜/시간이 다르거나, 유저가 다르면 현재까지의 chatContents를 갖는 Row 생성하여 append
+        if currentIndexSenderId != nextIndexSenderId ||
+            currentIndexDateTimeString != nextIndexDateTimeString
+        {
+            ///✅이전 row의 날짜와 비교해서 날짜 표시 여부를 판단
+            let currentIndexPresentationDate = data[offset].createdAt.serverDateConvertTo(.chatRoomDateFormat)
+            //이전 row의 날짜
+            let prevRowDate = result.last?.createdDate
+
+            
+            //시간 표시를 위함
+            let presentationtTime = data[offset].createdAt.serverDateConvertTo(.chatTimeFormat)
+
+            //현재까지 쌓인 chatContents를 담은 ChatRoomContentRow를 append
+            result.append(
+                ChatRoomContentRow(
+                    isMyChat: currentIndexSenderId == APIKEY.myUserId,
+                    isDateShown : prevRowDate == nil || currentIndexPresentationDate != prevRowDate,
+                    createdDate: currentIndexPresentationDate,
+                    createdTime: presentationtTime,
+                    senderNickname: element.sender.nick,
+                    
+                    chats: chatContents
+                )
+            )
+            
+            //현재까지 쌓인 chatContents 초기화
+            chatContents.removeAll()
+            
+        }
     }
+
+    
+    return result
 }
 

@@ -17,6 +17,8 @@
 		7D68FBD22D77528600B9B013 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD12D77528600B9B013 /* BottomSheetView.swift */; };
 		7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD32D79D41600B9B013 /* FileResponse.swift */; };
 		7D68FBD62D79D6D500B9B013 /* PHAsset++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD52D79D6D400B9B013 /* PHAsset++.swift */; };
+		7D68FBD82D7C096700B9B013 /* HeaderAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD72D7C096700B9B013 /* HeaderAsyncImage.swift */; };
+		7D68FBDA2D7C187000B9B013 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBD92D7C187000B9B013 /* ImageLoader.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		7D68FBD12D77528600B9B013 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		7D68FBD32D79D41600B9B013 /* FileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileResponse.swift; sourceTree = "<group>"; };
 		7D68FBD52D79D6D400B9B013 /* PHAsset++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset++.swift"; sourceTree = "<group>"; };
+		7D68FBD72D7C096700B9B013 /* HeaderAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAsyncImage.swift; sourceTree = "<group>"; };
+		7D68FBD92D7C187000B9B013 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */,
+				7D68FBD72D7C096700B9B013 /* HeaderAsyncImage.swift */,
+				7D68FBD92D7C187000B9B013 /* ImageLoader.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -541,10 +547,12 @@
 				7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */,
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
+				7D68FBD82D7C096700B9B013 /* HeaderAsyncImage.swift in Sources */,
 				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
 				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
 				7D68FBC12D757A1500B9B013 /* View++.swift in Sources */,
 				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
+				7D68FBDA2D7C187000B9B013 /* ImageLoader.swift in Sources */,
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
 				7D7E67F32D50D1910037BD36 /* AuthEntities.swift in Sources */,
 				7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */,

@@ -184,9 +184,9 @@ extension ChattingRoomView {
                         return uiimage.jpegData(compressionQuality: 0.1)
                     }.compactMap{$0}
 
-                    intent.submitFiles(fileDatas: datas)
+                    intent.uploadFiles(roomId : roomId, fileDatas: datas)
                 }else {
-                    intent.submitMessage(roomId: roomId, text: inputText)
+                    intent.submitMessage(roomId: roomId, text: inputText, files : [])
                     inputText = ""
                 }
 

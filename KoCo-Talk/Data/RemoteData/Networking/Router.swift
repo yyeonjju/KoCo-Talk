@@ -11,26 +11,29 @@ import Alamofire
 enum Router {
     @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) static var userInfo : LoginResponse?
     
+    //Auth
     case tokenRefresh
-    case login(body : LoginBody)
+    case login(body: LoginBody)
     
+    //Store
+    case getStores(next: String, limit: String, category: String)
+    //case getLocationBasedStores
     
-    case getStores(next : String, limit : String, category : String)
-//    case getLocationBasedStores
-    case createChatRoom(body : CreateChatRoomBody)
+    //Chat
+    case createChatRoom(body: CreateChatRoomBody)
     case getChatRoomList
-//
-    case postChat(roomId : String, body : PostChatBody)
-    case getChatContents(roomId : String, cursorDate : String)
+    case postChat(roomId: String, body: PostChatBody)
+    case getChatContents(roomId: String, cursorDate: String)
     
-    //파일업로드
+    //file
     case uploadFiles
+    case downloadFile(url : String)
 }
 
 extension Router : TargetType {
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .tokenRefresh, .getStores, .getChatRoomList, .getChatContents :
+        case .tokenRefresh, .getStores, .getChatRoomList, .getChatContents, .downloadFile :
                 .get
         case .createChatRoom, .postChat, .login, .uploadFiles :
                 .post
@@ -63,6 +66,8 @@ extension Router : TargetType {
             return APIURL.postChat + "/\(roomId)"
         case .uploadFiles :
             return APIURL.uploadFiles
+        case .downloadFile(let url) :
+            return APIURL.downloadFile + url
         }
     }
     
@@ -80,7 +85,7 @@ extension Router : TargetType {
                 APIKEY.productId_key : APIKEY.productId_value,
                 APIKEY.tokenRefresh_key : Router.userInfo?.refresh ?? "-"
             ]
-        case .getStores, .getChatRoomList, .getChatContents:
+        case .getStores, .getChatRoomList, .getChatContents, .downloadFile:
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,

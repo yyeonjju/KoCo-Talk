@@ -47,6 +47,7 @@ struct ChattingRoomRowView: View {
             
             VStack(alignment : row.isMyChat ? .trailing : .leading){
                 ForEach(row.chats, id : \.chatId) { chat in
+                    let _ = print("🚨🚨🚨🚨chat🚨🚨🚨🚨", chat)
                     VStack{
                         if chat.files.isEmpty {
                             //텍스트
@@ -105,7 +106,7 @@ extension ChattingRoomRowView {
         return VStack(spacing: 2){
  
             if files.count == 1 {
-                singleImageView(width: singlePhotoWidth, imageUrl: files[0])
+                singleImageView(urlString : files.first ?? "", width: singlePhotoWidth, imageUrl: files[0])
                 
             } else if files.count == 2 {
                 twoItemsInRow(isSquare : true, urls: Array(files[0...1]))
@@ -144,25 +145,24 @@ extension ChattingRoomRowView {
     func twoItemsInRow(isSquare : Bool? = false, width : CGFloat? = 240, urls : [String]) -> some View {
         HStack(spacing: 2){
             ForEach(urls, id : \.self){ url in
-                singleImageView(width: width!/2, height: isSquare == true ? width!/2 : width!/3, imageUrl: "")
+                singleImageView(urlString : url, width: width!/2, height: isSquare == true ? width!/2 : width!/3, imageUrl: "")
             }
         }
     }
     func threeItemsInRow(width : CGFloat? = 240, urls : [String]) -> some View {
         HStack(spacing: 2){
             ForEach(urls, id : \.self){ url in
-                singleImageView(width: width!/3, imageUrl : "")
+                singleImageView(urlString : url, width: width!/3, imageUrl : "")
                 
             }
         }
     }
     
-    func singleImageView(width : CGFloat, height : CGFloat? = nil , imageUrl : String) -> some View {
-        VStack{
-            
-        }
-        .frame(width: width, height: height ?? width)
-        .background(Assets.Colors.gray1)
-        .cornerRadius(4)
+    func singleImageView(urlString : String, width : CGFloat, height : CGFloat? = nil , imageUrl : String) -> some View {
+        
+        HeaderAsyncImage(url: urlString, width: width, height: height ?? width)
+//            .frame(width: width, height: height ?? width)
+            .background(Assets.Colors.gray1)
+            .cornerRadius(4)
     }
 }

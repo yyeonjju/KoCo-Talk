@@ -12,8 +12,8 @@ import UIKit
 protocol ChattingRoomIntentProtocol {
     func fetchChatRoomContents(roomId : String,cursorDate : String)
     func stopDMReceive()
-    func submitMessage(roomId : String, text : String)
-    func submitFiles(fileDatas : [Data])
+    func submitMessage(roomId : String, text : String, files : [String] )
+    func uploadFiles(roomId : String, fileDatas : [Data])
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
@@ -86,8 +86,8 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
         SocketIOManager.shared.closeConnection()
     }
     
-    func submitMessage(roomId : String, text : String) {
-        let body = PostChatBody(content: text, files: [])
+    func submitMessage(roomId : String, text : String, files : [String]) {
+        let body = PostChatBody(content: text, files: files)
        
         NetworkManager.postChat(roomId: roomId, body: body)
             .sink(receiveCompletion: {[weak self] completion in
@@ -107,7 +107,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
             .store(in: &cancellables)
     }
     
-    func submitFiles(fileDatas : [Data]) {       
+    func uploadFiles(roomId : String, fileDatas : [Data]) {
         NetworkManager.uploadFiles(fileDatas: fileDatas)
             .sink(receiveCompletion: {[weak self] completion in
                 guard let self else { return }
@@ -121,6 +121,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
             }, receiveValue: {[weak self]  result in
                 guard let self else { return }
                 print("⭐️⭐️⭐️⭐️⭐️result", result)
+                submitMessage(roomId: roomId, text: "", files: result.files)
             })
             .store(in: &cancellables)
     }

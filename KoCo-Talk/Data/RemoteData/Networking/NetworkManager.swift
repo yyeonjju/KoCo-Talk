@@ -111,9 +111,6 @@ enum NetworkManager {
         return future
             .mapError { mapToFetchError($0) }
             .eraseToAnyPublisher()
-        
-        
-        
     }
     
     static func uploadFile<M : Decodable>(fetchRouter : Router, fileDatas : [Data], model : M.Type) -> AnyPublisher<M,FetchError>  {
@@ -157,6 +154,34 @@ enum NetworkManager {
             .eraseToAnyPublisher()
         
     }
+    
+    static func fetchData(fetchRouter : Router) -> AnyPublisher<Data,FetchError> {
+        
+        let future = Future<Data,Error> { promise in
+            guard let request = try? fetchRouter.asURLRequest() else {
+                return promise(.failure(FetchError.invalidRequest))
+            }
+            
+            AF.request(request, interceptor: APIRequestInterceptor())
+                .responseData{ response in
+                    guard response.response != nil else {
+                        return promise(.failure(FetchError.invalidResponse))
+                    }
+                    
+                    guard let statusCode = response.response?.statusCode else {
+                        return promise(.failure(FetchError.failedRequest))
+                    }
+                    
+                    guard let data = response.data else {return }
+                    promise(.success(data))
+                }
+        }
+
+        
+        return future
+            .mapError { mapToFetchError($0) }
+            .eraseToAnyPublisher()
+    }
 }
 
 
@@ -186,10 +211,15 @@ extension NetworkManager {
         return fetch(fetchRouter: router, model: ChatRoomContentDTO.self)
     }
     
-    //Upload Files
+    //Files
     static func uploadFiles(fileDatas : [Data]) -> AnyPublisher<FileResponse, FetchError> {
         let router = Router.uploadFiles
         return NetworkManager.uploadFile(fetchRouter: router, fileDatas: fileDatas, model : FileResponse.self)
+    }
+    
+    static func downloadFiles(url : String) -> AnyPublisher<Data, FetchError> {
+        let router = Router.downloadFile(url: url)
+        return NetworkManager.fetchData(fetchRouter: router)
     }
     
     
