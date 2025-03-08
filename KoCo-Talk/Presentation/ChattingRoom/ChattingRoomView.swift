@@ -181,7 +181,7 @@ extension ChattingRoomView {
                         $0.convertPHAssetToUIImage{image in
                             uiimage = image
                         }
-                        return uiimage.jpegData(compressionQuality: 0.1)
+                        return uiimage.jpegData(compressionQuality: 1.0)
                     }.compactMap{$0}
 
                     intent.uploadFiles(roomId : roomId, fileDatas: datas)

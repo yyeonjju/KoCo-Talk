@@ -47,7 +47,6 @@ struct ChattingRoomRowView: View {
             
             VStack(alignment : row.isMyChat ? .trailing : .leading){
                 ForEach(row.chats, id : \.chatId) { chat in
-                    let _ = print("🚨🚨🚨🚨chat🚨🚨🚨🚨", chat)
                     VStack{
                         if chat.files.isEmpty {
                             //텍스트
@@ -57,7 +56,6 @@ struct ChattingRoomRowView: View {
                             filesContentView(files: chat.files)
                         }
                         
-//                        filesContentView(files:["", "", "", "", "", "", "", "", "", ""])
                     }
                 }
             }

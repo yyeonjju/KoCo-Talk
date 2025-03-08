@@ -128,13 +128,12 @@ enum NetworkManager {
             
             AF.upload(
                 multipartFormData: { multipartFormData in
-                    // mimeType : 폼데이터  중에 어떤 파일로 분기해줄 것인지
                     
-                    fileDatas.forEach{
+                    for (index, data) in fileDatas.enumerated() {
                         multipartFormData.append(
-                            $0,
+                            data,
                             withName: "files",
-                            fileName: "image.jpeg",
+                            fileName: "image\(index).jpeg",
                             mimeType: "image/jpeg"
                         )
                     }
@@ -255,7 +254,7 @@ final class APIRequestInterceptor: RequestInterceptor {
             urlRequest.setValue((userInfo?.access ?? ""), forHTTPHeaderField: APIKEY.accessToken_key)
 //        }
         
-        print("adapt - headers -> ", urlRequest.headers)
+        print("- adapt - headers -> ", urlRequest.headers)
         completion(.success(urlRequest))
     }
     
