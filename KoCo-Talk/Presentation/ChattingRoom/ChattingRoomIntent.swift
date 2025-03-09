@@ -10,23 +10,38 @@ import Combine
 import UIKit
 
 protocol ChattingRoomIntentProtocol {
-    func fetchChatRoomContents(roomId : String,cursorDate : String)
     func stopDMReceive()
     func submitMessage(roomId : String, text : String, files : [String] )
     func uploadFiles(roomId : String, fileDatas : [Data])
+    func getPrevChats(roomId : String)
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
     private var cancellables = Set<AnyCancellable>()
     private weak var model : ChattingRoomModelActionProtocol?
     
+    private var chatRealmManager = ChatRealmManager()
+    
     init(model: ChattingRoomModelActionProtocol) {
         self.model = model
     }
     
-    func fetchChatRoomContents(roomId : String, cursorDate : String) {
-        
-        NetworkManager.getChatRoomContents(roomId: roomId, cursorDate: "2025-01-26T07:14:54.357Z")
+    func getPrevChats(roomId : String) {
+        var temp : [ChatRoomContentDTO] = []
+        chatRealmManager.getChatsFor(roomId: roomId)
+            .flatMap{ result in
+                print("💕💕💕💕💕💕💕result💕💕💕💕💕💕💕", result)
+                
+                temp.append(contentsOf: result.map{$0.toRemoteDTO()})
+                
+                print("💕💕💕💕💕💕💕temp💕💕💕💕💕💕💕", temp)
+                
+                let lastChatCreatedAt = result.last?.createdAt ?? ""
+                
+                print("💕💕💕💕💕💕💕lastChatCreatedAt💕💕💕💕💕💕💕", lastChatCreatedAt)
+                
+                return NetworkManager.getChatRoomContents(roomId: roomId, cursorDate: lastChatCreatedAt)
+            }
             .sink(receiveCompletion: {[weak self] completion in
                 guard let self else { return }
                 switch completion {
@@ -39,15 +54,26 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
             }, receiveValue: {[weak self]  result in
                 guard let self, let model else { return }
 
-                //TODO: 로컬에 저장
+                print("🍀🍀🍀🍀🍀🍀🍀result🍀🍀🍀🍀🍀🍀🍀", result)
                 
-                model.updateChatRoomRows(result.toDomain())
+                //realm에 저장되지 않은 데이터는 realm에 저장
+                chatRealmManager.add(chats: result.data.map{$0.toRealmType()})
                 
+                //UI 업데이트를 위해 model업데이트
+                temp.append(contentsOf: result.data)
+                
+                print("🍀🍀🍀🍀🍀🍀🍀temp🍀🍀🍀🍀🍀🍀🍀", temp)
+                
+                let rows = ConvertChatContentsToChatRows(data: temp)
+                model.updateChatRoomRows(rows)
+                
+                //소켓 연결
                 beginDMReceive(roomId: roomId)
                 
                 
             })
             .store(in: &cancellables)
+        
     }
     
     func beginDMReceive(roomId : String) {
@@ -68,10 +94,11 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
                 
                 print("❤️❤️메세지 받았다???❤️❤️", result)
                 
-                // 모델에 업데이트 : 원본 저장해놔야하나?
-                //
-                //
-                //
+                //내가 보낸 메시지, 상대가 보낸 메시지 모두 받은 후 realm 에 저장
+                let realmChat = result.toRealmType()
+                chatRealmManager.add(chat: realmChat)
+                
+                //UI 업데이트
                 model.appendChat(result)
                 
 //                ChatContentsStorage.shared.chats.append(result)

@@ -70,7 +70,8 @@ struct ChattingRoomView: View {
         
         .background(Assets.Colors.pointGreen3)
         .onAppear{
-            intent.fetchChatRoomContents(roomId: roomId, cursorDate: "")
+            intent.getPrevChats(roomId: roomId)
+ 
         }
         //채팅방 들어왔을 때는 탭바 보이지 않고, .onDisappear 시점에는 (이전 페이지로 돌아갈 떄) 다시 탭바 뜰 수 있도록
         .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)

@@ -30,8 +30,16 @@ struct ChatRoomContentDTO : Decodable {
 
 
 extension ChatRoomContentListResponseDTO{
-    func toDomain() -> [ChatRoomContentRow] {
-        ConvertChatContentsToChatRows(data: data)
+    //뷰에서 분기처리하기 좋은 ChatRoomContentRow 형태로 변환
+//    func toDomain() -> [ChatRoomContentRow] {
+//        ConvertChatContentsToChatRows(data: data)
+//    }
+}
+
+extension ChatRoomContentDTO {
+    //실시간으로 오고가는 메세지에 대해 realm에 저장하기 위해
+    func toRealmType() -> RealmChatContent {
+        return RealmChatContent(chatId: chatId, roomId: roomId, content: content, createdAt: createdAt, files: files, senderUserId: sender.userId, senderNickname: sender.nick, senderProfileImage: sender.profileImage)
     }
 }
 

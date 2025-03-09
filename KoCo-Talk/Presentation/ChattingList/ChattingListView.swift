@@ -33,6 +33,18 @@ struct ChattingListView: View {
         .onAppear{
             intent.fetchChatRoomList()
         }
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Button{
+//                    intent.createChatRoom(opponentID: "67cd0a5d6d8a1073757c63f6")
+//                    print("----")
+                } label : {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .toolbar(.visible, for: .navigationBar)
+
 
     }
 }

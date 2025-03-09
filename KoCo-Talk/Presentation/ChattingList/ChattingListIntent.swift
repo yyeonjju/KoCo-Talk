@@ -10,6 +10,7 @@ import Combine
 
 protocol ChattingListIntentProtocol {
     func fetchChatRoomList()
+    func createChatRoom(opponentID : String)
 }
 
 final class ChattingListIntent : ChattingListIntentProtocol {
@@ -36,6 +37,26 @@ final class ChattingListIntent : ChattingListIntentProtocol {
                 print("❤️", result.data)
                 let chatRoomList = result.data.map{$0.toDomain()}
                 model.updateChatRoomList(list: chatRoomList)
+                
+            })
+            .store(in: &cancellables)
+    }
+    
+    func createChatRoom(opponentID : String) {
+        NetworkManager.createChatRoom(body : CreateChatRoomBody(opponent_id: opponentID))
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self else { return }
+                switch completion {
+                case .failure(let error):
+                    print("⭐️receiveCompletion - failure", error)
+                case .finished:
+                    break
+                }
+                
+            }, receiveValue: {[weak self] result in
+                guard let self else { return }
+                
+                self.fetchChatRoomList()
                 
             })
             .store(in: &cancellables)
