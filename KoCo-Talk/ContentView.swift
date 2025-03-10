@@ -50,7 +50,7 @@ struct ContentView: View {
             
             TabView(selection: $selectedTab) {
                 NavigationView{
-                    MapView()
+                    MapView.build()
                 }
                 .tint(Assets.Colors.black)
                 .tabItem {

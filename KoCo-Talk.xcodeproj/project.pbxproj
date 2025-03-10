@@ -23,6 +23,10 @@
 		7D68FBE22D7D3F3F00B9B013 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7D68FBE12D7D3F3F00B9B013 /* RealmSwift */; };
 		7D68FBE52D7D4E6200B9B013 /* RealmChatContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBE42D7D4E6200B9B013 /* RealmChatContent.swift */; };
 		7D68FBE72D7D5C6D00B9B013 /* ChatRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBE62D7D5C6D00B9B013 /* ChatRealmManager.swift */; };
+		7D68FBE92D7E92BE00B9B013 /* MapIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBE82D7E92BD00B9B013 /* MapIntent.swift */; };
+		7D68FBEB2D7E92FB00B9B013 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEA2D7E92FB00B9B013 /* MapModel.swift */; };
+		7D68FBED2D7E9B3300B9B013 /* StoreInfoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEC2D7E9B3300B9B013 /* StoreInfoEntities.swift */; };
+		7D68FBEF2D7EA1AB00B9B013 /* PostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -84,6 +88,10 @@
 		7D68FBDE2D7D3EDF00B9B013 /* BaseRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRealmManager.swift; sourceTree = "<group>"; };
 		7D68FBE42D7D4E6200B9B013 /* RealmChatContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChatContent.swift; sourceTree = "<group>"; };
 		7D68FBE62D7D5C6D00B9B013 /* ChatRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRealmManager.swift; sourceTree = "<group>"; };
+		7D68FBE82D7E92BD00B9B013 /* MapIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIntent.swift; sourceTree = "<group>"; };
+		7D68FBEA2D7E92FB00B9B013 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		7D68FBEC2D7E9B3300B9B013 /* StoreInfoEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoEntities.swift; sourceTree = "<group>"; };
+		7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContent.swift; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -294,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				7D7E679B2D49D5F50037BD36 /* MapView.swift */,
+				7D68FBEA2D7E92FB00B9B013 /* MapModel.swift */,
+				7D68FBE82D7E92BD00B9B013 /* MapIntent.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -378,6 +388,7 @@
 			children = (
 				7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */,
 				7D7E67F42D50D1D60037BD36 /* Auth.swift */,
+				7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -403,6 +414,7 @@
 			children = (
 				7D7E67D22D4B114C0037BD36 /* ChattingEntities.swift */,
 				7D7E67F22D50D1910037BD36 /* AuthEntities.swift */,
+				7D68FBEC2D7E9B3300B9B013 /* StoreInfoEntities.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -558,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */,
+				7D68FBEF2D7EA1AB00B9B013 /* PostContent.swift in Sources */,
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
 				7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */,
@@ -570,9 +583,11 @@
 				7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */,
 				7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */,
 				7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */,
+				7D68FBE92D7E92BE00B9B013 /* MapIntent.swift in Sources */,
 				7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
+				7D68FBED2D7E9B3300B9B013 /* StoreInfoEntities.swift in Sources */,
 				7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */,
 				7D68FBC32D75AB8700B9B013 /* OrientationManager.swift in Sources */,
 				7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */,
@@ -582,6 +597,7 @@
 				7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
 				7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */,
+				7D68FBEB2D7E92FB00B9B013 /* MapModel.swift in Sources */,
 				7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */,
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,

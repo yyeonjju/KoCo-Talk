@@ -15,6 +15,7 @@ enum RealmError : Error {
 final class ChatRealmManager : BaseRealmManager {
     
     func add(chat : RealmChatContent){
+        self.checkFileURL()
         self.createItem(chat)
     }
     

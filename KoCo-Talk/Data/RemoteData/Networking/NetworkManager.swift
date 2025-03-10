@@ -102,6 +102,9 @@ enum NetworkManager {
             print("🌸request - ", request.url)
             
             AF.request(request, interceptor: APIRequestInterceptor())
+//                .responseString(completionHandler: { result in
+//                    print("result", result)
+//                })
                 .responseDecodable(of: model.self) { response in
                     handleResponse(response: response, promise: promise)
                 }
@@ -185,9 +188,9 @@ enum NetworkManager {
 
 
 extension NetworkManager {
-    static func getStores (limit : String, nextCursor : String, size : Int) -> AnyPublisher<StoreInfoResponseDTO, FetchError> {
-        let router = Router.getStores(next: limit, limit: nextCursor, category: APIKEY.category_value)
-        return fetch(fetchRouter: router, model: StoreInfoResponseDTO.self)
+    static func getStores (limit : String, nextCursor : String) -> AnyPublisher<PostContentResponseDTO, FetchError> {
+        let router = Router.getStores(next: nextCursor, limit: limit, category: APIKEY.category_value)
+        return fetch(fetchRouter: router, model: PostContentResponseDTO.self)
     }
     
     static func createChatRoom(body : CreateChatRoomBody) -> AnyPublisher<ChatRoomResponseDTO, FetchError> {
