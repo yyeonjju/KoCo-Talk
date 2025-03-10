@@ -1,5 +1,5 @@
 {
-  "originHash" : "8588150c557933d9cda5b2b3915a74ae3244ac39aa01ebe360f98367bc135bd3",
+  "originHash" : "93e22e5135b4e0fecfc2a4e6ef55f26da7205725ae1ee23063eadc87d542e4a9",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
         "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "kakaomapssdk-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git",
+      "state" : {
+        "revision" : "cac78b954abb00c7dcd0ac0a550cfa147cee4bad",
+        "version" : "2.10.7"
       }
     },
     {

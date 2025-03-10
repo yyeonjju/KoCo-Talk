@@ -27,6 +27,7 @@
 		7D68FBEB2D7E92FB00B9B013 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEA2D7E92FB00B9B013 /* MapModel.swift */; };
 		7D68FBED2D7E9B3300B9B013 /* StoreInfoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEC2D7E9B3300B9B013 /* StoreInfoEntities.swift */; };
 		7D68FBEF2D7EA1AB00B9B013 /* PostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */; };
+		7D68FBF52D7EE41B00B9B013 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 7D68FBF42D7EE41B00B9B013 /* KakaoMapsSDK-SPM */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -145,6 +146,7 @@
 				7D68FBE22D7D3F3F00B9B013 /* RealmSwift in Frameworks */,
 				7D7E67B12D4A0CE30037BD36 /* Alamofire in Frameworks */,
 				7D7E67E62D4CCDE90037BD36 /* SocketIO in Frameworks */,
+				7D68FBF52D7EE41B00B9B013 /* KakaoMapsSDK-SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +505,7 @@
 				7D7E67B02D4A0CE30037BD36 /* Alamofire */,
 				7D7E67E52D4CCDE90037BD36 /* SocketIO */,
 				7D68FBE12D7D3F3F00B9B013 /* RealmSwift */,
+				7D68FBF42D7EE41B00B9B013 /* KakaoMapsSDK-SPM */,
 			);
 			productName = "KoCo-Talk";
 			productReference = 7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */;
@@ -536,6 +539,7 @@
 				7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				7D7E67E42D4CCDE90037BD36 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 				7D68FBE02D7D3F3F00B9B013 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				7D68FBF32D7EE41B00B9B013 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 7D7E677B2D49146A0037BD36 /* Products */;
 			projectDirPath = "";
@@ -679,7 +683,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -736,7 +740,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -842,6 +846,14 @@
 				version = 10.53.0;
 			};
 		};
+		7D68FBF32D7EE41B00B9B013 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10.7;
+			};
+		};
 		7D7E67AF2D4A0CE30037BD36 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -865,6 +877,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D68FBE02D7D3F3F00B9B013 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		7D68FBF42D7EE41B00B9B013 /* KakaoMapsSDK-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D68FBF32D7EE41B00B9B013 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = "KakaoMapsSDK-SPM";
 		};
 		7D7E67B02D4A0CE30037BD36 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
