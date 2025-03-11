@@ -108,7 +108,7 @@ struct BottomSheetView<Content: View>: View {
                 ,including: self.allowDragGeture ? .all : .subviews //subviews : Enable all gestures in the subview hierarchy but disable the added gesture.
             )
         }
-        .edgesIgnoringSafeArea(offset == 0 ? .bottom : .top) // offset==0 일 때, 즉, maxheight에 있을 때는 bottom safeArea 무시하도록
+        .edgesIgnoringSafeArea( isOpen ? .bottom : []) // offset==0 일 때, (즉, == maxheight에 있을 때 == isOpen true일 때)는 bottom safeArea 무시하도록
 //        .edgesIgnoringSafeArea(isIgnoredSafeArea ? .all : .horizontal)
     }
     

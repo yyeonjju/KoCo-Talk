@@ -31,7 +31,7 @@ struct ChattingRoomView: View {
     }
     @State private var albumButtonTapped = false
     
-    @State private var isPhotoPickerPresented = false
+    @State private var isPhotoPickerMaxHeight = false
 //    @State private var selectedPhotos: [UIImage] = []
     @State private var photoAssets: [PHAsset] = []
     @State private var seletedPhotos : [SelectedPhoto] = []
@@ -233,9 +233,10 @@ extension ChattingRoomView {
     
     var photoSelectView : some View {
         //moreOptionsButtonTapped&&albumButtonTapped 일 때
+        
         BottomSheetView(
-            isOpen: $isPhotoPickerPresented,
-            maxHeight: (UIScreen.main.bounds.height*0.8),
+            isOpen: $isPhotoPickerMaxHeight,
+            maxHeight: (ScreenSize.height-ScreenSize.statusBarHeight),
             backgroundColor : Assets.Colors.white,
             showIndicator: true,
             minHeight : returnMoreOptionsViewHeight()
@@ -250,6 +251,9 @@ extension ChattingRoomView {
                 seletedPhotos: $seletedPhotos
             )
         }
+        //🚨 maxHeight을 status bar 바로 밑까지 되도록 이렇게 하려면 navigation bar를 숨기고
+        .toolbar( isPhotoPickerMaxHeight ? .hidden : .visible, for: .navigationBar)
+        //TODO: maxHeight일 때, top의 부분의 zindex아래 뷰가 보이지 않았으면 좋겠다. ( 그냥 네비게이션 바 부분을 커스텀으로 만드는 방법이 맞을 듯)
     }
 
 }

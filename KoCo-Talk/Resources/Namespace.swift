@@ -35,3 +35,24 @@ enum Assets {
         static let defaultProfile = Image("defaultProfile")
     }
 }
+
+enum ScreenSize {
+    static var width : CGFloat {
+        guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return UIScreen.main.bounds.width}
+        return window.screen.bounds.width
+    }
+    
+    static var height : CGFloat {
+        guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return UIScreen.main.bounds.height}
+        return window.screen.bounds.height
+    }
+    
+    static var statusBarHeight : CGFloat {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first else{
+            return 0.0
+        }
+        return window.safeAreaInsets.top
+    }
+    
+}
