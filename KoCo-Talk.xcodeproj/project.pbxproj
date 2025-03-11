@@ -28,6 +28,7 @@
 		7D68FBED2D7E9B3300B9B013 /* StoreInfoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEC2D7E9B3300B9B013 /* StoreInfoEntities.swift */; };
 		7D68FBEF2D7EA1AB00B9B013 /* PostContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */; };
 		7D68FBF52D7EE41B00B9B013 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 7D68FBF42D7EE41B00B9B013 /* KakaoMapsSDK-SPM */; };
+		7D68FBF92D7FF2DC00B9B013 /* DynamicHeightBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBF82D7FF2DC00B9B013 /* DynamicHeightBottomSheet.swift */; };
 		7D7E677E2D49146A0037BD36 /* KoCo_TalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */; };
 		7D7E67802D49146A0037BD36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E677F2D49146A0037BD36 /* ContentView.swift */; };
 		7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E67812D49146C0037BD36 /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		7D68FBEA2D7E92FB00B9B013 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		7D68FBEC2D7E9B3300B9B013 /* StoreInfoEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoEntities.swift; sourceTree = "<group>"; };
 		7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContent.swift; sourceTree = "<group>"; };
+		7D68FBF82D7FF2DC00B9B013 /* DynamicHeightBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightBottomSheet.swift; sourceTree = "<group>"; };
 		7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KoCo-Talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7E677D2D49146A0037BD36 /* KoCo_TalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoCo_TalkApp.swift; sourceTree = "<group>"; };
 		7D7E677F2D49146A0037BD36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				7D68FBD12D77528600B9B013 /* BottomSheetView.swift */,
+				7D68FBF82D7FF2DC00B9B013 /* DynamicHeightBottomSheet.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
 				7D7E67E32D4CC8320037BD36 /* SocketIOManager.swift in Sources */,
 				7D7E67E82D4CE23A0037BD36 /* String++.swift in Sources */,
+				7D68FBF92D7FF2DC00B9B013 /* DynamicHeightBottomSheet.swift in Sources */,
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
 				7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */,
 				7D68FBEB2D7E92FB00B9B013 /* MapModel.swift in Sources */,

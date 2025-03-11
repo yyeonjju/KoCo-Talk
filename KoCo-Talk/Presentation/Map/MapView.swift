@@ -19,9 +19,9 @@ struct MapView : View {
                 Text(store.title)
             }
         }
-            .onAppear{
-                intent.fetchStoreInfoList()
-            }
+        .onAppear{
+            intent.fetchStoreInfoList()
+        }
     }
 }
 
