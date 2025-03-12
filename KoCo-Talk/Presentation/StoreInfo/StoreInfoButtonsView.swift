@@ -46,7 +46,7 @@ struct RoundedConerWithIconAndText : View {
             Text(text)
                 .lineLimit(1)
                 .foregroundStyle(Assets.Colors.pointGreen1)
-                .font(.system(size: 14))
+                .customFont(fontName: .NanumSquareB, size: 13)
 
         }
         .frame(height : 32)

@@ -30,11 +30,11 @@ struct StoreInfoHeaderView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .lineLimit(1)
-                    .font(.system(size: 16, weight: .medium))
+                    .customFont(fontName: .NanumSquareB, size: 16)
                 
                 Text(subtitle)
                     .lineLimit(2)
-                    .font(.system(size: 14))
+                    .customFont(fontName: .NanumSquareR, size: 13)
                     .foregroundColor(.gray)
             }
             .padding(.leading, 8)

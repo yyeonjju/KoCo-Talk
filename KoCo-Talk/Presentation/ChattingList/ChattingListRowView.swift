@@ -31,13 +31,13 @@ struct ChattingListRowView  : View {
             VStack(alignment : .leading){
                 HStack {
                     Text(chatRoom.opponentNickname)
-                        .font(.custom("NanumSquareEB", size: 14))
+                        .customFont(fontName: .NanumSquareEB, size: 14)
                         .foregroundStyle(Assets.Colors.gray1)
                     
                     Spacer()
                     
                     Text(chatRoom.updatedAt)
-                        .font(.custom("NanumSquareB", size: 11))
+                        .customFont(fontName: .NanumSquareB, size: 11)
                         .foregroundStyle(Assets.Colors.gray1)
                 }
                 .padding(.bottom,4)
@@ -45,7 +45,7 @@ struct ChattingListRowView  : View {
                 Text(chatRoom.lastChatText)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                    .font(.custom("NanumSquareB", size: 12))
+                    .customFont(fontName: .NanumSquareB, size: 12)
                     .foregroundStyle(Assets.Colors.gray2)
                     
                 

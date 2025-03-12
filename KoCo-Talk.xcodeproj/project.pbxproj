@@ -13,6 +13,7 @@
 		7D2861892D812CD50015DD37 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7D68FBE12D7D3F3F00B9B013 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7D28618C2D813E140015DD37 /* StoreInfoTypeIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28618B2D813E140015DD37 /* StoreInfoTypeIconsView.swift */; };
 		7D28618E2D814BED0015DD37 /* StoreInfoButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28618D2D814BED0015DD37 /* StoreInfoButtonsView.swift */; };
+		7D2861902D8156270015DD37 /* CustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28618F2D8156270015DD37 /* CustomFontModifier.swift */; };
 		7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */; };
 		7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */; };
 		7D68FBC12D757A1500B9B013 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC02D757A1500B9B013 /* View++.swift */; };
@@ -100,6 +101,7 @@
 		7D2861872D8072F10015DD37 /* IconCircleBackgroudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCircleBackgroudView.swift; sourceTree = "<group>"; };
 		7D28618B2D813E140015DD37 /* StoreInfoTypeIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoTypeIconsView.swift; sourceTree = "<group>"; };
 		7D28618D2D814BED0015DD37 /* StoreInfoButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoButtonsView.swift; sourceTree = "<group>"; };
+		7D28618F2D8156270015DD37 /* CustomFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontModifier.swift; sourceTree = "<group>"; };
 		7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaisicAsyncImage.swift; sourceTree = "<group>"; };
 		7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModifier.swift; sourceTree = "<group>"; };
 		7D68FBC02D757A1500B9B013 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */,
+				7D28618F2D8156270015DD37 /* CustomFontModifier.swift */,
 			);
 			path = CustomViewModifier;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D2861902D8156270015DD37 /* CustomFontModifier.swift in Sources */,
 				7D2861882D8072F10015DD37 /* IconCircleBackgroudView.swift in Sources */,
 				7D2861832D8054720015DD37 /* StoreInfoView.swift in Sources */,
 				7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */,

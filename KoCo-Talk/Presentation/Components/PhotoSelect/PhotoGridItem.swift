@@ -39,7 +39,7 @@ struct PhotoGridItem: View {
                                          .frame(width: 30, height: 30)
                                      
                                      Text("\(index+1)")
-                                         .font(.custom("NanumSquareEB", size: 15))
+                                         .customFont(fontName: .NanumSquareEB, size: 15)
                                          .foregroundColor(.black)
                                  }
                                  .padding(8)

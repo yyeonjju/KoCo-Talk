@@ -152,7 +152,7 @@ extension ChattingRoomView {
             
             if albumButtonTapped {
                 Text("앨범")
-                    .font(.custom("NanumSquareEB", size: 14))
+                    .customFont(fontName: .NanumSquareEB, size: 14)
                     .frame(maxWidth : .infinity)
                 
             } else {
@@ -161,7 +161,7 @@ extension ChattingRoomView {
                     text: $inputText,
                     axis: .vertical
                 )
-                .font(.system(size: 14, weight: .regular))
+                .customFont(fontName: .NanumSquareB, size: 13)
                 .padding(10)
                 .frame(maxWidth : .infinity)
                 .background(Assets.Colors.gray5)

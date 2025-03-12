@@ -13,7 +13,7 @@ struct ChattingRoomRowView: View {
     var body: some View {
         if row.isDateShown {
             Text(row.createdDate)
-                .font(.system(size: 12))
+                .customFont(fontName: .NanumSquareR, size: 11)
                 .foregroundStyle(Assets.Colors.white)
                 .padding(.vertical,4)
                 .padding(.horizontal,8)
@@ -27,7 +27,7 @@ struct ChattingRoomRowView: View {
             //채팅 시간
             if row.isMyChat {
                 Text(row.createdTime)
-                    .font(.system(size: 10))
+                    .customFont(fontName: .NanumSquareR, size: 9)
                     .foregroundStyle(Assets.Colors.gray2)
             }
             
@@ -63,7 +63,7 @@ struct ChattingRoomRowView: View {
             //채팅 시간
             if !row.isMyChat {
                 Text(row.createdTime)
-                    .font(.system(size: 10))
+                    .customFont(fontName: .NanumSquareR, size: 9)
                     .foregroundStyle(Assets.Colors.gray2)
             }
         }
@@ -80,7 +80,7 @@ struct ChattingRoomRowView: View {
 extension ChattingRoomRowView {
     func textContentView(text : String) -> some View {
         Text(text)
-            .font(.system(size: 13))
+            .customFont(fontName: .NanumSquareB, size: 12)
             .padding()
             .background(
                 row.isMyChat
