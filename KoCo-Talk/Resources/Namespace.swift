@@ -41,6 +41,7 @@ enum Assets {
         static let gearshapeFill = Image(systemName: "gearshape.fill")
         static let plus = Image(systemName: "plus")
         static let arrowUp = Image(systemName: "arrow.up")
+        static let arrowClockwise = Image(systemName: "arrow.clockwise")
     }
     
     enum Images {
@@ -67,4 +68,23 @@ enum ScreenSize {
         return window.safeAreaInsets.top
     }
     
+}
+
+
+
+// MARK: - Map Constants
+enum MapInfo {
+    static let viewName = "kokoTalk-mapview"
+    static let viewInfoName = "map"
+    
+    enum Poi {
+        //화장품 매장에 표시에 대한 layer
+        static let storeLayerID = "storeLayer"
+        static let basicPoiPinStyleID = "basicPoiPinStyle"
+        static let tappedPoiPinStyleID = "tappedPoiPinStyle"
+        
+        //현재 위치 표시에 대한 layer
+        static let currentPointlayerID = "currentPointlayer"
+        static let currentPointPoiPinStyleID = "currentPointPoiPinStyle"
+    }
 }

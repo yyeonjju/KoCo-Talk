@@ -10,5 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         Text("설정뷰")
+            .edgesIgnoringSafeArea(.all)
+            .frame(maxWidth : .infinity ,maxHeight : .infinity)
+            .background(.brown)
     }
 }

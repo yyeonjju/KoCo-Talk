@@ -83,6 +83,9 @@ struct ContentView: View {
             }
             .tint(Assets.Colors.pointGreen1)
             .font(.headline)
+            .onAppear {
+                UITabBar.appearance().backgroundColor = .white
+            }
         }
         
     }

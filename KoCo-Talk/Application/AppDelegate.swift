@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KakaoMapsSDK
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
@@ -31,6 +32,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             }
         }
 
+        //카카오맵을 위한 init
+        SDKInitializer.InitSDK(appKey: APIKEY.kakaoNativeAppKey)
         
         return true
     }

@@ -14,6 +14,8 @@
 		7D28618C2D813E140015DD37 /* StoreInfoTypeIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28618B2D813E140015DD37 /* StoreInfoTypeIconsView.swift */; };
 		7D28618E2D814BED0015DD37 /* StoreInfoButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28618D2D814BED0015DD37 /* StoreInfoButtonsView.swift */; };
 		7D2861902D8156270015DD37 /* CustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28618F2D8156270015DD37 /* CustomFontModifier.swift */; };
+		7D2861952D816B3D0015DD37 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861942D816B3D0015DD37 /* KakaoMapView.swift */; };
+		7D2861972D816B5A0015DD37 /* KakaoMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861962D816B5A0015DD37 /* KakaoMapCoordinator.swift */; };
 		7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */; };
 		7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */; };
 		7D68FBC12D757A1500B9B013 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC02D757A1500B9B013 /* View++.swift */; };
@@ -102,6 +104,8 @@
 		7D28618B2D813E140015DD37 /* StoreInfoTypeIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoTypeIconsView.swift; sourceTree = "<group>"; };
 		7D28618D2D814BED0015DD37 /* StoreInfoButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoButtonsView.swift; sourceTree = "<group>"; };
 		7D28618F2D8156270015DD37 /* CustomFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontModifier.swift; sourceTree = "<group>"; };
+		7D2861942D816B3D0015DD37 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
+		7D2861962D816B5A0015DD37 /* KakaoMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapCoordinator.swift; sourceTree = "<group>"; };
 		7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaisicAsyncImage.swift; sourceTree = "<group>"; };
 		7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModifier.swift; sourceTree = "<group>"; };
 		7D68FBC02D757A1500B9B013 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
@@ -199,6 +203,15 @@
 				7D2861872D8072F10015DD37 /* IconCircleBackgroudView.swift */,
 			);
 			path = Icon;
+			sourceTree = "<group>";
+		};
+		7D2861932D816B320015DD37 /* KakaoMap */ = {
+			isa = PBXGroup;
+			children = (
+				7D2861942D816B3D0015DD37 /* KakaoMapView.swift */,
+				7D2861962D816B5A0015DD37 /* KakaoMapCoordinator.swift */,
+			);
+			path = KakaoMap;
 			sourceTree = "<group>";
 		};
 		7D68FBB82D73173900B9B013 /* Image */ = {
@@ -354,6 +367,7 @@
 		7D7E67902D491E730037BD36 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				7D2861932D816B320015DD37 /* KakaoMap */,
 				7D7E679B2D49D5F50037BD36 /* MapView.swift */,
 				7D68FBEA2D7E92FB00B9B013 /* MapModel.swift */,
 				7D68FBE82D7E92BD00B9B013 /* MapIntent.swift */,
@@ -663,6 +677,7 @@
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
 				7D68FBD82D7C096700B9B013 /* HeaderAsyncImage.swift in Sources */,
+				7D2861972D816B5A0015DD37 /* KakaoMapCoordinator.swift in Sources */,
 				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
 				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
 				7D68FBDF2D7D3EDF00B9B013 /* BaseRealmManager.swift in Sources */,
@@ -683,6 +698,7 @@
 				7D7E67DB2D4B2C030037BD36 /* ChattingRoomIntent.swift in Sources */,
 				7D7E67A92D49F7C70037BD36 /* ChattingListRowView.swift in Sources */,
 				7D68FBE72D7D5C6D00B9B013 /* ChatRealmManager.swift in Sources */,
+				7D2861952D816B3D0015DD37 /* KakaoMapView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
 				7D7E67952D49209E0037BD36 /* ChattingRoomView.swift in Sources */,
 			);
