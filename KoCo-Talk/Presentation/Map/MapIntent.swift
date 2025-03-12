@@ -34,10 +34,12 @@ final class MapIntent : MapIntentProtocol{
                  
              }, receiveValue: {[weak self] result in
                  guard let self, let model else { return }
-                 print("🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡매장 데이터", result.data)
+ 
                  
                  let storeDataList = result.data.map{$0.toDomain()}
                  model.updateStoreDataList(storeDataList: storeDataList)
+                 
+                 print("🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡🧡매장 데이터", storeDataList)
                  
              })
              .store(in: &cancellables)

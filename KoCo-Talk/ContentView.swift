@@ -35,7 +35,7 @@ final class AuthManager : ObservableObject{
 struct ContentView: View {
     @StateObject var authManager = AuthManager.shared
     
-    @State private var selectedTab = 1
+    @State private var selectedTab = 0
     @State private var loginViewShown = false
     @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     

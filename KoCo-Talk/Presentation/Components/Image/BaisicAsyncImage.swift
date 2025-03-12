@@ -18,6 +18,7 @@ struct BaisicAsyncImage: View {
     
     
     var body: some View {
+//        let _ = print("✅✅✅✅BaisicAsyncImage✅✅✅✅")
         VStack {
             if let url {
                 AsyncImage(url: URL(string: url)){ phase in

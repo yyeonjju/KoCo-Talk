@@ -12,12 +12,35 @@ struct MapView : View {
     private var state : MapModelStateProtocol {container.model}
     private var intent : MapIntentProtocol {container.intent}
     
+    @State private var lastTappedStoreID : String? = nil
+    @State private var isBottomSheetMaxHeight : Bool = false
+    
     
     var body : some View {
-        List(state.storeList, id : \.postId) {store in
-            VStack{
-                Text(store.title)
+        ZStack{
+            List(state.storeList, id : \.postId) {store in
+                VStack{
+                    Text(store.title)
+                }
+                .onTapGesture {
+                    withAnimation{
+                        if lastTappedStoreID == nil {
+                            lastTappedStoreID = "11"
+                        } else {
+                            lastTappedStoreID = nil
+                        }
+                    }
+
+
+                }
             }
+            
+            if lastTappedStoreID != nil {
+                storeInfoBottomSheet
+                    .toolbar(lastTappedStoreID != nil ? .hidden : .visible , for: .tabBar)
+            }
+            
+            
         }
         .onAppear{
             intent.fetchStoreInfoList()
@@ -36,5 +59,22 @@ extension MapView {
         )
         
         return MapView(container: container)
+    }
+}
+
+
+extension MapView {
+    var storeInfoBottomSheet : some View {
+        BottomSheetView(
+            isOpen: $isBottomSheetMaxHeight,
+            maxHeight: (ScreenSize.height-ScreenSize.statusBarHeight),
+            backgroundColor: Assets.Colors.pointGreen3,
+            showIndicator: true,
+            minHeight : 240
+//            minHeightRatio : 0.4
+        ) {
+            
+            StoreInfoView(isExpanded: $isBottomSheetMaxHeight)
+        }
     }
 }
