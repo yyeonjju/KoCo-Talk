@@ -61,18 +61,19 @@ struct KakaoMapView: UIViewRepresentable {
         }
         
         
-//        if isCameraMoving, let cameraMoveTo {
-//            let mapPoint = MapPoint(longitude: cameraMoveTo.longitude, latitude: cameraMoveTo.latitude)
-//            context.coordinator.moveCameraTo(mapPoint){
-//                self.isCameraMoving = false
-//            }
-//        }
+        if isCameraMoving, let cameraMoveTo {
+            let mapPoint = MapPoint(longitude: cameraMoveTo.longitude, latitude: cameraMoveTo.latitude)
+            context.coordinator.moveCameraTo(mapPoint){
+                self.isCameraMoving = false
+            }
+        }
   
         
-//
+
 //        if isPoisAdding{
 //            context.coordinator.createPois(currentPoint : cameraMoveTo, locations: LocationsToAddPois)
 //        }
+        
 //
 //        if selectedMyStoreAddingOnMap, let myStore = lastTappedStoreData, let longitude = Double(myStore.x), let latitude = Double(myStore.y) {
 //            //선택한 myStore에 대해 poi 추가
