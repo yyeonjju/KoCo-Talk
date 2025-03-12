@@ -10,6 +10,7 @@ import Combine
 
 protocol MapIntentProtocol {
     func fetchStoreInfoList()
+    func updateAddingPoisStatus(to : Bool)
 }
 
 final class MapIntent : MapIntentProtocol{
@@ -18,6 +19,11 @@ final class MapIntent : MapIntentProtocol{
     
     init(model: MapModelActionProtocol) {
         self.model = model
+    }
+    
+    func updateAddingPoisStatus(to : Bool){
+        guard let model else {return }
+        model.updateAddingPoisStatus(to: to)
     }
     
     func fetchStoreInfoList() {

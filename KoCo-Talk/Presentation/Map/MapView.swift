@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//TODO: 어노테이션 탭하면 bottom sheet
+//TODO: 현재위치에서 검색하기 버튼 -> 위치 기반 검색 
+
 struct MapView : View {
     @StateObject private var locationManager = LocationManager()
     @StateObject var container : Container<MapIntentProtocol, MapModelStateProtocol>
@@ -15,17 +18,16 @@ struct MapView : View {
     
     @State private var isBottomSheetMaxHeight : Bool = false
     
-    
-    @State private var currentCameraCenterCoordinate : LocationCoordinate? = nil
     @State private var draw : Bool = false
     @State private var isCameraMoving : Bool = false
     @State private var cameraMoveTo : LocationCoordinate?
-    
-    
-    @State private var isBottomSheetOpen : Bool = false
+    @State private var currentCameraCenterCoordinate : LocationCoordinate? = nil
+    @State var lastTappedStoreID : String = ""
+    @State private var bottomSheetShown : Bool = false
     @State private var showReloadStoreDataButton : Bool = false
     
-    @State var lastTappedStoreID : String = ""
+
+    
     
     var body : some View {
         ZStack{
@@ -77,7 +79,7 @@ struct MapView : View {
                 
                 
                 //2 : 매장 정보 검색 -> poi 꽂기
-//                vm.action(.fetchStoreData(location: newValue))
+                intent.fetchStoreInfoList()
             }
         }
     }
@@ -119,12 +121,17 @@ extension MapView {
     var kakaoMap : some View {
         KakaoMapView(
             draw: $draw,
-            isBottomSheetOpen : $isBottomSheetOpen,
+            bottomSheetShown : $bottomSheetShown,
             showReloadStoreDataButton : $showReloadStoreDataButton,
             isCameraMoving : $isCameraMoving,
             cameraMoveTo : $cameraMoveTo,
-//            isPoisAdding : $vm.output.isPoisAdding,
-//            LocationsToAddPois : $vm.output.LocationsToAddPois,
+            
+            startAddPois : Binding(
+                get: { state.startAddPois },
+                set: { intent.updateAddingPoisStatus(to: $0)}
+            ),
+            locationsToAddPois : state.storeList,
+            
             currentCameraCenterCoordinate : $currentCameraCenterCoordinate,
             lastTappedStoreID : $lastTappedStoreID
 //            selectedMyStoreAddingOnMap : $vm.output.selectedMyStoreAddingOnMap,

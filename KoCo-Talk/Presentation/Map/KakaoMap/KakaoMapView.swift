@@ -11,15 +11,15 @@ import KakaoMapsSDK
 
 struct KakaoMapView: UIViewRepresentable {
     @Binding var draw: Bool
-    @Binding var isBottomSheetOpen : Bool
+    @Binding var bottomSheetShown : Bool
     @Binding var showReloadStoreDataButton : Bool
     
     @Binding var isCameraMoving : Bool
     @Binding var cameraMoveTo : LocationCoordinate?
-//
-//    @Binding var isPoisAdding : Bool
-//    @Binding var LocationsToAddPois : [LocationDocument]
-//
+    
+    @Binding var startAddPois : Bool
+    var locationsToAddPois : [PostContentData]
+    
     @Binding var currentCameraCenterCoordinate : LocationCoordinate?
 //
     @Binding var lastTappedStoreID : String
@@ -69,10 +69,10 @@ struct KakaoMapView: UIViewRepresentable {
         }
   
         
-
-//        if isPoisAdding{
-//            context.coordinator.createPois(currentPoint : cameraMoveTo, locations: LocationsToAddPois)
-//        }
+        //매장 데이터 성공적으로 받은 후 위어노테이션(pois) 지도에 표시하기
+        if startAddPois{
+            context.coordinator.createPois(currentPoint : cameraMoveTo, locations: locationsToAddPois)
+        }
         
 //
 //        if selectedMyStoreAddingOnMap, let myStore = lastTappedStoreData, let longitude = Double(myStore.x), let latitude = Double(myStore.y) {

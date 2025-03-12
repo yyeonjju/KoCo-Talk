@@ -228,52 +228,52 @@ extension KakaoMapCoordinator {
         
     }
     
-//    func createPois(currentPoint : LocationCoordinate?, locations :  [LocationDocument]) {
-////        print("createPois")
-//        let view = controller?.getView(MapInfo.viewName) as! KakaoMap
-//        let manager = view.getLabelManager()
-//        let storelayer = manager.getLabelLayer(layerID: MapInfo.Poi.storeLayerID)
-//        let currentPointlayer = manager.getLabelLayer(layerID: MapInfo.Poi.currentPointlayerID)
-//
-//
-//        //✅ 현재 위치의 Poi
-//        let currentPointPoiOption : PoiOptions = PoiOptions(styleID: MapInfo.Poi.currentPointPoiPinStyleID)
-//        if let currentPoint {
-//            currentPointlayer?.clearAllItems()
-//            let _ = currentPointlayer?.addPoi(option: currentPointPoiOption, at: MapPoint(longitude: currentPoint.longitude, latitude: currentPoint.latitude))
-//            currentPointlayer?.showAllPois()
-//        }
-//
-//
-//
-//
-//        //✅ 매장의 poi
-//        //현재까지의 poi 없애기
-//        storelayer?.clearAllItems()
-//
-//        //표시하고 싶은 좌표 리스트
-//        let mapPointList = locations.map {
-//            MapPoint(longitude: Double($0.x)!, latitude: Double($0.y)!)
-//        }
-//
-//        //poi별로 다른 텍스트를 적용해주기 위해
-//        let textAddedPoiOptions = mapPointList.enumerated().map{
-//            //탭 안 했을 때의 스타일
-//            //⭐️ poi 클릭했을 때 poiID에 해당하는 매장 정보를 판단하기 위해 서버에서 받은 매장의 id가 poiID가 되도록 poiID직접 지정
-//            let basicPoiOption : PoiOptions = PoiOptions(styleID: MapInfo.Poi.basicPoiPinStyleID ,poiID: locations[$0.offset].id)
-//            basicPoiOption.clickable = true
-//            basicPoiOption.addText(PoiText(text: locations[$0.offset].placeName, styleIndex: 0))
-//            return basicPoiOption
-//        }
-//
-//        //options에 [PoiOptions] 넣을 때는 at과 요소 하나하나 매칭되도록 동일한 length로 구성
-//        let _ = storelayer?.addPois(options:textAddedPoiOptions, at: mapPointList){[weak self] _ in
-//            guard let self else {return}
-//            parent.isPoisAdding = false
-//        }
-//        storelayer?.showAllPois()
-//
-//    }
+    func createPois(currentPoint : LocationCoordinate?, locations :  [PostContentData]) {
+//        print("createPois")
+        let view = controller?.getView(MapInfo.viewName) as! KakaoMap
+        let manager = view.getLabelManager()
+        let storelayer = manager.getLabelLayer(layerID: MapInfo.Poi.storeLayerID)
+        let currentPointlayer = manager.getLabelLayer(layerID: MapInfo.Poi.currentPointlayerID)
+
+
+        //✅ 현재 위치의 Poi
+        let currentPointPoiOption : PoiOptions = PoiOptions(styleID: MapInfo.Poi.currentPointPoiPinStyleID)
+        if let currentPoint {
+            currentPointlayer?.clearAllItems()
+            let _ = currentPointlayer?.addPoi(option: currentPointPoiOption, at: MapPoint(longitude: currentPoint.longitude, latitude: currentPoint.latitude))
+            currentPointlayer?.showAllPois()
+        }
+
+
+
+
+        //✅ 매장의 poi
+        //현재까지의 poi 없애기
+        storelayer?.clearAllItems()
+
+        //표시하고 싶은 좌표 리스트
+        let mapPointList = locations.map {
+            MapPoint(longitude: $0.longitude, latitude: $0.latitude)
+        }
+
+        //poi별로 다른 텍스트를 적용해주기 위해
+        let textAddedPoiOptions = mapPointList.enumerated().map{
+            //탭 안 했을 때의 스타일
+            //⭐️ poi 클릭했을 때 poiID에 해당하는 매장 정보를 판단하기 위해 서버에서준 게시물 ID가 poiID가 되도록 poiID직접 지정
+            let basicPoiOption : PoiOptions = PoiOptions(styleID: MapInfo.Poi.basicPoiPinStyleID ,poiID: locations[$0.offset].postId)
+            basicPoiOption.clickable = true
+            basicPoiOption.addText(PoiText(text: locations[$0.offset].title, styleIndex: 0))
+            return basicPoiOption
+        }
+
+        //options에 [PoiOptions] 넣을 때는 at과 요소 하나하나 매칭되도록 동일한 length로 구성
+        let _ = storelayer?.addPois(options:textAddedPoiOptions, at: mapPointList){[weak self] _ in
+            guard let self else {return}
+            parent.startAddPois = false
+        }
+        storelayer?.showAllPois()
+
+    }
 }
 
 
@@ -310,7 +310,7 @@ extension KakaoMapCoordinator : KakaoMapEventDelegate{
         if tappedPoi == poi{
             //기존에 선택되어있던게 있으면 basic스타일로 바꾸기
             poi?.changeStyle(styleID:basicPoiPinStyleID)
-            parent.isBottomSheetOpen = false
+            parent.bottomSheetShown = false
             tappedPoi = nil
         }else {
             if let tappedPoi{
@@ -322,7 +322,7 @@ extension KakaoMapCoordinator : KakaoMapEventDelegate{
             
             //새로 선택한 poi는 tappedStyle로
             poi?.changeStyle(styleID:tappedPoiPinStyleID)
-            parent.isBottomSheetOpen = true
+            parent.bottomSheetShown = true
             tappedPoi = poi
             
             
