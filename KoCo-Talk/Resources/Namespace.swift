@@ -25,13 +25,18 @@ enum Assets {
     enum SystemImages {
         //가능언어 icon : "person.wave.2", "network", "abc", "speaker", "message"
         static let personWave = Image(systemName: "person.wave.2")
+        static let personWave2Fill = Image(systemName: "person.wave.2.fill")
         //추천제품 icon : 화장품 "basket", "giftcard", "heart"
         static let giftcard = Image(systemName: "giftcard")
+        static let giftcardFill = Image(systemName: "giftcard.fill")
         //인기상품 icon : "hand.thumbsup"
         static let handThumbsup = Image(systemName: "hand.thumbsup")
+        static let handThumbsupFill = Image(systemName: "hand.thumbsup.fill")
         //영업시간 icon : "clock", "calendar.badge.clock"
         static let calendarBadgeClock = Image(systemName: "calendar.badge.clock")
         
+        //재고
+        static let shippingboxFill = Image(systemName: "shippingbox.fill")
         
         static let listClipboardFill = Image(systemName: "list.clipboard.fill")
         static let phoneFill = Image(systemName: "phone.fill")
@@ -42,6 +47,9 @@ enum Assets {
         static let plus = Image(systemName: "plus")
         static let arrowUp = Image(systemName: "arrow.up")
         static let arrowClockwise = Image(systemName: "arrow.clockwise")
+        
+        static let clockFill = Image(systemName: "clock.fill")
+        
     }
     
     enum Images {
