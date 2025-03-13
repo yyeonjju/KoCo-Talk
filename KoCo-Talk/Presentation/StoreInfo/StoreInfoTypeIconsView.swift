@@ -30,7 +30,7 @@ struct StoreInfoTypeIconsView : View {
                 IconCircleBackgroudView(
                     background: Assets.Colors.white,
                     iconColor: icon.iconColor,
-                    width: 40,
+                    width: 44,
                     image: icon.icon
                 )
                 .shadow(color: Assets.Colors.black.opacity(0.2), radius: 6, x: 2, y: 2) // radius : 그림자 흐림정도

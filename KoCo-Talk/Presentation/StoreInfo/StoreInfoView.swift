@@ -30,7 +30,7 @@ struct StoreInfoView: View {
                 
                 StoreInfoHeaderView(
                     isExpanded : isExpanded,
-                    screenWidth : screenWidth,
+//                    screenWidth : screenWidth,
                     
                     imageUrl: imageUrl,
                     title: "화장품 매장 화장품 매장 화장품 매장",

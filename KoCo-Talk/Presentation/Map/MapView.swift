@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-//TODO: 어노테이션 탭하면 bottom sheet ✅
-//TODO: 현재위치에서 검색하기 버튼 구성
-//TODO: 위치 기반 검색 관련 요청 코드, 현재위치 감지 시점 / 이위치에서 검색 버튼 누르는 시점에 위치 기반 검색
+//TODO: bottom sheet UI 구성
+
 
 
 struct MapView : View {

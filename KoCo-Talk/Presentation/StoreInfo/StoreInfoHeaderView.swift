@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StoreInfoHeaderView: View {
     var isExpanded : Bool
-    var screenWidth : CGFloat
+//    var screenWidth : CGFloat
     var imageUrl : String
     var title: String
     var subtitle: String
@@ -17,11 +17,11 @@ struct StoreInfoHeaderView: View {
 
     
     var body: some View {
-        let imageWidth : CGFloat = screenWidth/7
-        let iconWidth : CGFloat = screenWidth/9
+//        let imageWidth : CGFloat = screenWidth/7
+//        let iconWidth : CGFloat = screenWidth/9
         
         HStack {
-            BaisicAsyncImage(url: imageUrl, width: imageWidth, height: imageWidth)
+            BaisicAsyncImage(url: imageUrl, width: 52, height: 52)
 //            .frame(width: imageWidth, height: imageWidth)
             .background(Assets.Colors.pointGreen1)
             .clipShape(Circle())
@@ -30,11 +30,11 @@ struct StoreInfoHeaderView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .lineLimit(1)
-                    .customFont(fontName: .NanumSquareB, size: 16)
+                    .customFont(fontName: .NanumSquareB, size: 14)
                 
                 Text(subtitle)
                     .lineLimit(2)
-                    .customFont(fontName: .NanumSquareR, size: 13)
+                    .customFont(fontName: .NanumSquareR, size: 12)
                     .foregroundColor(.gray)
             }
             .padding(.leading, 8)
@@ -43,16 +43,17 @@ struct StoreInfoHeaderView: View {
             
             // 오른쪽 전화 버튼
             IconCircleBackgroudView(
-                background: Assets.Colors.gray2,
+                background: Assets.Colors.gray4,
                 iconColor: Assets.Colors.white,
-                width: iconWidth,
-                image: Assets.SystemImages.phoneFill
+                width: 36,
+                image: Assets.SystemImages.phoneFill,
+                imageScale: .small
             )
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
         .background(
-            RoundedRectangle(cornerRadius: isExpanded ? imageWidth : 28)
+            RoundedRectangle(cornerRadius: isExpanded ? 60 : 20)
                 .fill(Color.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         )
