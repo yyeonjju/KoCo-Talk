@@ -188,11 +188,19 @@ enum NetworkManager {
 
 
 extension NetworkManager {
+    
+    // 게시물 get
     static func getStores (limit : String, nextCursor : String) -> AnyPublisher<PostContentResponseDTO, FetchError> {
         let router = Router.getStores(next: nextCursor, limit: limit, category: APIKEY.category_value)
         return fetch(fetchRouter: router, model: PostContentResponseDTO.self)
     }
     
+    static func getLocationBasedStores (location : LocationCoordinate) -> AnyPublisher<PostContentResponseDTO, FetchError> {
+        let router = Router.getLocationBasedStores(category: APIKEY.category_value, coordinate: location, maxDistance: 1000, orderBy: .distance, sortBy: .asc)
+        return fetch(fetchRouter: router, model: PostContentResponseDTO.self)
+    }
+    
+    //Chat
     static func createChatRoom(body : CreateChatRoomBody) -> AnyPublisher<ChatRoomResponseDTO, FetchError> {
         let router = Router.createChatRoom(body: body)
         return fetch(fetchRouter: router, model: ChatRoomResponseDTO.self)

@@ -24,9 +24,6 @@ final class MapModel : MapModelStateProtocol, ObservableObject {
 extension MapModel : MapModelActionProtocol {
     func updateStoreDataList(storeDataList : [PostContentData]) {
         self.storeList = storeDataList
-        
-        //매장데이터 검색 끝났으면 맵에 pois 찍어주기위해
-        self.updateAddingPoisStatus(to: true)
     }
     
     func updateAddingPoisStatus(to : Bool){

@@ -9,7 +9,7 @@ import Foundation
 
 struct PostContentResponseDTO : Decodable {
     let data : [PostContentDTO]
-    let next_cursor : String
+    let next_cursor : String?
 }
 
 struct PostContentDTO : Decodable {
@@ -36,7 +36,7 @@ struct PostContentDTO : Decodable {
     let hashTags : [String]
 //    let comments : []
     let geolocation : PostContentGeoLocationDTO
-    let distance : String?
+    let distance : Double?
     
     enum CodingKeys: String,CodingKey {
         case postId = "post_id"
@@ -51,7 +51,7 @@ struct PostContentGeoLocationDTO : Decodable {
 
 struct PostContentCreatorDTO : Decodable {
     let userId : String
-    let nick : String
+    let nick : String?
     let profileImage : String?
     
     enum CodingKeys: String,CodingKey {
@@ -79,7 +79,7 @@ extension PostContentDTO {
             storeData: decodedStoreInfoData,
             createdAt: self.createdAt,
             creatorId: self.creator.userId,
-            creatorNickname: self.creator.nick,
+            creatorNickname: self.creator.nick ?? "-",
             creatorProfileImage: self.creator.profileImage,
             longitude: self.geolocation.longitude,
             latitude: self.geolocation.latitude

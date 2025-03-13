@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-//TODO: 어노테이션 탭하면 bottom sheet
-//TODO: 현재위치에서 검색하기 버튼 -> 위치 기반 검색 
+//TODO: 어노테이션 탭하면 bottom sheet ✅
+//TODO: 현재위치에서 검색하기 버튼 구성
+//TODO: 위치 기반 검색 관련 요청 코드, 현재위치 감지 시점 / 이위치에서 검색 버튼 누르는 시점에 위치 기반 검색
+
 
 struct MapView : View {
     @StateObject private var locationManager = LocationManager()
@@ -22,10 +24,10 @@ struct MapView : View {
     @State private var isCameraMoving : Bool = false
     @State private var cameraMoveTo : LocationCoordinate?
     @State private var currentCameraCenterCoordinate : LocationCoordinate? = nil
-    @State var lastTappedStoreID : String = ""
-    @State private var bottomSheetShown : Bool = false
+    @State private var bottomSheetShown : Bool = false //poi가 탭되었을 때 true
     @State private var showReloadStoreDataButton : Bool = false
     
+    @State private var lastTappedStoreID : String = ""
 
     
     
@@ -50,22 +52,16 @@ struct MapView : View {
             
             kakaoMap
             
+            if showReloadStoreDataButton {
+                reloadStoreDataButton
+            }
             
-//            if showReloadStoreDataButton {
-//                reloadStoreDataButton
-//            }
-            
-            
-            
-//            if lastTappedStoreID != nil {
-//                storeInfoBottomSheet
-//                    .toolbar(lastTappedStoreID != nil ? .hidden : .visible , for: .tabBar)
-//            }
+            if bottomSheetShown {
+                storeInfoBottomSheet
+                    .toolbar(bottomSheetShown ? .hidden : .visible , for: .tabBar)
+            }
             
             
-        }
-        .onAppear{
-//            intent.fetchStoreInfoList()
         }
         .onChange(of: locationManager.lastKnownLocation) { newValue in
             
@@ -79,7 +75,13 @@ struct MapView : View {
                 
                 
                 //2 : 매장 정보 검색 -> poi 꽂기
-                intent.fetchStoreInfoList()
+//                intent.fetchStoreInfoList()
+                
+                //현재 위치 기준 검색
+                intent.fetchLocationBasedStores(
+                    location: LocationCoordinate(longitude: newValue.longitude, latitude: newValue.latitude)
+//                        LocationCoordinate(longitude: 127.02296, latitude: 37.52082)
+                )
             }
         }
     }
@@ -151,13 +153,15 @@ extension MapView {
     var reloadStoreDataButton : some View {
         VStack{
             Button {
-                guard let currentCameraCenterCoordinate = currentCameraCenterCoordinate else {return }
-                
                 //TODO: 지도 가운데 기준으로 매장 검색
-//                vm.action(.fetchStoreData(location: currentCameraCenterCoordinate))
+                guard let currentCameraCenterCoordinate = currentCameraCenterCoordinate else {return }
+                print("💕💕지도 가운데💕💕", currentCameraCenterCoordinate)
+                intent.fetchLocationBasedStores(
+                    location: LocationCoordinate(longitude: currentCameraCenterCoordinate.longitude, latitude: currentCameraCenterCoordinate.latitude)
+                )
                 
                 //BottomSheet 올라와 있으면 내리기
-//                vm.isBottomSheetOpen = false
+                bottomSheetShown = false
             }label : {
                 HStack{
                     Assets.SystemImages.arrowClockwise
