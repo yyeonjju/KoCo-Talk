@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StoreInfoView: View {
     @Binding var isExpanded : Bool
+    var tappedPostData : PostContentData
     
     let imageUrl = "https://cdn.eyesmag.com/content/uploads/sliderImages/2022/03/07/diptyque-flagship-store-in-korea-01-b9978b8e-e2f8-42ce-9378-cceda0af3f59.jpg"
     //    "http://imgnews.naver.net/image/5575/2022/03/23/0000273480_001_20220323142010478.jpg"
@@ -51,7 +52,7 @@ struct StoreInfoView: View {
                         .padding(.horizontal, isExpanded ? 50 : 30)
                     
                     if isExpanded{
-                        StoreDetailInformantionlView()
+                        StoreDetailInformantionlView(data : tappedPostData)
                             .padding(.top, 30)
                             .padding(.horizontal, 28)
                             .frame(maxWidth : .infinity)

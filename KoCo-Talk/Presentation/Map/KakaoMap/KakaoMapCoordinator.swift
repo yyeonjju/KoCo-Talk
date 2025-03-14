@@ -300,8 +300,9 @@ extension KakaoMapCoordinator : KakaoMapEventDelegate{
         
  
         
-        //PoiOptions 세팅할 때 매장id로 지정해주었던 poiID(매장의 id)로 lastTappedStoreID 값 업데이트
-        parent.lastTappedStoreID = poiID
+        //PoiOptions 세팅할 때 매장id로 지정해주었던 poiID(게시물 id)로 lastTappedStoreID 값 업데이트
+        parent.lastTappedPostID = poiID
+        
         
         let basicPoiPinStyleID = MapInfo.Poi.basicPoiPinStyleID
         let tappedPoiPinStyleID = MapInfo.Poi.tappedPoiPinStyleID

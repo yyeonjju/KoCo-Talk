@@ -26,7 +26,8 @@ struct MapView : View {
     @State private var bottomSheetShown : Bool = false //poi가 탭되었을 때 true
     @State private var showReloadStoreDataButton : Bool = false
     
-    @State private var lastTappedStoreID : String = ""
+    @State private var lastTappedPostID : String = ""
+    @State private var tappedPostData : PostContentData?
 
     
     
@@ -61,6 +62,12 @@ struct MapView : View {
             }
             
             
+        }
+        .onChange(of: lastTappedPostID) { newValue in
+//            print("🌹방금 눌린 post id", newValue)
+            let tappedData = state.storeList.first {$0.postId == newValue}
+            tappedPostData = tappedData
+//            print("🌹tappedPostData", tappedPostData)
         }
         .onChange(of: locationManager.lastKnownLocation) { newValue in
             
@@ -111,8 +118,15 @@ extension MapView {
             minHeight : 240
 //            minHeightRatio : 0.4
         ) {
+            if let tappedPostData {
+                StoreInfoView(isExpanded: $isBottomSheetMaxHeight, tappedPostData : tappedPostData)
+            } else {
+                Text("탭한 매장의 데이터가 없습니다.")
+                    .customFont(fontName: .NanumSquareR, size: 14)
+                    .foregroundStyle(Assets.Colors.gray3)
+                    .padding(.top, 30)
+            }
             
-            StoreInfoView(isExpanded: $isBottomSheetMaxHeight)
         }
     }
 }
@@ -134,7 +148,7 @@ extension MapView {
             locationsToAddPois : state.storeList,
             
             currentCameraCenterCoordinate : $currentCameraCenterCoordinate,
-            lastTappedStoreID : $lastTappedStoreID
+            lastTappedPostID : $lastTappedPostID
 //            selectedMyStoreAddingOnMap : $vm.output.selectedMyStoreAddingOnMap,
 //            lastTappedStoreData : vm.output.lastTappedStoreData,
 //            selectedMyStoreID : vm.output.selectedMyStoreID

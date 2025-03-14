@@ -22,7 +22,8 @@ struct KakaoMapView: UIViewRepresentable {
     
     @Binding var currentCameraCenterCoordinate : LocationCoordinate?
 //
-    @Binding var lastTappedStoreID : String
+    @Binding var lastTappedPostID : String
+//    @Binding var tappedPostData : PostContentData?
 //
 //    @Binding var selectedMyStoreAddingOnMap : Bool
 //    var lastTappedStoreData : LocationDocument?

@@ -31,7 +31,7 @@ struct StoreInfoContent : Identifiable {
     var textData : String
     var storeInfoMetadata : [StoreInfoMetaData]
     
-    init(icon: Image, title: StoreInfoContentTitle, type: StoreInfoContentType, textData: String   = "-", storeInfoMetadata : [StoreInfoMetaData] = [StoreInfoMetaData(imageUrl: "-", title: "제품이름", subTitle: "제품 설명설명 ㅏ어니라어 니아러")]) {
+    init(icon: Image, title: StoreInfoContentTitle, type: StoreInfoContentType, textData: String   = "-", storeInfoMetadata : [StoreInfoMetaData] = [StoreInfoMetaData(imageUrl: "-", title: "제품 이름", subTitle: "제품 설명부분 제품 설명부분 제품 설명부분 제품 설명부분 제품 설명부분 제품 설명부분")]) {
         self.icon = icon
         self.title = title
         self.type = type
@@ -48,6 +48,7 @@ struct StoreInfoMetaData : Identifiable {
 }
 
 struct StoreDetailInformantionlView : View {
+    var data : PostContentData
     
     let infoContents : [StoreInfoContent] = [
         StoreInfoContent(icon: Assets.SystemImages.clockFill, title: .openingHours, type: .textOnly, textData : "10:00 - 19:00"),
@@ -63,7 +64,7 @@ struct StoreDetailInformantionlView : View {
     
     
     var body: some View {
-        VStack(alignment: .leading, spacing : 20){
+        VStack(alignment: .leading, spacing : 24){
             
             ForEach(infoContents){ content in
                 
@@ -96,18 +97,21 @@ struct StoreDetailInformantionlView : View {
                         ScrollView(.horizontal){
                             HStack{
                                 ForEach (content.storeInfoMetadata){ data in
-                                    VStack(alignment : .leading){
+                                    VStack(alignment : .leading, spacing: 4){
                                         HeaderAsyncImage(url: data.imageUrl, width: 100, height: 60)
                                         Text(data.title)
                                             .customFont(fontName: .NanumSquareB, size: 12)
                                             .foregroundStyle(Assets.Colors.gray1)
+                                            .frame(alignment: .leading)
                                         Text(data.subTitle)
+                                            .frame(alignment: .leading)
                                             .customFont(fontName: .NanumSquareR, size: 11)
                                             .foregroundStyle(Assets.Colors.gray1)
                                             .lineLimit(3)
+                                            
                                     }
-                                    .frame(width : 80)
-                                    .padding(.trailing, 12)
+                                    .frame(width : 110)
+//                                    .padding(.trailing, 12)
                                 }
                                 
                             }
@@ -121,5 +125,6 @@ struct StoreDetailInformantionlView : View {
             
             
         }
+        .padding(.bottom, 300)
     }
 }
