@@ -28,6 +28,7 @@ enum Router {
     //Store
     case getStores(next: String, limit: String, category: String)
     case getLocationBasedStores(category: String, coordinate : LocationCoordinate, maxDistance : Int, orderBy : OrderBy, sortBy : SortBy)
+    case postStoreData(body : StoreInfoPostBody)
     
     //Chat
     case createChatRoom(body: CreateChatRoomBody)
@@ -45,7 +46,7 @@ extension Router : TargetType {
         switch self {
         case .tokenRefresh, .getStores, .getChatRoomList, .getChatContents, .downloadFile, .getLocationBasedStores :
                 .get
-        case .createChatRoom, .postChat, .login, .uploadFiles :
+        case .createChatRoom, .postChat, .login, .uploadFiles, .postStoreData :
                 .post
         }
     }
@@ -66,6 +67,8 @@ extension Router : TargetType {
             return APIURL.getStores
         case .getLocationBasedStores:
             return APIURL.getLocationBasedStores
+        case .postStoreData:
+            return APIURL.postStoreData
             
         case .createChatRoom :
             return APIURL.createChatRoom
@@ -104,7 +107,7 @@ extension Router : TargetType {
                 APIKEY.productId_key : APIKEY.productId_value,
                 APIKEY.accessToken_key : Router.userInfo?.access ?? "-"
             ]
-        case .createChatRoom, .postChat, .uploadFiles :
+        case .createChatRoom, .postChat, .uploadFiles, .postStoreData :
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
@@ -169,6 +172,13 @@ extension Router : TargetType {
                 return nil
             }
         case .postChat(_, let body) :
+            do{
+                let data = try encoder.encode(body)
+                return data
+            }catch{
+                return nil
+            }
+        case .postStoreData(let body) :
             do{
                 let data = try encoder.encode(body)
                 return data

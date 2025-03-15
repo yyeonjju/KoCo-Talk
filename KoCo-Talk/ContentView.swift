@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+//TODO: custom tabbar
+//https://velog.io/@0000_0010/SwiftUI-Custom-Tab-Bar
+
+
 enum AuthStatus {
     case noUser
     case userExist

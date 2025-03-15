@@ -66,9 +66,9 @@ extension PostContentDTO {
         //String -> Data
         let storeInfoData = self.content.data(using: .utf8)!
         //Data -> StoreInfoData
-        let decodedStoreInfoData = try? JSONDecoder().decode(StoreInfoData.self, from: storeInfoData)
+        let decodedStoreInfoData = try? JSONDecoder().decode(StoreData.self, from: storeInfoData)
         
-//        print("❤️잘 디코딩된다❤️", decodedStoreInfoData)
+        print("❤️잘 디코딩된다❤️", decodedStoreInfoData)
         
         
         return PostContentData(

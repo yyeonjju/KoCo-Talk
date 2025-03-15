@@ -12,6 +12,7 @@ extension DateFormatter {
 //        case chatFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // "2025-01-26T07:14:54.357Z"
         case chatTimeFormat = "a h:mm"
         case chatListDateFormat = "MMMM d일" //MMMM : 7 -> "7월"
+        case storeOperatingTimeFormat = "HH:mm"
         
         case yyyyMMddhhmm = "yyyy.MM.dd hh:mm"
         case chatRoomDateFormat = "yyyy.MM.dd"

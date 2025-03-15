@@ -7,21 +7,21 @@
 
 import Foundation
 
-//content1에 인코딩해서 넣을 때
-struct StoreInfo : Encodable {
+struct StoreInfoPostBody : Encodable {
+    let category : String
+    let title : String
+    let price : Int
     
-    let placeName : String // 매장 이름
-    let kakaoPlaceID : String // 카카오 매장 id
-    let address : String // 주소
-    let category : String // 카테고리
-    let phone : String // 매장 번호
-    
-    let recommendProducts : [String] // 추천 상품
-    let bestSellingProducts : [String] // 인기 상품
-    let availableLanguages : [String] // 가능 외국어
-    let storeImages : [String] // 네이버 이미지 검색을 통한 메장 이미지
+    let content : String
+    let content1 : String
+    let content2 : String
+    let content3 : String
+    let content4 : String
+    let content5 : String
     
     let files : [String]
-    
-    //placeUrl
+
+    let longitude : Double
+    let latitude : Double
 }
+

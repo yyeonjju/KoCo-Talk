@@ -49,18 +49,22 @@ struct StoreInfoMetaData : Identifiable {
 
 struct StoreDetailInformantionlView : View {
     var data : PostContentData
+    private var infoContents : [StoreInfoContent] = []
     
-    let infoContents : [StoreInfoContent] = [
-        StoreInfoContent(icon: Assets.SystemImages.clockFill, title: .openingHours, type: .textOnly, textData : "10:00 - 19:00"),
-        StoreInfoContent(icon: Assets.SystemImages.phoneFill, title: .phoneNumber, type: .textOnly, textData : "02-547-2006"),
-        StoreInfoContent(icon: Assets.SystemImages.personWave2Fill, title: .availableLanguage, type: .textOnly, textData : "한국어 영어 중국어 일본어"),
-        
-        
-        //TODO: 아래에 metadata 정의해서 넣어야함
-        StoreInfoContent(icon: Assets.SystemImages.giftcardFill, title: .recommendationProduct, type: .photoTitleSubtitle),
-        StoreInfoContent(icon: Assets.SystemImages.handThumbsupFill, title: .poplarProduct, type: .photoTitleSubtitle),
-        StoreInfoContent(icon: Assets.SystemImages.shippingboxFill, title: .productStock, type: .photoTitleSubtitle),
-    ]
+    init(data: PostContentData) {
+        self.data = data
+        self.infoContents = [
+            StoreInfoContent(icon: Assets.SystemImages.clockFill, title: .openingHours, type: .textOnly, textData : "10:00 - 19:00"),
+            StoreInfoContent(icon: Assets.SystemImages.phoneFill, title: .phoneNumber, type: .textOnly, textData : data.storeData?.phone ?? "" ),
+            StoreInfoContent(icon: Assets.SystemImages.personWave2Fill, title: .availableLanguage, type: .textOnly, textData : "한국어 영어 중국어 일본어"),
+            
+            
+            //TODO: 아래에 metadata 정의해서 넣어야함
+            StoreInfoContent(icon: Assets.SystemImages.giftcardFill, title: .recommendationProduct, type: .photoTitleSubtitle),
+            StoreInfoContent(icon: Assets.SystemImages.handThumbsupFill, title: .poplarProduct, type: .photoTitleSubtitle),
+            StoreInfoContent(icon: Assets.SystemImages.shippingboxFill, title: .productStock, type: .photoTitleSubtitle),
+        ]
+    }
     
     
     var body: some View {
