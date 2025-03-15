@@ -11,6 +11,7 @@ struct HeaderAsyncImage : View {
     var url : String?
     var width : CGFloat = 80
     var height : CGFloat = 80
+    var radius : CGFloat = 4
     
     @StateObject private var imageLoader  = ImageLoader()
     
@@ -33,7 +34,7 @@ struct HeaderAsyncImage : View {
         }
         .frame(width: width, height: height)
         .background(Assets.Colors.gray4)
-//        .cornerRadius(radius)
+        .cornerRadius(radius)
         .scaledToFit()
         .onAppear {
             imageLoader.isLoading = true

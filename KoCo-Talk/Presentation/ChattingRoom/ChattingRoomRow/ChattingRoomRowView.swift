@@ -161,6 +161,6 @@ extension ChattingRoomRowView {
         HeaderAsyncImage(url: urlString, width: width, height: height ?? width)
 //            .frame(width: width, height: height ?? width)
             .background(Assets.Colors.gray1)
-            .cornerRadius(4)
+//            .cornerRadius(4)
     }
 }
