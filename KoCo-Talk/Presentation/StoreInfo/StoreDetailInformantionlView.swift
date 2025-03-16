@@ -83,7 +83,7 @@ struct StoreDetailInformantionlView : View {
     
     
     var body: some View {
-        VStack(alignment: .leading, spacing : 24){
+        VStack(alignment: .leading, spacing : 20){
             ForEach(infoContents){ content in
                 switch content.type {
                 case .textOnly:
@@ -107,9 +107,9 @@ extension StoreDetailInformantionlView {
                 .foregroundStyle(Assets.Colors.gray3)
             Text(content.title.rawValue)
                 .foregroundStyle(Assets.Colors.gray1)
-                .customFont(fontName: .NanumSquareEB, size: 14)
+                .customFont(fontName: .NanumSquareB, size: 13)
             Text(content.textData)
-                .customFont(fontName: .NanumSquareR, size: 14)
+                .customFont(fontName: .NanumSquareR, size: 12)
             Spacer()
         }
     }
@@ -121,18 +121,19 @@ extension StoreDetailInformantionlView {
                     .foregroundStyle(Assets.Colors.gray3)
                 Text(content.title.rawValue)
                     .foregroundStyle(Assets.Colors.gray1)
-                    .customFont(fontName: .NanumSquareEB, size: 14)
+                    .customFont(fontName: .NanumSquareB, size: 13)
             }
-            
-            ScrollView(.horizontal){
-                HStack{
+
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(alignment : .top){
                     ForEach (content.storeInfoMetadata){ (data : StoreInfoMetaData) in
                         VStack(alignment : .leading, spacing: 4){
-                            HeaderAsyncImage(url: data.imageUrl, width: 100, height: 60)
+                            HeaderAsyncImage(url: data.imageUrl, width: 140, height: 120)
                             Text(data.title)
                                 .customFont(fontName: .NanumSquareB, size: 12)
                                 .foregroundStyle(Assets.Colors.gray1)
                                 .frame(alignment: .leading)
+                                .lineLimit(1)
                             Text(data.description)
                                 .frame(alignment: .leading)
                                 .customFont(fontName: .NanumSquareR, size: 11)
@@ -140,7 +141,7 @@ extension StoreDetailInformantionlView {
                                 .lineLimit(3)
                             
                         }
-                        .frame(width : 110)
+                        .frame(width : 140)
                         // .padding(.trailing, 12)
                     }
                     

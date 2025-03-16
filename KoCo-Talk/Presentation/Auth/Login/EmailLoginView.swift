@@ -11,8 +11,11 @@ import Combine
 struct EmailLoginView: View {    
     @StateObject private var vm = EmailLoginViewModel()
     
-    @State private var email = "kocoTalk-user1@ kocoTalk.com"
-    @State private var password = "kocoTalk-user1"
+//    @State private var email = "testuser@testuser.com"
+//    @State private var password = "testuser"
+    
+    @State private var email = "heidi_1@KoCoTalk.com"
+    @State private var password = "heidi_1"
     
     var body: some View {
         VStack{

@@ -43,7 +43,7 @@ extension ChatRoomContentDTO {
     }
 }
 
-func ConvertChatContentsToChatRows(data : [ChatRoomContentDTO]) -> [ChatRoomContentRow] {
+func ConvertChatContentsToChatRows(data : [ChatRoomContentDTO], myUserId : String) -> [ChatRoomContentRow] {
     
     var result : [ChatRoomContentRow] = []
     var chatContents : [ChatRoomContent] = []
@@ -92,7 +92,7 @@ func ConvertChatContentsToChatRows(data : [ChatRoomContentDTO]) -> [ChatRoomCont
             //현재까지 쌓인 chatContents를 담은 ChatRoomContentRow를 append
             result.append(
                 ChatRoomContentRow(
-                    isMyChat: currentIndexSenderId == APIKEY.myUserId,
+                    isMyChat: currentIndexSenderId == myUserId,
                     isDateShown : prevRowDate == nil || currentIndexPresentationDate != prevRowDate,
                     createdDate: currentIndexPresentationDate,
                     createdTime: presentationtTime,

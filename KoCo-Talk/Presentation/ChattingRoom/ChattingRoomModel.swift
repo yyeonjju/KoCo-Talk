@@ -13,7 +13,7 @@ protocol ChattingRoomModelStateProtocol {
 }
 protocol ChattingRoomModelActionProtocol : AnyObject {
     func updateChatRoomRows(_ contents : [ChatRoomContentRow])
-    func appendChat(_ content : ChatRoomContentDTO )
+    func appendChat(_ content : ChatRoomContentDTO, myUserId : String)
 }
 
 final class ChattingRoomModel : ChattingRoomModelStateProtocol, ObservableObject {
@@ -26,9 +26,9 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
         chatRoomRows = contents
     }
     
-    func appendChat(_ content : ChatRoomContentDTO ) {
+    func appendChat(_ content : ChatRoomContentDTO, myUserId : String) {
         //내가 보낸 챗인지 여부
-        let isMyChat = (content.sender.userId == APIKEY.myUserId)
+        let isMyChat = (content.sender.userId == myUserId)
         //보낸 날짜
         let dateString =  content.createdAt.serverDateConvertTo(.chatRoomDateFormat)
         //보낸 시간

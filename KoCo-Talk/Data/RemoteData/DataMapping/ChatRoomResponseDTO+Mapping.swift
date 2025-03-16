@@ -14,6 +14,8 @@ struct ChatRoomListResponseDTO : Decodable {
 
 ///채팅방
 struct ChatRoomResponseDTO : Decodable {
+    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
+    
     let roomId : String
     let createdAt : String
     let updatedAt : String
@@ -27,7 +29,7 @@ struct ChatRoomResponseDTO : Decodable {
     
     func toDomain() -> ChatRoom {
         let opponent = participants.filter{
-            $0.userId != APIKEY.myUserId
+            $0.userId != userInfo?.id
         }.first
         var presentationDate = "-"
         

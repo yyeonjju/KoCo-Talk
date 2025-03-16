@@ -128,9 +128,17 @@ enum NetworkManager {
             }
             
             let header : HTTPHeaders? = request.headers
+            print("❤️❤️❤️request❤️❤️", request)
             
             AF.upload(
                 multipartFormData: { multipartFormData in
+                    
+//                    multipartFormData.append(
+//                        fileDatas.first ?? Data(),
+//                        withName: "profile",
+//                        fileName: "profile.jpeg",
+//                        mimeType: "image/jpeg"
+//                    )
                     
                     for (index, data) in fileDatas.enumerated() {
                         multipartFormData.append(
@@ -238,6 +246,11 @@ extension NetworkManager {
     }
     
     
+//    static func updateProfileImage(fileDatas : [Data]) -> AnyPublisher<LoginResponseDTO, FetchError> {
+//        let router = Router.updateProfileImage
+//        return NetworkManager.uploadFile(fetchRouter: router, fileDatas: fileDatas, model : LoginResponseDTO.self)
+//    }
+    
     //Auth
     static func tokenRefresh() -> AnyPublisher<TokenRefreshResponse, FetchError> {
         let router = Router.tokenRefresh
@@ -249,6 +262,8 @@ extension NetworkManager {
         return fetch(fetchRouter: router, model : LoginResponseDTO.self)
     }
 }
+
+
 
 
 

@@ -7,11 +7,13 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 protocol MapIntentProtocol {
 //    func fetchStoreInfoList() //전체 게시물 로드
     func updateAddingPoisStatus(to : Bool)
     func fetchLocationBasedStores(location : LocationCoordinate) //위치 기반 게시물 로드
+    func createChatRoom(opponentId : String, selectedTab : Binding<TabBarTag>)
 }
 
 final class MapIntent : MapIntentProtocol{
@@ -74,6 +76,27 @@ final class MapIntent : MapIntentProtocol{
                  
                  //매장데이터 검색 끝났으면 맵에 pois 찍어주기위해
                  updateAddingPoisStatus(to: true)
+                 
+             })
+             .store(in: &cancellables)
+    }
+    
+    func createChatRoom(opponentId : String, selectedTab : Binding<TabBarTag>) {
+        let body = CreateChatRoomBody(opponent_id: opponentId)
+        NetworkManager.createChatRoom(body: body)
+             .sink(receiveCompletion: { [weak self] completion in
+                 guard let self else { return }
+                 switch completion {
+                 case .failure(let error):
+                     print("⭐️receiveCompletion - failure", error)
+                 case .finished:
+                     break
+                 }
+                 
+             }, receiveValue: {[weak self] result in
+                 guard let self, let model else { return }
+                 
+                 selectedTab.wrappedValue = TabBarTag.chat
                  
              })
              .store(in: &cancellables)

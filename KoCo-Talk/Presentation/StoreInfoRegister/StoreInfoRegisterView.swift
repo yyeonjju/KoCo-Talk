@@ -8,77 +8,21 @@
 import SwiftUI
 import Combine
 
-
-class StoreInfoRegisterViewModel : ObservableObject {
-    private var cancellables = Set<AnyCancellable>()
-    
-    func post(postBody : StoreInfoPostBody) {
-        print("❤️❤️최종 post body❤️❤️", postBody)
-        
-        NetworkManager.postStoreData(body : postBody)
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self else { return }
-                switch completion {
-                case .failure(let error):
-                    print("⭐️receiveCompletion - failure", error)
-                case .finished:
-                    break
-                }
-                
-            }, receiveValue: {[weak self] result in
-                guard let self else { return }
-                
-                print("❤️Post 완료❤️", result)
-                
-            })
-            .store(in: &cancellables)
-    }
-    
-    func uploadFiles(imageData : Data, bindingImageString : Binding<String>) {
-        
-        NetworkManager.uploadFiles(fileDatas: [imageData])
-            .sink(receiveCompletion: {[weak self] completion in
-                guard let self else { return }
-                switch completion {
-                case .failure(let error):
-                    print("⭐️receiveCompletion - failure", error)
-                case .finished:
-                    break
-                }
-                
-            }, receiveValue: {[weak self]  result in
-                guard let self else { return }
-                print("⭐️⭐️⭐️⭐️⭐️result", result)
-                let imageUrl = result.files.first ?? "-"
-                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
-                bindingImageString.wrappedValue = imageUrl
-
-            })
-            .store(in: &cancellables)
-    }
-}
-
 struct StoreInfoRegisterView: View {
-    let category = "Koco_Talk_StoreInfo_test"
+    let category = APIKEY.category_value
+    //"Koco_Talk_StoreInfo_test"
     //"Koco_Talk_StoreInfo_v2"
-
-    let placeName = "딥티크 가로수길 플래그십스토어"
-    let kakaoPlaceID = "321174482"
-    let address = "서울 강남구 신사동 536-16"
-    let storeCategory = "향수"
-    let phone = "02-3446-7494"
-    
+    let placeName = "논픽션 신사"
+    let kakaoPlaceID = "1543939713"
+    let address = "서울 강남구 신사동 524-33"
+    let storeCategory = "화장품"
+    let phone = "02-511-4098"
     let storeImages = [
-        "https://cdn.eyesmag.com/content/uploads/sliderImages/2022/03/07/diptyque-flagship-store-in-korea-01-b9978b8e-e2f8-42ce-9378-cceda0af3f59.jpg",
-        "http://imgnews.naver.net/image/5575/2022/03/23/0000273480_001_20220323142010478.jpg",
-        "http://post.phinf.naver.net/MjAyMjAzMjZfMjk3/MDAxNjQ4MjU4NTI4MTEy.ZMRr-0MdhQC5brJWgx-eSxF5zScK3cILFVkG_bP5oagg.lMQvd9S9z85d7DEs_DdxmPjyFc9oaH5UCCVwriT6wBgg.JPEG/IAEJT8bIGmX47_IS0lg1PkzDyW44.jpg"
+        "http://imgnews.naver.net/image/5264/2023/08/04/0000616598_002_20230804090202481.jpg"
         
     ]
-    
-//    let longitude : Double = 127.022974290953
-//    let latitude : Double = 37.5188907211712
-    let longitude : Double = 126.9769
-    let latitude : Double = 37.5759
+    let longitude : Double = 127.022056876491
+    let latitude : Double = 37.5226435732714
     
     
     @StateObject private var vm = StoreInfoRegisterViewModel()
@@ -88,9 +32,6 @@ struct StoreInfoRegisterView: View {
     // 영업 시간
     @State private var openingTime = Date()
     @State private var closingTime = Date()
-    
-    // 전화번호
-//    @State private var phoneNumber: String = ""
     
     // 응대 가능 언어
     @State private var languages: String = ""
@@ -233,7 +174,7 @@ struct StoreInfoRegisterView: View {
                         if let newImage = newImage, let currentEditingProduct =  self.currentEditingProduct {
                             currentEditingProduct.image.wrappedValue = newImage
                             
-                            let imageData = newImage.jpegData(compressionQuality: 0.5) ?? Data()
+                            let imageData = newImage.jpegData(compressionQuality: 0.7) ?? Data()
                             vm.uploadFiles(
                                 imageData: imageData,
                                 bindingImageString: Binding(get: {
@@ -509,3 +450,73 @@ struct ImagePicker: UIViewControllerRepresentable {
 
 
 
+
+class StoreInfoRegisterViewModel : ObservableObject {
+    private var cancellables = Set<AnyCancellable>()
+    
+    func post(postBody : StoreInfoPostBody) {
+        print("❤️❤️최종 post body❤️❤️", postBody)
+        
+        NetworkManager.postStoreData(body : postBody)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self else { return }
+                switch completion {
+                case .failure(let error):
+                    print("⭐️receiveCompletion - failure", error)
+                case .finished:
+                    break
+                }
+                
+            }, receiveValue: {[weak self] result in
+                guard let self else { return }
+                
+                print("❤️Post 완료❤️", result)
+                
+            })
+            .store(in: &cancellables)
+    }
+    
+    func uploadFiles(imageData : Data, bindingImageString : Binding<String>) {
+        print("❤️❤️❤️imageData❤️❤️", imageData)
+        NetworkManager.uploadFiles(fileDatas: [imageData])
+            .sink(receiveCompletion: {[weak self] completion in
+                guard let self else { return }
+                switch completion {
+                case .failure(let error):
+                    print("⭐️receiveCompletion - failure", error)
+                case .finished:
+                    break
+                }
+                
+            }, receiveValue: {[weak self]  result in
+                guard let self else { return }
+                print("⭐️⭐️⭐️⭐️⭐️result", result)
+                let imageUrl = result.files.first ?? "-"
+                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
+                bindingImageString.wrappedValue = imageUrl
+
+            })
+            .store(in: &cancellables)
+        
+
+//        NetworkManager.updateProfileImage(fileDatas: [imageData])
+//            .sink(receiveCompletion: {[weak self] completion in
+//                guard let self else { return }
+//                switch completion {
+//                case .failure(let error):
+//                    print("⭐️🚨receiveCompletion - failure", error)
+//                case .finished:
+//                    break
+//                }
+//
+//            }, receiveValue: {[weak self]  result in
+//                guard let self else { return }
+//                print("⭐️⭐️⭐️⭐️⭐️result", result)
+//                let imageUrl = result.profileImage ?? "-"
+//                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
+//                bindingImageString.wrappedValue = imageUrl
+//
+//            })
+//            .store(in: &cancellables)
+    }
+}

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StoreInfoButtonsView : View {
     @Binding var isExpanded : Bool
+    var chatWithStoreButtonTapped : (() -> Void)
+    
     
     var body : some View {
         HStack(spacing : 20) {
@@ -21,7 +23,7 @@ struct StoreInfoButtonsView : View {
             }
             
             Button {
-                
+                chatWithStoreButtonTapped()
             } label : {
                 RoundedConerWithIconAndText(text: "매장 실시간 상담", image: Assets.SystemImages.messageFill, imageScale: .small)
                 

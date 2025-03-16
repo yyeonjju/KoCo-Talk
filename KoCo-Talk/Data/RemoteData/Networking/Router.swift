@@ -39,6 +39,7 @@ enum Router {
     //file
     case uploadFiles
     case downloadFile(url : String)
+//    case updateProfileImage
 }
 
 extension Router : TargetType {
@@ -48,7 +49,10 @@ extension Router : TargetType {
                 .get
         case .createChatRoom, .postChat, .login, .uploadFiles, .postStoreData :
                 .post
+//        case .updateProfileImage :
+//                .put
         }
+        
     }
     
     var baseURL: String {
@@ -84,6 +88,8 @@ extension Router : TargetType {
             return APIURL.uploadFiles
         case .downloadFile(let url) :
             return APIURL.downloadFile + url
+//        case .updateProfileImage :
+//            return APIURL.updateProfileImage
         }
     }
     
@@ -114,6 +120,14 @@ extension Router : TargetType {
                 APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
                 APIKEY.contentType_key : APIKEY.contentType_applicationJson
             ]
+//        case .updateProfileImage :
+//            return [
+//                APIKEY.sesacKey_key : APIKEY.sesacKey_value,
+//                APIKEY.productId_key : APIKEY.productId_value,
+//                APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
+//                APIKEY.contentType_key : APIKEY.contentType_applicationJson,
+////                APIKEY.contentType_key : "multipart/form-data"
+//            ]
         }
     }
     

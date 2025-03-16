@@ -17,6 +17,8 @@ struct MapView : View {
     private var state : MapModelStateProtocol {container.model}
     private var intent : MapIntentProtocol {container.intent}
     
+    @EnvironmentObject var tabbarManager : TabBarManager
+    
     @State private var isBottomSheetMaxHeight : Bool = false
     
     @State private var draw : Bool = false
@@ -119,7 +121,26 @@ extension MapView {
 //            minHeightRatio : 0.4
         ) {
             if let tappedPostData {
-                StoreInfoView(isExpanded: $isBottomSheetMaxHeight, tappedPostData : tappedPostData)
+                StoreInfoView(
+                    isExpanded: $isBottomSheetMaxHeight,
+                    tappedPostData : tappedPostData,
+                    chatWithStoreButtonTapped : {
+                        //채팅방 생성 및 탭바 옮기기
+                        //TODO: tappedPostData.creatorId가 있는 채팅방으로 입장
+                        intent.createChatRoom(
+                            opponentId: tappedPostData.creatorId,
+                            selectedTab : Binding(
+                                get: {
+                                    tabbarManager.selectedTag
+                                }, set: {
+                                    // 채팅룸 생성이 완료된 시점에 탭 옮기기
+                                    tabbarManager.selectedTag = $0
+                                }
+                            )
+                        )
+                        
+                    }
+                )
             } else {
                 Text("탭한 매장의 데이터가 없습니다.")
                     .customFont(fontName: .NanumSquareR, size: 14)

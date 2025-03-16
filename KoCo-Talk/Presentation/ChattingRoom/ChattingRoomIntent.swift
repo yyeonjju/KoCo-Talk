@@ -17,6 +17,8 @@ protocol ChattingRoomIntentProtocol {
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
+    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
+    
     private var cancellables = Set<AnyCancellable>()
     private weak var model : ChattingRoomModelActionProtocol?
     
@@ -64,7 +66,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
                 
                 print("🍀🍀🍀🍀🍀🍀🍀temp🍀🍀🍀🍀🍀🍀🍀", temp)
                 
-                let rows = ConvertChatContentsToChatRows(data: temp)
+                let rows = ConvertChatContentsToChatRows(data: temp, myUserId: userInfo?.id ?? "")
                 model.updateChatRoomRows(rows)
                 
                 //소켓 연결
@@ -99,7 +101,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
                 chatRealmManager.add(chat: realmChat)
                 
                 //UI 업데이트
-                model.appendChat(result)
+                model.appendChat(result, myUserId: userInfo?.id ?? "")
                 
 //                ChatContentsStorage.shared.chats.append(result)
 //                output.chatContents = ChatContentsStorage.shared.chats

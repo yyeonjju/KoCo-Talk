@@ -36,10 +36,20 @@ final class AuthManager : ObservableObject{
     }
 }
 
+final class TabBarManager : ObservableObject {
+    @Published var selectedTag : TabBarTag = .map
+}
+
+enum TabBarTag {
+    case map
+    case chat
+    case settings
+}
+
 struct ContentView: View {
     @StateObject var authManager = AuthManager.shared
+    @StateObject var tabbarManager = TabBarManager()
     
-    @State private var selectedTab = 0
     @State private var loginViewShown = false
     @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     
@@ -52,16 +62,17 @@ struct ContentView: View {
         } else if authManager.status == AuthStatus.authorized ||
                     authManager.status == AuthStatus.userExist {
             
-            TabView(selection: $selectedTab) {
+            TabView(selection: $tabbarManager.selectedTag) {
                 NavigationView{
                     MapView.build()
+                        .environmentObject(tabbarManager)
                 }
                 .tint(Assets.Colors.black)
                 .tabItem {
                     Assets.SystemImages.mapFill
                     Text("Map")
                 }
-                .tag(0)
+                .tag(TabBarTag.map)
                 
                 NavigationView{
                     ChattingListView.build()
@@ -72,7 +83,7 @@ struct ContentView: View {
                     Assets.SystemImages.messageFill
                     Text("Chat")
                 }
-                .tag(1)
+                .tag(TabBarTag.chat)
                 
                 NavigationView{
                     SettingsView()
@@ -82,7 +93,7 @@ struct ContentView: View {
                     Assets.SystemImages.gearshapeFill
                     Text("Settings")
                 }
-                .tag(2)
+                .tag(TabBarTag.settings)
                 //                .badge(10)
             }
             .tint(Assets.Colors.pointGreen1)
