@@ -13,6 +13,8 @@ enum Assets {
         static let pointGreen2 = Color("pointGreen2")
         static let pointGreen3 = Color("pointGreen3")
         
+        static let pointRed = Color("pointRed")
+        
         static let black = Color("black")
         static let gray1 = Color("gray1")
         static let gray2 = Color("gray2")
@@ -47,8 +49,8 @@ enum Assets {
         static let plus = Image(systemName: "plus")
         static let arrowUp = Image(systemName: "arrow.up")
         static let arrowClockwise = Image(systemName: "arrow.clockwise")
-        
         static let clockFill = Image(systemName: "clock.fill")
+        static let minusCircleFill = Image(systemName : "minus.circle.fill")
         
     }
     

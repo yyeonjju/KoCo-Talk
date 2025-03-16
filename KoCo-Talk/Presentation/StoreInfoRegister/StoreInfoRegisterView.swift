@@ -10,8 +10,6 @@ import Combine
 
 struct StoreInfoRegisterView: View {
     let category = APIKEY.category_value
-    //"Koco_Talk_StoreInfo_test"
-    //"Koco_Talk_StoreInfo_v2"
     let placeName = "논픽션 신사"
     let kakaoPlaceID = "1543939713"
     let address = "서울 강남구 신사동 524-33"
@@ -40,99 +38,74 @@ struct StoreInfoRegisterView: View {
     @State private var recommendedProducts: [ProductItem] = [ProductItem()]
     @State private var popularProducts: [ProductItem] = [ProductItem()]
     @State private var stockProducts: [ProductItem] = [ProductItem()]
-
     
     // 이미지 선택 관련
     @State private var isShowingImagePicker = false
     @State private var currentEditingProduct: ProductItemBinding? = nil
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
-                    // 1. 영업 시간 섹션
-                    sectionTitle("영업 시간")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                // 영업 시간
+                sectionTitle("영업 시간")
+                
+                HStack {
+                    DatePicker("시작 시간", selection: $openingTime, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
                     
-                    HStack {
-                        DatePicker("시작 시간", selection: $openingTime, displayedComponents: .hourAndMinute)
-                            .labelsHidden()
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                            )
-                        
-                        Text("-")
-                            .font(.headline)
-                            .padding(.horizontal, 5)
-                        
-                        DatePicker("마감 시간", selection: $closingTime, displayedComponents: .hourAndMinute)
-                            .labelsHidden()
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                            )
-                    }
+                    Text("-")
+                        .font(.headline)
+                        .padding(.horizontal, 5)
                     
-                    sectionDivider()
-                    
-//
-                    
-                    
-                    // 3. 응대가능 언어 섹션
-                    sectionTitle("응대가능 언어")
-                    
-                    TextField("응대가능 언어를 입력하세요 (예: 한국어 영어 중국어 일본어)", text: $languages)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                        )
-                    
-                    sectionDivider()
-                    
-                    // 4. 추천제품 섹션
-                    productSection(
-                        title: "추천제품",
-                        products: $recommendedProducts
+                    DatePicker("마감 시간", selection: $closingTime, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                }
+                
+                sectionDivider()
+                
+                //
+                
+                
+                // 응대가능 언어
+                sectionTitle("응대가능 언어")
+                
+                TextField("응대가능 언어를 입력하세요 (예: 한국어 영어 중국어 일본어)", text: $languages)
+                    .customFont(fontName: .NanumSquareB, size: 13)
+                    .padding(10)
+                    .background(Assets.Colors.white)
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Assets.Colors.gray3.opacity(0.5), lineWidth: 1)
                     )
+                
+                sectionDivider()
+                
+                // 추천제품
+                productSection(
+                    title: "추천제품",
+                    products: $recommendedProducts
+                )
+                
+                sectionDivider()
+                
+                // 인기제품
+                productSection(
+                    title: "인기제품",
+                    products: $popularProducts
+                )
+                
+                sectionDivider()
+                
+                // 주요제품 재고
+                productSection(
+                    title: "주요제품 재고",
+                    products: $stockProducts
+                )
+                
+                // 저장 및 취소 버튼
+                HStack{
                     
-                    sectionDivider()
-                    
-                    // 5. 인기제품 섹션
-                    productSection(
-                        title: "인기제품",
-                        products: $popularProducts
-                    )
-                    
-                    sectionDivider()
-                    
-                    // 6. 주요제품 재고 섹션
-                    productSection(
-                        title: "주요제품 재고",
-                        products: $stockProducts
-                    )
-                    
-                    // 저장 및 취소 버튼
-                    Button(action: saveData) {
-                        Text("저장하기")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Assets.Colors.pointGreen1)
-                            .cornerRadius(10)
-                    }
-                    .padding(.top, 20)
                     
                     Button(action: cancel) {
                         Text("취소하기")
@@ -142,60 +115,67 @@ struct StoreInfoRegisterView: View {
                             .padding()
                             .background(Color.white)
                             .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                            )
                     }
-                    .padding(.bottom, 30)
+                    
+                    Button(action: saveData) {
+                        Text("저장하기")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Assets.Colors.pointGreen1)
+                            .cornerRadius(10)
+                    }
                 }
-                .padding()
-                .padding(.bottom, 100)
-                .background(Assets.Colors.pointGreen3)
+                .padding(.top, 20)
+                
             }
-            .navigationBarTitle("매장 정보 등록", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: saveData) {
-                Image(systemName: "checkmark")
-                    .foregroundColor(.black)
-            })
-            .onAppear{
-                showTabBar = false
-            }
-            .onDisappear{
-                showTabBar = true
-            }
-            .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
-            .background(.white)
-            .edgesIgnoringSafeArea(.bottom)
-            .sheet(isPresented: $isShowingImagePicker) {
-                ImagePicker(selectedImage: Binding<UIImage?>(
-                    get: { self.currentEditingProduct?.image.wrappedValue },
-                    set: { newImage in
-                        if let newImage = newImage, let currentEditingProduct =  self.currentEditingProduct {
-                            currentEditingProduct.image.wrappedValue = newImage
-                            
-                            let imageData = newImage.jpegData(compressionQuality: 0.7) ?? Data()
-                            vm.uploadFiles(
-                                imageData: imageData,
-                                bindingImageString: Binding(get: {
-                                    currentEditingProduct.imageUrl.wrappedValue
-                                }, set: {
-                                    currentEditingProduct.imageUrl.wrappedValue = $0
-                                })
-                            )
-                        }
-                    }
-                ))
-            }
+            .padding()
+            .padding(.bottom, 100)
+            .background(Assets.Colors.pointGreen3)
         }
+        .navigationBarTitle("매장 정보 등록", displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: saveData) {
+            Image(systemName: "checkmark")
+                .foregroundColor(.black)
+        })
+        .onAppear{
+            showTabBar = false
+        }
+        .onDisappear{
+            showTabBar = true
+        }
+        .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
+        .background(.white)
+        .edgesIgnoringSafeArea(.bottom)
+        .sheet(isPresented: $isShowingImagePicker) {
+            ImagePicker(selectedImage: Binding<UIImage?>(
+                get: { self.currentEditingProduct?.image.wrappedValue },
+                set: { newImage in
+                    if let newImage = newImage, let currentEditingProduct =  self.currentEditingProduct {
+                        currentEditingProduct.image.wrappedValue = newImage
+                        
+                        let imageData = newImage.jpegData(compressionQuality: 0.7) ?? Data()
+                        vm.uploadFiles(
+                            imageData: imageData,
+                            bindingImageString: Binding(get: {
+                                currentEditingProduct.imageUrl.wrappedValue
+                            }, set: {
+                                currentEditingProduct.imageUrl.wrappedValue = $0
+                            })
+                        )
+                    }
+                }
+            ))
+        }
+        .dismissKeyboardOnTap()
     }
     
     // 섹션 제목 컴포넌트
     private func sectionTitle(_ title: String) -> some View {
         Text(title)
-            .font(.headline)
-            .fontWeight(.bold)
-            .foregroundColor(Color.gray.opacity(0.8))
+            .customFont(fontName: .NanumSquareB, size: 14)
+            .foregroundStyle(Assets.Colors.gray1)
             .padding(.top, 5)
     }
     
@@ -223,12 +203,13 @@ struct StoreInfoRegisterView: View {
                 HStack {
                     Spacer()
                     Text("추가 +")
+                        .customFont(fontName: .NanumSquareB, size: 13)
                         .foregroundColor(.white)
                     Spacer()
                 }
-                .padding(4)
+                .padding(8)
                 .background(Assets.Colors.gray2)
-                .cornerRadius(20)
+                .cornerRadius(6)
             }
             .padding(.vertical, 10)
         }
@@ -237,23 +218,6 @@ struct StoreInfoRegisterView: View {
     // 제품 아이템 컴포넌트
     private func productItemView(product: Binding<ProductItem>, products: Binding<[ProductItem]>, index: Int) -> some View {
         VStack {
-            HStack {
-                Spacer()
-                
-                // 삭제 버튼
-                Button(action: {
-                    if products.count > 1 {
-                        products.wrappedValue.remove(at: index)
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                        .font(.title2)
-                }
-                .padding(.trailing, 10)
-                .padding(.top, 10)
-            }
-            
             HStack(alignment: .top, spacing: 15) {
                 // 이미지 선택 영역
                 Button(action: {
@@ -269,23 +233,23 @@ struct StoreInfoRegisterView: View {
                         Image(uiImage: uiImage)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 120, height: 120)
+                            .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                     } else {
                         VStack {
                             Image(systemName: "plus")
-                                .font(.largeTitle)
+                                .font(.title)
                                 .foregroundColor(.gray)
                             
                             Text("사진 등록")
                                 .font(.caption)
                                 .foregroundColor(.gray)
                         }
-                        .frame(width: 120, height: 120)
+                        .frame(width: 100, height: 100)
                         .background(Color.gray.opacity(0.1))
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray.opacity(0.3), style: StrokeStyle(lineWidth: 1, dash: [5]))
+                                .stroke(Assets.Colors.gray3.opacity(0.5), style: StrokeStyle(lineWidth: 1, dash: [5]))
                         )
                     }
                 }
@@ -293,23 +257,25 @@ struct StoreInfoRegisterView: View {
                 VStack(spacing: 10) {
                     // 제품 이름 입력
                     TextField("제품 이름", text: product.name)
-                        .padding()
+                        .customFont(fontName: .NanumSquareB, size: 13)
+                        .padding(8)
                         .background(Color.white)
                         .cornerRadius(5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                                .stroke(Assets.Colors.gray3.opacity(0.5), lineWidth: 1)
                         )
                     
                     // 제품 설명 입력
                     TextEditor(text: product.description)
-                        .frame(height: 60)
+                        .customFont(fontName: .NanumSquareB, size: 13)
+                        .frame(height: 50)
                         .padding(5)
                         .background(Color.white)
                         .cornerRadius(5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                                .stroke(Assets.Colors.gray3.opacity(0.5), lineWidth: 1)
                         )
                 }
             }
@@ -319,8 +285,22 @@ struct StoreInfoRegisterView: View {
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                .stroke(Assets.Colors.gray3.opacity(0.5), lineWidth: 1)
         )
+        .overlay(alignment : .topTrailing){
+            // 삭제 버튼
+            Button(action: {
+                if products.count > 1 {
+                    products.wrappedValue.remove(at: index)
+                }
+            }) {
+                Assets.SystemImages.minusCircleFill
+                    .foregroundColor(Assets.Colors.pointRed)
+                    .font(.system(size: 24))
+            }
+            .padding([.top, .trailing], -10)
+            
+        }
     }
     
     // 저장 기능
@@ -494,29 +474,29 @@ class StoreInfoRegisterViewModel : ObservableObject {
                 let imageUrl = result.files.first ?? "-"
                 print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
                 bindingImageString.wrappedValue = imageUrl
-
+                
             })
             .store(in: &cancellables)
         
-
-//        NetworkManager.updateProfileImage(fileDatas: [imageData])
-//            .sink(receiveCompletion: {[weak self] completion in
-//                guard let self else { return }
-//                switch completion {
-//                case .failure(let error):
-//                    print("⭐️🚨receiveCompletion - failure", error)
-//                case .finished:
-//                    break
-//                }
-//
-//            }, receiveValue: {[weak self]  result in
-//                guard let self else { return }
-//                print("⭐️⭐️⭐️⭐️⭐️result", result)
-//                let imageUrl = result.profileImage ?? "-"
-//                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
-//                bindingImageString.wrappedValue = imageUrl
-//
-//            })
-//            .store(in: &cancellables)
+        
+        //        NetworkManager.updateProfileImage(fileDatas: [imageData])
+        //            .sink(receiveCompletion: {[weak self] completion in
+        //                guard let self else { return }
+        //                switch completion {
+        //                case .failure(let error):
+        //                    print("⭐️🚨receiveCompletion - failure", error)
+        //                case .finished:
+        //                    break
+        //                }
+        //
+        //            }, receiveValue: {[weak self]  result in
+        //                guard let self else { return }
+        //                print("⭐️⭐️⭐️⭐️⭐️result", result)
+        //                let imageUrl = result.profileImage ?? "-"
+        //                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
+        //                bindingImageString.wrappedValue = imageUrl
+        //
+        //            })
+        //            .store(in: &cancellables)
     }
 }

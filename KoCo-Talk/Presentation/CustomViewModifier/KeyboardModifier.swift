@@ -48,3 +48,16 @@ import Combine
  */
 
 
+//키보드 내리기 기능
+struct DismissableKeyboard: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .contentShape(Rectangle())
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                              to: nil,
+                                              from: nil,
+                                              for: nil)
+            }
+    }
+}
