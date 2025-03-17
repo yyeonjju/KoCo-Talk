@@ -13,6 +13,8 @@ enum Assets {
         static let pointGreen2 = Color("pointGreen2")
         static let pointGreen3 = Color("pointGreen3")
         
+        static let pointDarkGreen1 = Color("pointDarkGreen1")
+        
         static let pointRed = Color("pointRed")
         
         static let black = Color("black")

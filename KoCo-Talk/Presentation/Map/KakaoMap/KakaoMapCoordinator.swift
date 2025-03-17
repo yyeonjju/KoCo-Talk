@@ -193,7 +193,8 @@ extension KakaoMapCoordinator {
         let tappedIconStyle = PoiIconStyle(symbol: UIImage(named: "pin_activate")!, anchorPoint: CGPoint(x: 0.0, y: 0.5))
         
         ///📍PoiTextLineStyle - 텍스트가 어떻게 표출될지 정의
-        let textLineStyle = PoiTextLineStyle(textStyle: TextStyle(fontSize: 20, fontColor: .blue))
+        let textFontColor = UIColor(named: "pointDarkGreen1") ?? UIColor.black
+        let textLineStyle = PoiTextLineStyle(textStyle: TextStyle(fontSize: 20, fontColor: textFontColor))
         let textStyle = PoiTextStyle(textLineStyles: [textLineStyle])
         textStyle.textLayouts = [PoiTextLayout.bottom]
         
