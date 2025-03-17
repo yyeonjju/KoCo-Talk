@@ -27,7 +27,7 @@ struct StoreInfoView: View {
                         //TODO: isExpanded == true 될 때마다 다시 그려지면서 로드되기 때문에 캐싱되는 이미지 관리 구조체로 바꿔주기?
                         //아니면 그냥 if isExpanded 조건부 제외하고 frame으로 조절하면 재로드 방지?
                         //.framd(height : isExpanded ? screenWidth*0.8 : 0)
-                        BaisicAsyncImage(url: tappedPostData.storeData?.storeImages.first ?? "-", width: screenWidth, height: screenWidth*0.8)
+                        BaisicAsyncImage(url: tappedPostData.storeData?.storeImages.first ?? "-", width: screenWidth, height: screenWidth*0.8, radius: 0)
                     }
                     
                     StoreInfoHeaderView(
@@ -55,7 +55,7 @@ struct StoreInfoView: View {
                     if isExpanded{
                         StoreDetailInformantionlView(data : tappedPostData)
                             .padding(.top, 30)
-                            .padding(.horizontal, 28)
+//                            .padding(.horizontal, 28)
                             .frame(maxWidth : .infinity)
                         
                         

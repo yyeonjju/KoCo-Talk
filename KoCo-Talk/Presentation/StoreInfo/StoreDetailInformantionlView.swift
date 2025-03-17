@@ -88,6 +88,7 @@ struct StoreDetailInformantionlView : View {
                 switch content.type {
                 case .textOnly:
                     textOnlyStoreInfo(content: content)
+                        .padding(.horizontal, 28)
                 case .photoTitleSubtitle:
                     photoTitleSubtitle(content: content)
                 }
@@ -100,7 +101,7 @@ struct StoreDetailInformantionlView : View {
 
 
 extension StoreDetailInformantionlView {
-    func textOnlyStoreInfo(content : StoreInfoContent) -> some View {
+    private func textOnlyStoreInfo(content : StoreInfoContent) -> some View {
         HStack{
             content.icon
                 .imageScale(.small)
@@ -113,7 +114,7 @@ extension StoreDetailInformantionlView {
             Spacer()
         }
     }
-    func photoTitleSubtitle(content : StoreInfoContent) -> some View {
+    private func photoTitleSubtitle(content : StoreInfoContent) -> some View {
         VStack(alignment : .leading){
             HStack{
                 content.icon
@@ -123,25 +124,37 @@ extension StoreDetailInformantionlView {
                     .foregroundStyle(Assets.Colors.gray1)
                     .customFont(fontName: .NanumSquareB, size: 13)
             }
+            .padding(.leading, 28)
 
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(alignment : .top){
                     ForEach (content.storeInfoMetadata){ (data : StoreInfoMetaData) in
                         VStack(alignment : .leading, spacing: 4){
-                            HeaderAsyncImage(url: data.imageUrl, width: 140, height: 120)
+                            HeaderAsyncImage(
+                                url: data.imageUrl,
+                                width: 140,
+                                height: 120,
+                                radius: 6
+                            )
                             Text(data.title)
                                 .customFont(fontName: .NanumSquareB, size: 12)
                                 .foregroundStyle(Assets.Colors.gray1)
+                                .tracking(1)
+                                .lineSpacing(4)
                                 .frame(alignment: .leading)
                                 .lineLimit(1)
                             Text(data.description)
                                 .frame(alignment: .leading)
                                 .customFont(fontName: .NanumSquareR, size: 11)
-                                .foregroundStyle(Assets.Colors.gray1)
+                                .tracking(0.5)
+                                .lineSpacing(4)
+                                .foregroundStyle(Assets.Colors.gray2)
                                 .lineLimit(3)
                             
                         }
                         .frame(width : 140)
+                        .padding(.leading, content.storeInfoMetadata.first?.id == data.id ? 28 : 0)
+                        .padding(.trailing, content.storeInfoMetadata.last?.id == data.id ? 28 : 0) // 마지막 요소에서만 trailing padding
                         // .padding(.trailing, 12)
                     }
                     

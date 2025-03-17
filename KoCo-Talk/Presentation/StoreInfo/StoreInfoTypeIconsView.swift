@@ -18,10 +18,10 @@ struct StoreInfoTypeIconsView : View {
     }
     
     let icons = [
+        StoreInfoType(icon: Assets.SystemImages.calendarBadgeClock, iconColor: Assets.Colors.pointGreen1),
         StoreInfoType(icon: Assets.SystemImages.personWave, iconColor: Assets.Colors.pointGreen1),
         StoreInfoType(icon: Assets.SystemImages.giftcard, iconColor: Assets.Colors.pointGreen1),
         StoreInfoType(icon: Assets.SystemImages.handThumbsup, iconColor: Assets.Colors.pointGreen1),
-        StoreInfoType(icon: Assets.SystemImages.calendarBadgeClock, iconColor: Assets.Colors.pointGreen1),
     ]
     
     var body: some View {

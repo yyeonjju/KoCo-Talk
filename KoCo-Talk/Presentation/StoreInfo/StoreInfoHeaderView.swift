@@ -31,11 +31,12 @@ struct StoreInfoHeaderView: View {
                 Text(title)
                     .lineLimit(1)
                     .customFont(fontName: .NanumSquareB, size: 14)
+                    .foregroundColor(Assets.Colors.gray1)
                 
                 Text(subtitle)
                     .lineLimit(2)
                     .customFont(fontName: .NanumSquareR, size: 12)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Assets.Colors.gray3)
             }
             .padding(.leading, 8)
             
