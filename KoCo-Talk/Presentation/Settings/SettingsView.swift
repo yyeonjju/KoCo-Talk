@@ -15,6 +15,12 @@ struct SettingsView: View {
             } label : {
                 Text("매장등록")
             }
+            
+            NavigationLink{
+                UserProfileView()
+            } label : {
+                Text("프로필")
+            }
         }
         
     }

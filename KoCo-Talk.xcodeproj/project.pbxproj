@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D25133E2D880AE2005850B9 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D25133D2D880AE2005850B9 /* UserProfileView.swift */; };
 		7D2861832D8054720015DD37 /* StoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861822D8054720015DD37 /* StoreInfoView.swift */; };
 		7D2861852D8070890015DD37 /* StoreInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861842D8070890015DD37 /* StoreInfoHeaderView.swift */; };
 		7D2861882D8072F10015DD37 /* IconCircleBackgroudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861872D8072F10015DD37 /* IconCircleBackgroudView.swift */; };
@@ -19,6 +20,8 @@
 		7D2861992D8173700015DD37 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861982D8173700015DD37 /* LocationManager.swift */; };
 		7D28619B2D82A9000015DD37 /* StoreDetailInformantionlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D28619A2D82A9000015DD37 /* StoreDetailInformantionlView.swift */; };
 		7D2861A12D84257C0015DD37 /* StoreInfoRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2861A02D84257C0015DD37 /* StoreInfoRegisterView.swift */; };
+		7D6007EC2D8911EB00363A9A /* UserInfoResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6007EB2D8911EB00363A9A /* UserInfoResponseDTO+Mapping.swift */; };
+		7D6007EE2D89122A00363A9A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6007ED2D89122A00363A9A /* UserInfo.swift */; };
 		7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */; };
 		7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */; };
 		7D68FBC12D757A1500B9B013 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68FBC02D757A1500B9B013 /* View++.swift */; };
@@ -101,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7D25133D2D880AE2005850B9 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		7D2861822D8054720015DD37 /* StoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoView.swift; sourceTree = "<group>"; };
 		7D2861842D8070890015DD37 /* StoreInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoHeaderView.swift; sourceTree = "<group>"; };
 		7D2861872D8072F10015DD37 /* IconCircleBackgroudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCircleBackgroudView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		7D2861982D8173700015DD37 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7D28619A2D82A9000015DD37 /* StoreDetailInformantionlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailInformantionlView.swift; sourceTree = "<group>"; };
 		7D2861A02D84257C0015DD37 /* StoreInfoRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoRegisterView.swift; sourceTree = "<group>"; };
+		7D6007EB2D8911EB00363A9A /* UserInfoResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfoResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7D6007ED2D89122A00363A9A /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		7D68FBB92D73174400B9B013 /* BaisicAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaisicAsyncImage.swift; sourceTree = "<group>"; };
 		7D68FBBE2D7579D300B9B013 /* KeyboardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModifier.swift; sourceTree = "<group>"; };
 		7D68FBC02D757A1500B9B013 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
@@ -192,6 +198,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D25133C2D880AA9005850B9 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7D25133D2D880AE2005850B9 /* UserProfileView.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		7D2861812D8054540015DD37 /* StoreInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +369,7 @@
 		7D7E678E2D491E0A0037BD36 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7D25133C2D880AA9005850B9 /* UserProfile */,
 				7D28619F2D8425240015DD37 /* StoreInfoRegister */,
 				7D2861812D8054540015DD37 /* StoreInfo */,
 				7D68FBBB2D75799D00B9B013 /* CustomViewModifier */,
@@ -463,6 +478,7 @@
 				7D7E67C62D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift */,
 				7D7E67F02D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift */,
 				7D68FBD32D79D41600B9B013 /* FileResponse.swift */,
+				7D6007EB2D8911EB00363A9A /* UserInfoResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -473,6 +489,7 @@
 				7D7E67C22D4A0F210037BD36 /* ChatRoom.swift */,
 				7D7E67F42D50D1D60037BD36 /* Auth.swift */,
 				7D68FBEE2D7EA1AA00B9B013 /* PostContent.swift */,
+				7D6007ED2D89122A00363A9A /* UserInfo.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -662,6 +679,7 @@
 				7D2861832D8054720015DD37 /* StoreInfoView.swift in Sources */,
 				7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */,
 				7D68FBEF2D7EA1AB00B9B013 /* PostContent.swift in Sources */,
+				7D25133E2D880AE2005850B9 /* UserProfileView.swift in Sources */,
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
 				7D68FBC62D75E58800B9B013 /* AppDelegate.swift in Sources */,
@@ -703,7 +721,9 @@
 				7D68FBC12D757A1500B9B013 /* View++.swift in Sources */,
 				7D28618E2D814BED0015DD37 /* StoreInfoButtonsView.swift in Sources */,
 				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
+				7D6007EE2D89122A00363A9A /* UserInfo.swift in Sources */,
 				7D68FBDA2D7C187000B9B013 /* ImageLoader.swift in Sources */,
+				7D6007EC2D8911EB00363A9A /* UserInfoResponseDTO+Mapping.swift in Sources */,
 				7D2861A12D84257C0015DD37 /* StoreInfoRegisterView.swift in Sources */,
 				7D7E679A2D49D34E0037BD36 /* Namespace.swift in Sources */,
 				7D28618C2D813E140015DD37 /* StoreInfoTypeIconsView.swift in Sources */,

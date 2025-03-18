@@ -39,7 +39,9 @@ enum Router {
     //file
     case uploadFiles
     case downloadFile(url : String)
-//    case updateProfileImage
+    
+    //user
+    case updateProfile(body : UpdateProfileRequestBody)
 }
 
 extension Router : TargetType {
@@ -49,8 +51,8 @@ extension Router : TargetType {
                 .get
         case .createChatRoom, .postChat, .login, .uploadFiles, .postStoreData :
                 .post
-//        case .updateProfileImage :
-//                .put
+        case .updateProfile :
+                .put
         }
         
     }
@@ -88,8 +90,8 @@ extension Router : TargetType {
             return APIURL.uploadFiles
         case .downloadFile(let url) :
             return APIURL.downloadFile + url
-//        case .updateProfileImage :
-//            return APIURL.updateProfileImage
+        case .updateProfile :
+            return APIURL.updateProfile
         }
     }
     
@@ -120,14 +122,13 @@ extension Router : TargetType {
                 APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
                 APIKEY.contentType_key : APIKEY.contentType_applicationJson
             ]
-//        case .updateProfileImage :
-//            return [
-//                APIKEY.sesacKey_key : APIKEY.sesacKey_value,
-//                APIKEY.productId_key : APIKEY.productId_value,
-//                APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
-//                APIKEY.contentType_key : APIKEY.contentType_applicationJson,
-////                APIKEY.contentType_key : "multipart/form-data"
-//            ]
+        case  .updateProfile(let body):
+            return [
+                APIKEY.sesacKey_key : APIKEY.sesacKey_value,
+                APIKEY.productId_key : APIKEY.productId_value,
+                APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
+                APIKEY.contentType_key : "\(APIKEY.contentType_multipart); boundary=\(body.boundary)"
+            ]
         }
     }
     
@@ -199,12 +200,38 @@ extension Router : TargetType {
             }catch{
                 return nil
             }
+        case .updateProfile(let body) :
+            return userProfileBody(body)
         default :
             return nil
             
         }
     }
     
-    
+    private func userProfileBody(_ profile: UpdateProfileRequestBody) -> Data {
+        var body = Data()
+        
+        // nick
+        if let nick = profile.nick{
+            body.append("--\(profile.boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"nick\"\r\n\r\n".data(using: .utf8)!)
+            body.append("\(nick)\r\n".data(using: .utf8)!)
+        }
+        
+        // profile (이미지)
+        if let profileData = profile.profile {
+            
+            body.append("--\(profile.boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"profile\"; filename=\"profile.png\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+            body.append(profileData)
+            body.append("\r\n".data(using: .utf8)!)
+        }
+        
+        // 종료 boundary
+        body.append("--\(profile.boundary)--\r\n".data(using: .utf8)!)
+        
+        return body
+    }
 }
 

@@ -99,7 +99,7 @@ extension ChattingRoomRowView {
         let rowAmount : Int = files.count/3 //몫
         let remainderAmount : Int = files.count%3 //나머지
         
-        let singlePhotoWidth : CGFloat = 150
+        let singlePhotoWidth : CGFloat = 130
         
         return VStack(spacing: 2){
  
@@ -160,7 +160,7 @@ extension ChattingRoomRowView {
         
         HeaderAsyncImage(url: urlString, width: width, height: height ?? width)
 //            .frame(width: width, height: height ?? width)
-            .background(Assets.Colors.gray1)
+//            .background(Assets.Colors.gray1)
 //            .cornerRadius(4)
     }
 }

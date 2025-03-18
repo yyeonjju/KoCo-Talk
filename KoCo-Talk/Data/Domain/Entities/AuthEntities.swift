@@ -12,7 +12,21 @@ struct LoginResponse : Codable {
     let id: String
     let email: String
     let nick: String
-    let profileImage: String?
+    var profileImage: String?
     var access: String
     let refresh: String
 }
+
+//struct UserInfo {
+//    let id: String
+//    let email: String
+//    let nick: String
+//    var profileImage: String?
+//    var access: String
+//    let refresh: String
+//    
+////    let followers
+////    let following
+////    let posts
+//
+//}

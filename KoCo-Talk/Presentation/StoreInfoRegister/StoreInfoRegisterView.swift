@@ -479,24 +479,5 @@ class StoreInfoRegisterViewModel : ObservableObject {
             .store(in: &cancellables)
         
         
-        //        NetworkManager.updateProfileImage(fileDatas: [imageData])
-        //            .sink(receiveCompletion: {[weak self] completion in
-        //                guard let self else { return }
-        //                switch completion {
-        //                case .failure(let error):
-        //                    print("⭐️🚨receiveCompletion - failure", error)
-        //                case .finished:
-        //                    break
-        //                }
-        //
-        //            }, receiveValue: {[weak self]  result in
-        //                guard let self else { return }
-        //                print("⭐️⭐️⭐️⭐️⭐️result", result)
-        //                let imageUrl = result.profileImage ?? "-"
-        //                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
-        //                bindingImageString.wrappedValue = imageUrl
-        //
-        //            })
-        //            .store(in: &cancellables)
     }
 }

@@ -116,7 +116,7 @@ enum NetworkManager {
             .eraseToAnyPublisher()
     }
     
-    static func uploadFile<M : Decodable>(fetchRouter : Router, fileDatas : [Data], model : M.Type) -> AnyPublisher<M,FetchError>  {
+    static func uploadFile<M : Decodable>(fetchRouter : Router, fileDatas : [Data], name: String = "files",model : M.Type) -> AnyPublisher<M,FetchError>  {
         
         let future = Future<M,Error> { promise in
             guard let request = try? fetchRouter.asURLRequest() else {
@@ -143,7 +143,7 @@ enum NetworkManager {
                     for (index, data) in fileDatas.enumerated() {
                         multipartFormData.append(
                             data,
-                            withName: "files",
+                            withName: name,
                             fileName: "image\(index).jpeg",
                             mimeType: "image/jpeg"
                         )
@@ -246,11 +246,6 @@ extension NetworkManager {
     }
     
     
-//    static func updateProfileImage(fileDatas : [Data]) -> AnyPublisher<LoginResponseDTO, FetchError> {
-//        let router = Router.updateProfileImage
-//        return NetworkManager.uploadFile(fetchRouter: router, fileDatas: fileDatas, model : LoginResponseDTO.self)
-//    }
-    
     //Auth
     static func tokenRefresh() -> AnyPublisher<TokenRefreshResponse, FetchError> {
         let router = Router.tokenRefresh
@@ -260,6 +255,12 @@ extension NetworkManager {
     static func login(body : LoginBody) -> AnyPublisher<LoginResponseDTO, FetchError> {
         let router = Router.login(body: body)
         return fetch(fetchRouter: router, model : LoginResponseDTO.self)
+    }
+    
+    //User
+    static func updateProfile(body : UpdateProfileRequestBody) -> AnyPublisher<UpdateProfileResponseDTO, FetchError> {
+        let router = Router.updateProfile(body: body)
+        return fetch(fetchRouter: router, model : UpdateProfileResponseDTO.self)
     }
 }
 
