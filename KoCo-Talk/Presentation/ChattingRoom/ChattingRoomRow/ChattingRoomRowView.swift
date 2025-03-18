@@ -34,12 +34,11 @@ struct ChattingRoomRowView: View {
             //상대방 프로필 이미지
             if !row.isMyChat {
                 VStack{
-                    VStack{
-                        
-                    }
-                    .frame(width: 40, height: 40)
-                    .background(Assets.Colors.gray3)
-                    .cornerRadius(20)
+                    HeaderAsyncImage(url: row.senderProfileImage, width: 40, height: 40, radius: 20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Assets.Colors.pointGreen2, lineWidth: 1)
+                        )
                 }
                 .frame(maxHeight : .infinity, alignment: .top)
 

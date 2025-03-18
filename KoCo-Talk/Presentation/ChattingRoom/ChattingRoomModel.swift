@@ -45,6 +45,8 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
                 createdDate: dateString,
                 createdTime: timeString,
                 senderNickname: content.sender.nick,
+                senderProfileImage : content.sender.profileImage,
+                
                 chats: [ChatRoomContent(chatId: content.chatId, content: content.content ?? "-", files: content.files)]
             )
             
@@ -68,6 +70,8 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
                 createdDate: lastRow.createdDate,
                 createdTime: lastRow.createdTime,
                 senderNickname: lastRow.senderNickname,
+                senderProfileImage : lastRow.senderProfileImage,
+                
                 chats: chats
             )
             
@@ -89,6 +93,8 @@ extension ChattingRoomModel : ChattingRoomModelActionProtocol {
             createdDate: dateString,
             createdTime: timeString,
             senderNickname: content.sender.nick,
+            senderProfileImage : content.sender.profileImage,
+            
             chats: [ChatRoomContent(chatId: content.chatId, content: content.content ?? "-", files: content.files)]
         )
         

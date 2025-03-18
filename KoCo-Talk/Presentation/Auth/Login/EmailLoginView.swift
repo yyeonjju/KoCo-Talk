@@ -27,6 +27,8 @@ struct EmailLoginView: View {
     @State private var password = "heidi_1"
 //    @State private var email = "TAMBURINS_1@TAMBURINS.com"
 //    @State private var password = "TAMBURINS_1"
+//    @State private var email = "DIPTYQUE_1@DIPTYQUE.com"
+//    @State private var password = "DIPTYQUE_1"
     
     var body: some View {
         VStack{

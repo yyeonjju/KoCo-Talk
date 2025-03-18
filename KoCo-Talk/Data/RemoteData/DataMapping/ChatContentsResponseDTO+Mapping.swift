@@ -97,6 +97,7 @@ func ConvertChatContentsToChatRows(data : [ChatRoomContentDTO], myUserId : Strin
                     createdDate: currentIndexPresentationDate,
                     createdTime: presentationtTime,
                     senderNickname: element.sender.nick,
+                    senderProfileImage : element.sender.profileImage,
                     
                     chats: chatContents
                 )

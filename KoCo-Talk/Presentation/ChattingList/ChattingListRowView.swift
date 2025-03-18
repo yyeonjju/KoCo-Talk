@@ -14,13 +14,13 @@ struct ChattingListRowView  : View {
         HStack {
             VStack {
                 if let imageString = chatRoom.opponentProfileImage {
-                    
+                    HeaderAsyncImage(url: imageString, width: 50, height: 50, radius: 12)
                 }else {
                     Assets.Images.defaultProfile
                         .resizable()
                 }
             }
-            .frame(width: 48, height: 48)
+            .frame(width: 50, height: 50)
             .background(Assets.Colors.gray3)
             .cornerRadius(12)
             .overlay(

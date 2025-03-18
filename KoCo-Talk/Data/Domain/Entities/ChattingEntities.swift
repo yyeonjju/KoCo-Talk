@@ -33,6 +33,7 @@ struct ChatRoomContentRow : Equatable {
     let createdDate : String // 날짜 변경되었을 때 날짜 표시를 위함
     let createdTime : String // Row마다 하단에 이 컨텐츠들의 시간 표시를 위함
     let senderNickname : String
+    let senderProfileImage : String?
     
     var chats : [ChatRoomContent]
 }
