@@ -6,13 +6,64 @@
 //
 
 import Foundation
-import Combine
 
+@MainActor
 protocol ChattingListIntentProtocol {
     func fetchChatRoomList()
-    func createChatRoom(opponentID : String)
+//    func createChatRoom(opponentID : String)
+    func cancelTasks()
 }
 
+final class ChattingListIntent : ChattingListIntentProtocol {
+    private weak var model : ChattingListModelActionProtocol?
+    private var tasks : [Task<Void, Never>] = []
+    
+    init(model: ChattingListModelActionProtocol) {
+        self.model = model
+    }
+    
+    func fetchChatRoomList() {
+        let task = Task {
+            do {
+                let result = try await  NetworkManager2.getChatRoomList()
+                print("❤️", result.data)
+                let chatRoomList = result.data.map{$0.toDomain()}
+                model?.updateChatRoomList(list: chatRoomList)
+            } catch {
+                // 에러 처리
+                print("🚨error", error)
+            }
+        }
+        
+        tasks.append(task)
+    }
+    
+//    func createChatRoom(opponentID : String) {
+//        
+//        let task = Task {
+//            do {
+//                let result = try await NetworkManager2.createChatRoom(body : CreateChatRoomBody(opponent_id: opponentID))
+//                
+//                self.fetchChatRoomList()
+//            } catch {
+//                // 에러 처리
+//                print("🚨error", error)
+//            }
+//        }
+//        
+//        tasks.append(task)
+//        
+//    }
+    
+    func cancelTasks() {
+        tasks.forEach{$0.cancel()}
+        tasks.removeAll()
+    }
+    
+}
+
+
+/*
 final class ChattingListIntent : ChattingListIntentProtocol {
     private weak var model : ChattingListModelActionProtocol?
     private var cancellables = Set<AnyCancellable>()
@@ -63,3 +114,4 @@ final class ChattingListIntent : ChattingListIntentProtocol {
     }
     
 }
+*/

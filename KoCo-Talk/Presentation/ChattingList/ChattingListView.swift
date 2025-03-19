@@ -33,6 +33,9 @@ struct ChattingListView: View {
         .onAppear{
             intent.fetchChatRoomList()
         }
+        .onDisappear{
+            intent.cancelTasks()
+        }
 //        .toolbar{
 //            ToolbarItem(placement: .topBarTrailing) {
 //                Button{
