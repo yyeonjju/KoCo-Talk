@@ -6,8 +6,48 @@
 //
 
 import UIKit
-import Combine
 
+@MainActor
+final class ImageLoader : ObservableObject {
+    private var tasks : [Task<Void, Never>] = []
+    
+    @Published var image : UIImage? = nil
+    @Published var isLoading : Bool = false
+    @Published var error : FetchError? = nil
+    
+    
+    func loadImage(urlString : String){
+        
+        let task = Task {
+            do {
+                let result = try await NetworkManager2.downloadFiles(url: urlString)
+                print("💕💕💕 이미지 다운로드 완료!!", result)
+                image = UIImage(data: result)
+                isLoading = false
+             
+            } catch let error as FetchError {
+                // FetchError 처리
+                print("🚨error", error)
+                isLoading = false
+                self.error = error
+            } catch {
+                // 에러 처리
+                print("🚨error", error)
+
+            }
+        }
+        
+        tasks.append(task)
+    }
+    
+    func cancelTasks() {
+        tasks.forEach{$0.cancel()}
+        tasks.removeAll()
+    }
+}
+
+
+/*
 final class ImageLoader : ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
@@ -39,3 +79,4 @@ final class ImageLoader : ObservableObject {
             .store(in: &cancellables)
     }
 }
+*/

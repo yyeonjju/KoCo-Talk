@@ -42,6 +42,9 @@ struct HeaderAsyncImage : View {
                 imageLoader.loadImage(urlString: url)
             }
         }
+        .onDisappear{
+            imageLoader.cancelTasks()
+        }
     }
     
     private var defaultContent : some View {

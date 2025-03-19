@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct EmailLoginView: View {    
     @StateObject private var vm = EmailLoginViewModel()
@@ -47,7 +46,7 @@ struct EmailLoginView: View {
                 .padding(.horizontal, 30)
             
             Button {
-                vm.action(action: .login(body: LoginBody(email: email, password: password)))
+                vm.login(body: LoginBody(email: email, password: password))
                 
             } label: {
                 Text("로그인하기")
@@ -56,7 +55,7 @@ struct EmailLoginView: View {
                     .foregroundStyle(.white)
             }
         }
-        .onChange(of: vm.output.loginSuccess) { loginSuccess in
+        .onChange(of: vm.loginSuccess) { loginSuccess in
             if loginSuccess {
                 AuthManager.shared.status = .authorized
             }
@@ -65,8 +64,39 @@ struct EmailLoginView: View {
     }
 }
 
+@MainActor
+final class EmailLoginViewModel : ObservableObject {
+    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
+    
+    @Published var loginSuccess : Bool = false
+    
+    private var tasks : [Task<Void, Never>] = []
+    
+    func login(body : LoginBody){
+        let task = Task {
+            do {
+                let result = try await NetworkManager2.login(body: body)
+                // 값 처리
+                print("❤️ 로그인 했다!, -> ", result.toDomain())
+                userInfo = result.toDomain()
+                loginSuccess = true
+            } catch {
+                // 에러 처리
+                print("🚨error", error)
+            }
+        }
+        
+        tasks.append(task)
+    }
+    
+    func cancelTasks() {
+        tasks.forEach{$0.cancel()}
+        tasks.removeAll()
+    }
+}
 
-class EmailLoginViewModel : ObservableObject {
+/*
+final class EmailLoginViewModel : ObservableObject {
     @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     var cancellables = Set<AnyCancellable>()
     var input = Input()
@@ -120,3 +150,4 @@ class EmailLoginViewModel : ObservableObject {
         }
     }
 }
+*/

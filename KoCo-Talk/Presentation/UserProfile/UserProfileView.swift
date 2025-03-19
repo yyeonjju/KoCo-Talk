@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 enum Operation {
     case create
@@ -89,40 +88,81 @@ struct UserProfileView : View {
                 set: { profileImage = $0 }
             ))
         }
+        .onDisappear{
+            vm.cancelTasks()
+        }
     }
     
 
 }
 
-class UserProfileViewModel : ObservableObject {
-    private var cancellables = Set<AnyCancellable>()
+//Swift Concurrency로 인한 작업 결과가 메인스레드에서 실행될 수 있도록
+@MainActor
+final class UserProfileViewModel : ObservableObject {
     @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
+    
+    //실행 중인 여러개의 task를 저장하고 뷰가 사라질 떄 한번에 취소해주기 위해 필요
+    private var tasks : [Task<Void, Never>] = []
+    
     
     func updateProfile(imageData : Data){
         
         let body = UpdateProfileRequestBody(nick: nil, profile: imageData)
-
-        NetworkManager.updateProfile(body : body)
-            .sink(receiveCompletion: {[weak self] completion in
-                guard let self else { return }
-                switch completion {
-                case .failure(let error):
-                    print("⭐️🚨receiveCompletion - failure", error)
-                case .finished:
-                    break
-                }
-                
-            }, receiveValue: {[weak self]  result in
-                guard let self else { return }
-                print("⭐️⭐️⭐️⭐️⭐️result", result)
+        
+        let task = Task {
+            do {
+                let result = try await NetworkManager2.updateProfile(body : body)
+                // 값 처리
                 userInfo?.profileImage = result.profileImage
-                
-                print("⭐️⭐️⭐️⭐️⭐️profileImage 바뀐 후 userInfo", userInfo)
-                
-            })
-            .store(in: &cancellables)
+                print("⭐️⭐️⭐️⭐️⭐️profileImage 바뀐 후  userInfo", userInfo)
+            } catch {
+                // 에러 처리
+                print("🚨error", error)
+            }
+        }
+        
+        tasks.append(task)
     }
     
+    func cancelTasks() {
+        tasks.forEach{$0.cancel()}
+        tasks.removeAll()
+    }
 }
 
+
+
+/*
+ class UserProfileViewModel : ObservableObject {
+     private var cancellables = Set<AnyCancellable>()
+     @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
+     
+     func updateProfile(imageData : Data){
+         
+         let body = UpdateProfileRequestBody(nick: nil, profile: imageData)
+
+         NetworkManager.updateProfile(body : body)
+             .sink(receiveCompletion: {[weak self] completion in
+                 guard let self else { return }
+                 switch completion {
+                 case .failure(let error):
+                     print("⭐️🚨receiveCompletion - failure", error)
+                 case .finished:
+                     break
+                 }
+                 
+             }, receiveValue: {[weak self]  result in
+                 guard let self else { return }
+                 print("⭐️⭐️⭐️⭐️⭐️result", result)
+                 userInfo?.profileImage = result.profileImage
+                 
+                 print("⭐️⭐️⭐️⭐️⭐️profileImage 바뀐 후 userInfo", userInfo)
+                 
+             })
+             .store(in: &cancellables)
+     }
+     
+ }
+
+ */
 

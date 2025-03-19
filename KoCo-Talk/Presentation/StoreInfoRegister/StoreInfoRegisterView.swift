@@ -10,7 +10,7 @@ import Combine
 
 struct StoreInfoRegisterView: View {
     let category = APIKEY.category_value
-    let placeName = "논픽션 신사"
+    let placeName = "- 광화문 -"
     let kakaoPlaceID = "1543939713"
     let address = "서울 강남구 신사동 524-33"
     let storeCategory = "화장품"
@@ -19,8 +19,8 @@ struct StoreInfoRegisterView: View {
         "http://imgnews.naver.net/image/5264/2023/08/04/0000616598_002_20230804090202481.jpg"
         
     ]
-    let longitude : Double = 127.022056876491
-    let latitude : Double = 37.5226435732714
+    let longitude : Double = 126.9770
+    let latitude : Double = 37.5759
     
     
     @StateObject private var vm = StoreInfoRegisterViewModel()
@@ -144,6 +144,7 @@ struct StoreInfoRegisterView: View {
         }
         .onDisappear{
             showTabBar = true
+            vm.cancelTasks()
         }
         .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
         .background(.white)
@@ -428,9 +429,55 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
 }
 
+@MainActor
+final class StoreInfoRegisterViewModel : ObservableObject {
+//    private var cancellables = Set<AnyCancellable>()
+    private var tasks : [Task<Void, Never>] = []
+    
+    func post(postBody : StoreInfoPostBody) {
+        print("❤️❤️최종 post body❤️❤️", postBody)
+         
+        let task = Task {
+            do {
+                let result = try await NetworkManager2.postStoreData(body : postBody)
+                print("❤️Post 완료❤️", result)
+            } catch {
+                // 에러 처리
+                print("🚨error", error)
+            }
+        }
+        
+        tasks.append(task)
+    }
+    
+    func uploadFiles(imageData : Data, bindingImageString : Binding<String>) {
+        print("❤️❤️❤️imageData❤️❤️", imageData)
+        
+        let task = Task {
+            do {
+                let result = try await NetworkManager2.uploadFiles(fileDatas: [imageData])
+                print("⭐️⭐️⭐️⭐️⭐️result", result)
+                let imageUrl = result.files.first ?? "-"
+                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
+                bindingImageString.wrappedValue = imageUrl
+            } catch {
+                // 에러 처리
+                print("🚨error", error)
+            }
+        }
+        
+        tasks.append(task)
+    }
+    
+    func cancelTasks() {
+        tasks.forEach{$0.cancel()}
+        tasks.removeAll()
+    }
+}
 
 
 
+/*
 class StoreInfoRegisterViewModel : ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
@@ -454,6 +501,7 @@ class StoreInfoRegisterViewModel : ObservableObject {
                 
             })
             .store(in: &cancellables)
+        
     }
     
     func uploadFiles(imageData : Data, bindingImageString : Binding<String>) {
@@ -481,3 +529,4 @@ class StoreInfoRegisterViewModel : ObservableObject {
         
     }
 }
+*/
