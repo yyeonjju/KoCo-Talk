@@ -92,6 +92,9 @@ struct MapView : View {
                 )
             }
         }
+        .onDisappear{
+            intent.cancelTasks()
+        }
     }
 }
 
