@@ -40,11 +40,30 @@ final class ChatRealmManager : BaseRealmManager {
 //            .eraseToAnyPublisher()
 //    }
     
-    func getChatsFor(roomId : String) -> AnyPublisher<[RealmChatContent], FetchError> {
+    
+//     //combine 사용
+//     func getChatsFor(roomId : String) -> AnyPublisher<[RealmChatContent], FetchError> {
+//         guard let chats = getAllObjects(tableModel: RealmChatContent.self) else {
+//             return Just([RealmChatContent]())
+//                 .setFailureType(to: FetchError.self)
+//                 .eraseToAnyPublisher()
+//         }
+//         
+//         //해당하는 roomId의 채팅만 get
+//         let chatsForRoomId = chats.where({ chat in
+//             chat.roomId.equals(roomId)
+//         })
+//         
+//         return Just(Array(chatsForRoomId))
+//             .setFailureType(to: FetchError.self)
+//             .eraseToAnyPublisher()
+//     }
+     
+
+    func getChatsFor(roomId : String) -> [RealmChatContent] {
+        
         guard let chats = getAllObjects(tableModel: RealmChatContent.self) else {
-            return Just([RealmChatContent]())
-                .setFailureType(to: FetchError.self)
-                .eraseToAnyPublisher()
+            return []
         }
         
         //해당하는 roomId의 채팅만 get
@@ -52,9 +71,7 @@ final class ChatRealmManager : BaseRealmManager {
             chat.roomId.equals(roomId)
         })
         
-        return Just(Array(chatsForRoomId))
-            .setFailureType(to: FetchError.self)
-            .eraseToAnyPublisher()
+        return Array(chatsForRoomId)
     }
     
 }

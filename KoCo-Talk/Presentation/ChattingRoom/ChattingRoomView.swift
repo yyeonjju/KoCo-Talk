@@ -70,7 +70,7 @@ struct ChattingRoomView: View {
         
         .background(Assets.Colors.pointGreen3)
         .onAppear{
-            intent.getPrevChats(roomId: roomId)
+            intent.getChats(roomId: roomId)
  
         }
         //채팅방 들어왔을 때는 탭바 보이지 않고, .onDisappear 시점에는 (이전 페이지로 돌아갈 떄) 다시 탭바 뜰 수 있도록
@@ -79,6 +79,7 @@ struct ChattingRoomView: View {
             showTabBar = true
             
             intent.stopDMReceive()
+            intent.cancelTasks()
         }
     }
     
@@ -193,7 +194,7 @@ extension ChattingRoomView {
                         $0.image.jpegData(compressionQuality: 1.0)
                     }.compactMap{$0}
                     
-                    intent.uploadFiles(roomId : roomId, fileDatas: datas)
+                    intent.submitFiles(roomId : roomId, fileDatas: datas)
                 }else {
                     intent.submitMessage(roomId: roomId, text: inputText, files : [])
                     inputText = ""

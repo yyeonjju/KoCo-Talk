@@ -28,6 +28,10 @@ enum ChatEventName : String {
 }
 
 
+//enum SocketIOError : Error {
+//    case receiveFail
+//}
+
 
 //TODO: background, active 시점 고려해서 소켓 연결/해제 처리
 
