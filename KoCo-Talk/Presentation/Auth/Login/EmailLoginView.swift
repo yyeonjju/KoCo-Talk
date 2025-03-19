@@ -22,13 +22,15 @@ struct EmailLoginView: View {
 //    @State private var password = "kocoTalk1"
     
     
-    
+    //북 37.51823°, 동 127.02331°
     @State private var email = "heidi_1@KoCoTalk.com"
     @State private var password = "heidi_1"
 //    @State private var email = "TAMBURINS_1@TAMBURINS.com"
 //    @State private var password = "TAMBURINS_1"
 //    @State private var email = "DIPTYQUE_1@DIPTYQUE.com"
 //    @State private var password = "DIPTYQUE_1"
+//    @State private var email = "Aesop_1@Aesop.com"
+//    @State private var password = "Aesop_1"
     
     var body: some View {
         VStack{

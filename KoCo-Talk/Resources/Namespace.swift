@@ -23,6 +23,9 @@ enum Assets {
         static let gray3 = Color("gray3")
         static let gray4 = Color("gray4")
         static let gray5 = Color("gray5")
+        
+        static let chatMessageBackgroundGray = Color("chatMessageBackgroundGray")
+        
         static let white = Color("white")
     }
     

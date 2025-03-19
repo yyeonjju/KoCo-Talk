@@ -87,7 +87,7 @@ extension ChattingRoomRowView {
                     .clipShape(
                         RoundedCorner(radius: 18, corners: [.topLeft, .topRight , .bottomLeft])
                     )
-                : Assets.Colors.gray5
+                : Assets.Colors.chatMessageBackgroundGray
                     .clipShape(
                         RoundedCorner(radius: 18, corners: [.topRight, .bottomLeft, .bottomRight])
                     )

@@ -30,6 +30,8 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
     
     func getPrevChats(roomId : String) {
         var temp : [ChatRoomContentDTO] = []
+        
+        //✅ Realm에서 이미 본 메시지 데이터 로드
         chatRealmManager.getChatsFor(roomId: roomId)
             .flatMap{ result in
                 print("💕💕💕💕💕💕💕result💕💕💕💕💕💕💕", result)
@@ -42,6 +44,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
                 
                 print("💕💕💕💕💕💕💕lastChatCreatedAt💕💕💕💕💕💕💕", lastChatCreatedAt)
                 
+                //✅ 서버에서 확인하지 않은 최근 메시지 데이터 로드
                 return NetworkManager.getChatRoomContents(roomId: roomId, cursorDate: lastChatCreatedAt)
             }
             .sink(receiveCompletion: {[weak self] completion in
