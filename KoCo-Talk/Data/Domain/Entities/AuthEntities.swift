@@ -8,14 +8,23 @@
 import Foundation
 
 //encode&decode : userDegaults에 저장
-struct LoginResponse : Codable {
+//struct LoginResponse : Codable {
+//    let id: String
+//    let email: String
+//    let nick: String
+//    var profileImage: String?
+//    var access: String
+//    let refresh: String
+//}
+
+//encode&decode : userDegaults에 저장
+struct BaseUserInfo:Codable{
     let id: String
     let email: String
     let nick: String
     var profileImage: String?
-    var access: String
-    let refresh: String
 }
+
 
 //struct UserInfo {
 //    let id: String

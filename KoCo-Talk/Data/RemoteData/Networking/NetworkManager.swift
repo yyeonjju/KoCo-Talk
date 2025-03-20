@@ -282,7 +282,7 @@ final class APIRequestInterceptor: RequestInterceptor {
         
 //        if urlRequest.url?.path() != APIURL.version + APIURL.tokenRefresh {
 //            print("🌸🌸🌸토큰 리프레시가 아닐 때만 엑세스 토큰 넣어줌🌸🌸🌸")
-        urlRequest.setValue((UserDefaultsManager.userInfo?.access ?? ""), forHTTPHeaderField: APIKEY.accessToken_key)
+        urlRequest.setValue((KeyChainValue.accessToken ?? ""), forHTTPHeaderField: APIKEY.accessToken_key)
 //        }
         
         print("- adapt - headers -> ", urlRequest.headers)
@@ -317,7 +317,7 @@ final class APIRequestInterceptor: RequestInterceptor {
                 }, receiveValue: {[weak self]  result in
                     guard let self else { return }
                     
-                    UserDefaultsManager.userInfo?.access = result.accessToken
+                    KeyChainValue.accessToken = result.accessToken
                     completion(.retry)
                 })
                 .store(in: &cancellables)

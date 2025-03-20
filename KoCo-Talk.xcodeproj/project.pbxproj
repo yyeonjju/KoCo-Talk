@@ -88,6 +88,7 @@
 		7D7E67F32D50D1910037BD36 /* AuthEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67F22D50D1910037BD36 /* AuthEntities.swift */; };
 		7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67F42D50D1D60037BD36 /* Auth.swift */; };
 		7DB5D71C2D8A670900051D27 /* NetworkManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D71B2D8A670900051D27 /* NetworkManager2.swift */; };
+		7DB5D71F2D8BC71E00051D27 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D71E2D8BC71E00051D27 /* KeyChainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -183,6 +184,7 @@
 		7D7E67F22D50D1910037BD36 /* AuthEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntities.swift; sourceTree = "<group>"; };
 		7D7E67F42D50D1D60037BD36 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		7DB5D71B2D8A670900051D27 /* NetworkManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager2.swift; sourceTree = "<group>"; };
+		7DB5D71E2D8BC71E00051D27 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,10 +584,19 @@
 		7D7E67ED2D4F60250037BD36 /* LocalData */ = {
 			isa = PBXGroup;
 			children = (
+				7DB5D71D2D8BC6FB00051D27 /* KeyChain */,
 				7D68FBDD2D7D3DE300B9B013 /* Realm */,
 				7D68FBDC2D7D3DD200B9B013 /* UserDefaults */,
 			);
 			path = LocalData;
+			sourceTree = "<group>";
+		};
+		7DB5D71D2D8BC6FB00051D27 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				7DB5D71E2D8BC71E00051D27 /* KeyChainManager.swift */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -711,6 +722,7 @@
 				7D7E67972D49D1700037BD36 /* SettingsView.swift in Sources */,
 				7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */,
 				7D68FBEB2D7E92FB00B9B013 /* MapModel.swift in Sources */,
+				7DB5D71F2D8BC71E00051D27 /* KeyChainManager.swift in Sources */,
 				7D28619B2D82A9000015DD37 /* StoreDetailInformantionlView.swift in Sources */,
 				7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */,
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,

@@ -47,7 +47,6 @@ struct EmailLoginView: View {
             
             Button {
                 vm.login(body: LoginBody(email: email, password: password))
-                
             } label: {
                 Text("로그인하기")
                     .padding()
@@ -75,8 +74,14 @@ final class EmailLoginViewModel : ObservableObject {
             do {
                 let result = try await NetworkManager2.login(body: body)
                 // 값 처리
-                print("❤️ 로그인 했다!, -> ", result.toDomain())
-                UserDefaultsManager.userInfo = result.toDomain()
+                print("❤️ 로그인 했다!, -> ", result.toUserInfo())
+                UserDefaultsManager.userInfo = result.toUserInfo()
+                
+                KeyChainValue.accessToken = result.access
+                KeyChainValue.refreshToken = result.refresh
+                print("❤️accessToken -> ",KeyChainValue.accessToken )
+                print("❤️refreshToken -> ",KeyChainValue.refreshToken )
+                
                 loginSuccess = true
             } catch {
                 // 에러 처리

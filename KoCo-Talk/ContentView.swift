@@ -49,7 +49,6 @@ struct ContentView: View {
     @StateObject var tabbarManager = TabBarManager()
     
     @State private var loginViewShown = false
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     
     var body: some View {
         if authManager.status == AuthStatus.notauthorized ||

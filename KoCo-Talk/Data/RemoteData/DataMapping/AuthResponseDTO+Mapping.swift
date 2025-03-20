@@ -26,8 +26,9 @@ struct LoginResponseDTO : Decodable {
 }
 
 extension LoginResponseDTO {
-    func toDomain() -> LoginResponse {
-        return LoginResponse(id: id, email: email, nick: nick, profileImage: profileImage, access: access, refresh: refresh)
+    func toUserInfo() -> BaseUserInfo {
+        return BaseUserInfo(id: id, email: email, nick: nick, profileImage: profileImage)
+        //LoginResponse(id: id, email: email, nick: nick, profileImage: profileImage, access: access, refresh: refresh)
     }
 }
 

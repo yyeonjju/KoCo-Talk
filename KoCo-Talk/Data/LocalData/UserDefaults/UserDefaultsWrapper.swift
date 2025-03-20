@@ -38,8 +38,9 @@ struct UserDefaultsWrapper<T : Codable> {
 }
 
 
+// MARK: - UserDefaults value 중앙 관리
 enum UserDefaultsManager {
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) static var userInfo : LoginResponse?
+    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) static var userInfo : BaseUserInfo?
     
     @UserDefaultsWrapper(key : .portraitKeyboardHeight, defaultValue: 0.0) static var portraitKeyboardHeight : CGFloat
     @UserDefaultsWrapper(key : .landscapeKeyboardHeight, defaultValue: 0.0) static var landscapeKeyboardHeight : CGFloat
