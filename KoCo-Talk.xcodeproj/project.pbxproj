@@ -89,6 +89,7 @@
 		7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E67F42D50D1D60037BD36 /* Auth.swift */; };
 		7DB5D71C2D8A670900051D27 /* NetworkManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D71B2D8A670900051D27 /* NetworkManager2.swift */; };
 		7DB5D71F2D8BC71E00051D27 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D71E2D8BC71E00051D27 /* KeyChainManager.swift */; };
+		7DB5D7232D8BE14600051D27 /* APIRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7222D8BE14600051D27 /* APIRequestInterceptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -185,6 +186,7 @@
 		7D7E67F42D50D1D60037BD36 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		7DB5D71B2D8A670900051D27 /* NetworkManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager2.swift; sourceTree = "<group>"; };
 		7DB5D71E2D8BC71E00051D27 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		7DB5D7222D8BE14600051D27 /* APIRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestInterceptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +473,7 @@
 				7D7E67BC2D4A0DC90037BD36 /* APIKEY.swift */,
 				7D7E67E22D4CC8320037BD36 /* SocketIOManager.swift */,
 				7DB5D71B2D8A670900051D27 /* NetworkManager2.swift */,
+				7DB5D7222D8BE14600051D27 /* APIRequestInterceptor.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
+				7DB5D7232D8BE14600051D27 /* APIRequestInterceptor.swift in Sources */,
 				7D68FBED2D7E9B3300B9B013 /* StoreInfoEntities.swift in Sources */,
 				7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */,
 				7D68FBC32D75AB8700B9B013 /* OrientationManager.swift in Sources */,

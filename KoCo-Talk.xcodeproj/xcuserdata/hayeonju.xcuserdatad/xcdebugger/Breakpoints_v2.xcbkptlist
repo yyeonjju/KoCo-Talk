@@ -302,10 +302,10 @@
             filePath = "KoCo-Talk/Data/RemoteData/Networking/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "fetch(fetchRouter:model:)"
-            landmarkType = "7">
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -318,10 +318,10 @@
             filePath = "KoCo-Talk/Data/RemoteData/Networking/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "uploadFile(fetchRouter:fileDatas:name:model:)"
-            landmarkType = "7">
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
