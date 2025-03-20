@@ -9,10 +9,12 @@ import Foundation
 import Alamofire
 
 
-enum NetworkManager2 {
+final class NetworkManager2 {
+    static let shared = NetworkManager2()
+    private init() {}
     
     // 공통된 응답 처리 로직을 메서드로 분리
-    private static func handleResponse<M: Decodable>(response: AFDataResponse<M>) throws -> M {
+    private func handleResponse<M: Decodable>(response: AFDataResponse<M>) throws -> M {
         guard response.response != nil else {
             throw FetchError.invalidResponse
         }
@@ -44,7 +46,7 @@ enum NetworkManager2 {
     }
     
     // 공통 에러 처리 로직을 메서드로 분리
-    private static func mapToFetchError(_ error: Error) -> FetchError {
+    private func mapToFetchError(_ error: Error) -> FetchError {
         if let error = error as? FetchError {
             return error
         } else {
@@ -52,7 +54,7 @@ enum NetworkManager2 {
         }
     }
     
-    static private func fetch<M: Decodable>(fetchRouter: Router, model: M.Type) async throws -> M {
+    private func fetch<M: Decodable>(fetchRouter: Router, model: M.Type) async throws -> M {
         do {
             guard let request = try? fetchRouter.asURLRequest() else {
                 throw FetchError.invalidRequest
@@ -68,10 +70,10 @@ enum NetworkManager2 {
                 AF.request(request, interceptor: APIRequestInterceptor())
                     .responseDecodable(of: model.self) { response in
                         do {
-                            let result = try handleResponse(response: response)
+                            let result = try self.handleResponse(response: response)
                             continuation.resume(returning: result)
                         } catch {
-                            continuation.resume(throwing: mapToFetchError(error))
+                            continuation.resume(throwing: self.mapToFetchError(error))
                         }
                     }
             }
@@ -100,7 +102,7 @@ enum NetworkManager2 {
         }
     }
     
-    static func uploadFile<M: Decodable>(fetchRouter: Router, fileDatas: [Data], name: String = "files", model: M.Type) async throws -> M {
+    private func uploadFile<M: Decodable>(fetchRouter: Router, fileDatas: [Data], name: String = "files", model: M.Type) async throws -> M {
         do {
             guard let request = try? fetchRouter.asURLRequest() else {
                 throw FetchError.invalidRequest
@@ -131,10 +133,10 @@ enum NetworkManager2 {
                 )
                 .responseDecodable(of: model.self) { response in
                     do {
-                        let result = try handleResponse(response: response)
+                        let result = try self.handleResponse(response: response)
                         continuation.resume(returning: result)
                     } catch {
-                        continuation.resume(throwing: mapToFetchError(error))
+                        continuation.resume(throwing: self.mapToFetchError(error))
                     }
                 }
             }
@@ -143,7 +145,7 @@ enum NetworkManager2 {
         }
     }
 
-    static func fetchData(fetchRouter: Router) async throws -> Data {
+    private func fetchData(fetchRouter: Router) async throws -> Data {
         do {
             guard let request = try? fetchRouter.asURLRequest() else {
                 throw FetchError.invalidRequest
@@ -217,67 +219,67 @@ enum NetworkManager2 {
 
 
 extension NetworkManager2 {
-    static func getStores(limit: String, nextCursor: String) async throws -> PostContentResponseDTO {
+    func getStores(limit: String, nextCursor: String) async throws -> PostContentResponseDTO {
         let router = Router.getStores(next: nextCursor, limit: limit, category: APIKEY.category_value)
         return try await fetch(fetchRouter: router, model: PostContentResponseDTO.self)
     }
 
-    static func getLocationBasedStores(location: LocationCoordinate) async throws -> PostContentResponseDTO {
+    func getLocationBasedStores(location: LocationCoordinate) async throws -> PostContentResponseDTO {
         let router = Router.getLocationBasedStores(category: APIKEY.category_value, coordinate: location, maxDistance: 1000, orderBy: .distance, sortBy: .asc)
         return try await fetch(fetchRouter: router, model: PostContentResponseDTO.self)
     }
 
-    static func postStoreData(body: StoreInfoPostBody) async throws -> PostContentDTO {
+    func postStoreData(body: StoreInfoPostBody) async throws -> PostContentDTO {
         let router = Router.postStoreData(body: body)
         return try await fetch(fetchRouter: router, model: PostContentDTO.self)
     }
     
     //Chat
-    static func createChatRoom(body : CreateChatRoomBody) async throws -> ChatRoomResponseDTO {
+    func createChatRoom(body : CreateChatRoomBody) async throws -> ChatRoomResponseDTO {
         let router = Router.createChatRoom(body: body)
         return try await fetch(fetchRouter: router, model: ChatRoomResponseDTO.self)
     }
     
-    static func getChatRoomList() async throws -> ChatRoomListResponseDTO {
+    func getChatRoomList() async throws -> ChatRoomListResponseDTO {
         let router = Router.getChatRoomList
         return try await fetch(fetchRouter: router, model: ChatRoomListResponseDTO.self)
     }
     
-    static func getChatRoomContents(roomId : String, cursorDate : String) async throws -> ChatRoomContentListResponseDTO {
+    func getChatRoomContents(roomId : String, cursorDate : String) async throws -> ChatRoomContentListResponseDTO {
         let router = Router.getChatContents(roomId: roomId, cursorDate: cursorDate)
         return try await fetch(fetchRouter: router, model: ChatRoomContentListResponseDTO.self)
     }
     
-    static func postChat(roomId : String, body : PostChatBody) async throws -> ChatRoomContentDTO {
+    func postChat(roomId : String, body : PostChatBody) async throws -> ChatRoomContentDTO {
         let router = Router.postChat(roomId: roomId, body: body)
         return try await fetch(fetchRouter: router, model: ChatRoomContentDTO.self)
     }
     
     //Files
-    static func uploadFiles(fileDatas : [Data]) async throws -> FileResponse {
+    func uploadFiles(fileDatas : [Data]) async throws -> FileResponse {
         let router = Router.uploadFiles
         return try await uploadFile(fetchRouter: router, fileDatas: fileDatas, model : FileResponse.self)
     }
     
-    static func downloadFiles(url : String) async throws -> Data {
+    func downloadFiles(url : String) async throws -> Data {
         let router = Router.downloadFile(url: url)
         return try await fetchData(fetchRouter: router)
     }
     
     
     //Auth
-    static func tokenRefresh() async throws -> TokenRefreshResponse {
+    func tokenRefresh() async throws -> TokenRefreshResponse {
         let router = Router.tokenRefresh
         return try await fetch(fetchRouter: router, model : TokenRefreshResponse.self)
     }
     
-    static func login(body : LoginBody) async throws -> LoginResponseDTO {
+    func login(body : LoginBody) async throws -> LoginResponseDTO {
         let router = Router.login(body: body)
         return try await fetch(fetchRouter: router, model : LoginResponseDTO.self)
     }
     
     //User
-    static func updateProfile(body : UpdateProfileRequestBody) async throws -> UpdateProfileResponseDTO {
+    func updateProfile(body : UpdateProfileRequestBody) async throws -> UpdateProfileResponseDTO {
         let router = Router.updateProfile(body: body)
         return try await fetch(fetchRouter: router, model : UpdateProfileResponseDTO.self)
     }

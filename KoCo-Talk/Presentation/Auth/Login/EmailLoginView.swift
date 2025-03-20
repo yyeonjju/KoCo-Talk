@@ -72,7 +72,7 @@ final class EmailLoginViewModel : ObservableObject {
     func login(body : LoginBody){
         let task = Task {
             do {
-                let result = try await NetworkManager2.login(body: body)
+                let result = try await NetworkManager2.shared.login(body: body)
                 // 값 처리
                 print("❤️ 로그인 했다!, -> ", result.toUserInfo())
                 UserDefaultsManager.userInfo = result.toUserInfo()

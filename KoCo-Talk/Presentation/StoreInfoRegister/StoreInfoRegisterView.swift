@@ -439,7 +439,7 @@ final class StoreInfoRegisterViewModel : ObservableObject {
          
         let task = Task {
             do {
-                let result = try await NetworkManager2.postStoreData(body : postBody)
+                let result = try await NetworkManager2.shared.postStoreData(body : postBody)
                 print("❤️Post 완료❤️", result)
             } catch {
                 // 에러 처리
@@ -455,7 +455,7 @@ final class StoreInfoRegisterViewModel : ObservableObject {
         
         let task = Task {
             do {
-                let result = try await NetworkManager2.uploadFiles(fileDatas: [imageData])
+                let result = try await NetworkManager2.shared.uploadFiles(fileDatas: [imageData])
                 print("⭐️⭐️⭐️⭐️⭐️result", result)
                 let imageUrl = result.files.first ?? "-"
                 print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)

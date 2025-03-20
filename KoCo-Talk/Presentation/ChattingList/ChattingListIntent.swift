@@ -15,6 +15,7 @@ protocol ChattingListIntentProtocol {
 }
 
 final class ChattingListIntent : ChattingListIntentProtocol {
+    private let defaultChatListRepository = DefaultChatListRepository()
     private weak var model : ChattingListModelActionProtocol?
     private var tasks : [Task<Void, Never>] = []
     
@@ -23,12 +24,13 @@ final class ChattingListIntent : ChattingListIntentProtocol {
     }
     
     func fetchChatRoomList() {
-        let task = Task {
+        let task = Task {[weak self] in
+            guard let self, let model else { return }
+            
             do {
-                let result = try await  NetworkManager2.getChatRoomList()
-                print("❤️", result.data)
-                let chatRoomList = result.data.map{$0.toDomain()}
-                model?.updateChatRoomList(list: chatRoomList)
+                let chatRoomList = try await  defaultChatListRepository.getChatRoomList()
+                print("❤️", chatRoomList)
+                model.updateChatRoomList(list: chatRoomList)
             } catch {
                 // 에러 처리
                 print("🚨error", error)
@@ -37,23 +39,6 @@ final class ChattingListIntent : ChattingListIntentProtocol {
         
         tasks.append(task)
     }
-    
-//    func createChatRoom(opponentID : String) {
-//        
-//        let task = Task {
-//            do {
-//                let result = try await NetworkManager2.createChatRoom(body : CreateChatRoomBody(opponent_id: opponentID))
-//                
-//                self.fetchChatRoomList()
-//            } catch {
-//                // 에러 처리
-//                print("🚨error", error)
-//            }
-//        }
-//        
-//        tasks.append(task)
-//        
-//    }
     
     func cancelTasks() {
         tasks.forEach{$0.cancel()}

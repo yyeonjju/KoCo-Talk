@@ -19,6 +19,7 @@ protocol ChattingRoomIntentProtocol {
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
+    private let defaultChatRoomRepository = DefaultChatRoomRepository()
     private var cancellables = Set<AnyCancellable>()
     private weak var model : ChattingRoomModelActionProtocol?
     private var chatRealmManager = ChatRealmManager()
@@ -31,29 +32,26 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
     func getChats(roomId : String) {
         
         //✅ Realm에서 이미 본 메시지 데이터 로드
-        let realmChats = chatRealmManager.getChatsFor(roomId: roomId)
-        print("💕💕💕💕💕💕💕앞서 저장된 realm chats💕💕💕💕💕💕💕", realmChats)
-        
-        let prevChats = realmChats.map{$0.toRemoteDTO()}
-        print("💕💕💕💕💕💕💕prevChats💕💕💕💕💕💕💕", prevChats)
-        
-        let lastChatCreatedAt = realmChats.last?.createdAt ?? ""
-        print("💕💕💕💕💕💕💕lastChatCreatedAt💕💕💕💕💕💕💕", lastChatCreatedAt)
+        defaultChatRoomRepository.getPrevRealmChats(roomId: roomId)
+
+        let prevChats = defaultChatRoomRepository.getPrevRealmChats(roomId: roomId)
+        let lastChatCreatedAt = prevChats.last?.createdAt ?? ""
         
         
-        let task = Task {
+        let task = Task { [weak self] in
+            guard let self, let model else { return }
+            
             do {
                 //✅ 서버에서 확인하지 않은 최근 메시지 데이터 로드
-                let result = try await NetworkManager2.getChatRoomContents(roomId: roomId, cursorDate: lastChatCreatedAt)
-                print("🍀🍀🍀🍀🍀🍀🍀서버 chat result🍀🍀🍀🍀🍀🍀🍀", result)
+                let newChats = try await defaultChatRoomRepository.getChats(roomId: roomId, cursorDate: lastChatCreatedAt)
+                
 
-                //realm에 저장되지 않은 데이터는 realm에 저장 ( 메인 스레드에서 실행되어야함 -> @MainActor 때문에 가능 )
-                chatRealmManager.add(chats: result.data.map{$0.toRealmType()})
                 //UI 업데이트를 위해 model업데이트
                 var allChats = prevChats
-                allChats.append(contentsOf: result.data)
+                allChats.append(contentsOf:newChats)
+                
                 let rows = ConvertChatContentsToChatRows(data: allChats, myUserId: UserDefaultsManager.userInfo?.id ?? "")
-                model?.updateChatRoomRows(rows)
+                model.updateChatRoomRows(rows)
                 
                 
                 //✅ 데이터 모두 로드 후 소켓 연결
@@ -107,12 +105,12 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
     }
     
     func submitMessage(roomId : String, text : String, files : [String]) {
-        let body = PostChatBody(content: text, files: files)
-       
-        let task = Task {
+        let task = Task {[weak self] in
+            guard let self, let model else { return }
+            
             do {
-                let result = try await NetworkManager2.postChat(roomId: roomId, body: body)
-                print("💕💕💕 메세지 보내기 완료!!", result)
+                let chatId = try await defaultChatRoomRepository.submitMessage(roomId : roomId, text : text, files : files)
+                print("💕💕💕 메세지 보내기 완료!!", chatId)
             } catch {
                 // 에러 처리
                 print("🚨error", error)
@@ -124,14 +122,12 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
     
     func submitFiles(roomId : String, fileDatas : [Data]) {
         
-        let task = Task {
+        let task = Task {[weak self] in
+            guard let self, let model else { return }
+            
             do {
-                //✅ 서버에 파일 업로드 이후
-                let result = try await  NetworkManager2.uploadFiles(fileDatas: fileDatas)
-                print("💕💕💕 파일 업로드 완료!!", result)
-                
-                //✅ 메시지 전송
-                submitMessage(roomId: roomId, text: "", files: result.files)
+                let chatId = try await defaultChatRoomRepository.submitFiles(roomId: roomId, fileDatas: fileDatas)
+                print("💕💕💕 메세지 보내기 완료!!", chatId)
             } catch {
                 // 에러 처리
                 print("🚨error", error)

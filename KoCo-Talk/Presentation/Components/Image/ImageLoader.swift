@@ -20,7 +20,7 @@ final class ImageLoader : ObservableObject {
         
         let task = Task {
             do {
-                let result = try await NetworkManager2.downloadFiles(url: urlString)
+                let result = try await NetworkManager2.shared.downloadFiles(url: urlString)
                 print("💕💕💕 이미지 다운로드 완료!!", result)
                 image = UIImage(data: result)
                 isLoading = false

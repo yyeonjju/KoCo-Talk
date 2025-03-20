@@ -64,7 +64,7 @@ final class APIRequestInterceptor: RequestInterceptor {
             
             Task {
                 do {
-                    let result = try await NetworkManager2.tokenRefresh()
+                    let result = try await NetworkManager2.shared.tokenRefresh()
                     print("✅Thread.isMainThread", Thread.isMainThread)
                     KeyChainValue.accessToken = result.accessToken
                     completion(.retry)

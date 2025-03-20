@@ -109,7 +109,7 @@ final class UserProfileViewModel : ObservableObject {
         
         let task = Task {
             do {
-                let result = try await NetworkManager2.updateProfile(body : body)
+                let result = try await NetworkManager2.shared.updateProfile(body : body)
                 // 값 처리
                 UserDefaultsManager.userInfo?.profileImage = result.profileImage
                 print("⭐️⭐️⭐️⭐️⭐️profileImage 바뀐 후  userInfo", UserDefaultsManager.userInfo)
