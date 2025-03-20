@@ -96,6 +96,10 @@
 		7DB5D72E2D8C0F3F00051D27 /* DefaultMapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D72D2D8C0F3F00051D27 /* DefaultMapRepository.swift */; };
 		7DB5D7302D8C0F5100051D27 /* DefaultChatListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D72F2D8C0F5100051D27 /* DefaultChatListRepository.swift */; };
 		7DB5D7322D8C0F7000051D27 /* DefaultChatRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7312D8C0F7000051D27 /* DefaultChatRoomRepository.swift */; };
+		7DB5D7342D8C3A8D00051D27 /* EmailLoginIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7332D8C3A8D00051D27 /* EmailLoginIntent.swift */; };
+		7DB5D7362D8C3B6C00051D27 /* EmailLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7352D8C3B6C00051D27 /* EmailLoginModel.swift */; };
+		7DB5D7382D8C42B700051D27 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7372D8C42B700051D27 /* AuthRepository.swift */; };
+		7DB5D73A2D8C42CB00051D27 /* DefaultAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7392D8C42CB00051D27 /* DefaultAuthRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -199,6 +203,10 @@
 		7DB5D72D2D8C0F3F00051D27 /* DefaultMapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapRepository.swift; sourceTree = "<group>"; };
 		7DB5D72F2D8C0F5100051D27 /* DefaultChatListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatListRepository.swift; sourceTree = "<group>"; };
 		7DB5D7312D8C0F7000051D27 /* DefaultChatRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatRoomRepository.swift; sourceTree = "<group>"; };
+		7DB5D7332D8C3A8D00051D27 /* EmailLoginIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginIntent.swift; sourceTree = "<group>"; };
+		7DB5D7352D8C3B6C00051D27 /* EmailLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginModel.swift; sourceTree = "<group>"; };
+		7DB5D7372D8C42B700051D27 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		7DB5D7392D8C42CB00051D27 /* DefaultAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -594,6 +602,8 @@
 			isa = PBXGroup;
 			children = (
 				7D7E67EB2D4F532A0037BD36 /* EmailLoginView.swift */,
+				7DB5D7332D8C3A8D00051D27 /* EmailLoginIntent.swift */,
+				7DB5D7352D8C3B6C00051D27 /* EmailLoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -630,6 +640,7 @@
 				7DB5D7272D8BF57100051D27 /* MapRepository.swift */,
 				7DB5D7292D8BF58B00051D27 /* ChatListRepository.swift */,
 				7DB5D72B2D8BF59C00051D27 /* ChatRoomRepository.swift */,
+				7DB5D7372D8C42B700051D27 /* AuthRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -640,6 +651,7 @@
 				7DB5D72D2D8C0F3F00051D27 /* DefaultMapRepository.swift */,
 				7DB5D72F2D8C0F5100051D27 /* DefaultChatListRepository.swift */,
 				7DB5D7312D8C0F7000051D27 /* DefaultChatRoomRepository.swift */,
+				7DB5D7392D8C42CB00051D27 /* DefaultAuthRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -746,6 +758,8 @@
 				7D7E67B52D4A0D4B0037BD36 /* Router.swift in Sources */,
 				7D7E67F12D50D09D0037BD36 /* AuthResponseDTO+Mapping.swift in Sources */,
 				7D7E67C52D4A10980037BD36 /* ChatRoomResponseDTO+Mapping.swift in Sources */,
+				7DB5D73A2D8C42CB00051D27 /* DefaultAuthRepository.swift in Sources */,
+				7DB5D7342D8C3A8D00051D27 /* EmailLoginIntent.swift in Sources */,
 				7D68FBE52D7D4E6200B9B013 /* RealmChatContent.swift in Sources */,
 				7D7E67E12D4C6FCD0037BD36 /* RoundedCorner.swift in Sources */,
 				7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */,
@@ -780,10 +794,12 @@
 				7D2861992D8173700015DD37 /* LocationManager.swift in Sources */,
 				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
 				7D7E67C72D4A11CB0037BD36 /* ChatContentsResponseDTO+Mapping.swift in Sources */,
+				7DB5D7382D8C42B700051D27 /* AuthRepository.swift in Sources */,
 				7DB5D71C2D8A670900051D27 /* NetworkManager2.swift in Sources */,
 				7DB5D7322D8C0F7000051D27 /* DefaultChatRoomRepository.swift in Sources */,
 				7D68FBDF2D7D3EDF00B9B013 /* BaseRealmManager.swift in Sources */,
 				7D68FBC12D757A1500B9B013 /* View++.swift in Sources */,
+				7DB5D7362D8C3B6C00051D27 /* EmailLoginModel.swift in Sources */,
 				7D28618E2D814BED0015DD37 /* StoreInfoButtonsView.swift in Sources */,
 				7D7E67C32D4A0F210037BD36 /* ChatRoom.swift in Sources */,
 				7D6007EE2D89122A00363A9A /* UserInfo.swift in Sources */,

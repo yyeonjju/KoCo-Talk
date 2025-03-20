@@ -54,7 +54,7 @@ struct ContentView: View {
         if authManager.status == AuthStatus.notauthorized ||
             authManager.status == AuthStatus.noUser {
             
-            EmailLoginView()
+            EmailLoginView.build()
             
         } else if authManager.status == AuthStatus.authorized ||
                     authManager.status == AuthStatus.userExist {
