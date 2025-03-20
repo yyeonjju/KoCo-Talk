@@ -9,10 +9,11 @@ import Foundation
 
 
 final class DefaultAuthRepository : AuthRepository {
+    private let networkManager = NetworkManager2.shared
     func login(email : String, password : String) async throws -> BaseUserInfo {
         
         let body = LoginBody(email: email, password: password)
-        let result = try await NetworkManager2.shared.login(body: body)
+        let result = try await networkManager.login(body: body)
         // 값 처리
         print("❤️ 로그인 했다!, -> ", result.toUserInfo())
         UserDefaultsManager.userInfo = result.toUserInfo()

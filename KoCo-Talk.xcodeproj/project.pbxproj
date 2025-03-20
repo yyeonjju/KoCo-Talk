@@ -100,6 +100,10 @@
 		7DB5D7362D8C3B6C00051D27 /* EmailLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7352D8C3B6C00051D27 /* EmailLoginModel.swift */; };
 		7DB5D7382D8C42B700051D27 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7372D8C42B700051D27 /* AuthRepository.swift */; };
 		7DB5D73A2D8C42CB00051D27 /* DefaultAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7392D8C42CB00051D27 /* DefaultAuthRepository.swift */; };
+		7DB5D73C2D8C47A900051D27 /* StoreInfoRegisterIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D73B2D8C47A900051D27 /* StoreInfoRegisterIntent.swift */; };
+		7DB5D73E2D8C47B100051D27 /* StoreInfoRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D73D2D8C47B100051D27 /* StoreInfoRegisterModel.swift */; };
+		7DB5D7402D8C4BA200051D27 /* StoreInfoRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D73F2D8C4BA100051D27 /* StoreInfoRegisterRepository.swift */; };
+		7DB5D7422D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7412D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -207,6 +211,10 @@
 		7DB5D7352D8C3B6C00051D27 /* EmailLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginModel.swift; sourceTree = "<group>"; };
 		7DB5D7372D8C42B700051D27 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		7DB5D7392D8C42CB00051D27 /* DefaultAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthRepository.swift; sourceTree = "<group>"; };
+		7DB5D73B2D8C47A900051D27 /* StoreInfoRegisterIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoRegisterIntent.swift; sourceTree = "<group>"; };
+		7DB5D73D2D8C47B100051D27 /* StoreInfoRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoRegisterModel.swift; sourceTree = "<group>"; };
+		7DB5D73F2D8C4BA100051D27 /* StoreInfoRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoRegisterRepository.swift; sourceTree = "<group>"; };
+		7DB5D7412D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreInfoRegisterRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				7D2861A02D84257C0015DD37 /* StoreInfoRegisterView.swift */,
+				7DB5D73B2D8C47A900051D27 /* StoreInfoRegisterIntent.swift */,
+				7DB5D73D2D8C47B100051D27 /* StoreInfoRegisterModel.swift */,
 			);
 			path = StoreInfoRegister;
 			sourceTree = "<group>";
@@ -641,6 +651,7 @@
 				7DB5D7292D8BF58B00051D27 /* ChatListRepository.swift */,
 				7DB5D72B2D8BF59C00051D27 /* ChatRoomRepository.swift */,
 				7DB5D7372D8C42B700051D27 /* AuthRepository.swift */,
+				7DB5D73F2D8C4BA100051D27 /* StoreInfoRegisterRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -652,6 +663,7 @@
 				7DB5D72F2D8C0F5100051D27 /* DefaultChatListRepository.swift */,
 				7DB5D7312D8C0F7000051D27 /* DefaultChatRoomRepository.swift */,
 				7DB5D7392D8C42CB00051D27 /* DefaultAuthRepository.swift */,
+				7DB5D7412D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -767,6 +779,7 @@
 				7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */,
 				7D68FBE92D7E92BE00B9B013 /* MapIntent.swift in Sources */,
 				7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */,
+				7DB5D73E2D8C47B100051D27 /* StoreInfoRegisterModel.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
 				7DB5D7232D8BE14600051D27 /* APIRequestInterceptor.swift in Sources */,
@@ -774,6 +787,7 @@
 				7D68FBBA2D73174400B9B013 /* BaisicAsyncImage.swift in Sources */,
 				7D68FBC32D75AB8700B9B013 /* OrientationManager.swift in Sources */,
 				7D7E67DE2D4C6D510037BD36 /* ChattingRoomRowView.swift in Sources */,
+				7DB5D7422D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift in Sources */,
 				7D7E679C2D49D5F50037BD36 /* MapView.swift in Sources */,
 				7DB5D72E2D8C0F3F00051D27 /* DefaultMapRepository.swift in Sources */,
 				7D7E67BB2D4A0DB90037BD36 /* APIURL.swift in Sources */,
@@ -790,6 +804,7 @@
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
 				7D7E67D72D4B170B0037BD36 /* DateFormatter++.swift in Sources */,
 				7D68FBD82D7C096700B9B013 /* HeaderAsyncImage.swift in Sources */,
+				7DB5D73C2D8C47A900051D27 /* StoreInfoRegisterIntent.swift in Sources */,
 				7D2861972D816B5A0015DD37 /* KakaoMapCoordinator.swift in Sources */,
 				7D2861992D8173700015DD37 /* LocationManager.swift in Sources */,
 				7D7E67D92D4B2BF50037BD36 /* ChattingRoomModel.swift in Sources */,
@@ -824,6 +839,7 @@
 				7D2861952D816B3D0015DD37 /* KakaoMapView.swift in Sources */,
 				7D7E67932D491FD40037BD36 /* ChattingListView.swift in Sources */,
 				7D7E67952D49209E0037BD36 /* ChattingRoomView.swift in Sources */,
+				7DB5D7402D8C4BA200051D27 /* StoreInfoRegisterRepository.swift in Sources */,
 				7DB5D72A2D8BF58B00051D27 /* ChatListRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

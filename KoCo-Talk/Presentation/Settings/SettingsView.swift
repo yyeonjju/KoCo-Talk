@@ -11,7 +11,7 @@ struct SettingsView: View {
     var body: some View {
         List{
             NavigationLink{
-                StoreInfoRegisterView()
+                StoreInfoRegisterView.build()
             } label : {
                 Text("매장등록")
             }

@@ -8,7 +8,27 @@
 import SwiftUI
 import Combine
 
+extension StoreInfoRegisterView {
+    static func build() -> StoreInfoRegisterView{
+        let model = StoreInfoRegisterModel()
+        let intent = StoreInfoRegisterIntent(model: model) // model의 action 프로토콜 부분 전달
+        let container = Container(
+            intent: intent as StoreInfoRegisterIntentProtocol,
+            model: model as StoreInfoRegisterModelStateProtocol,
+            modelChangePublisher: model.objectWillChange
+        )
+        
+        return StoreInfoRegisterView(container: container)
+    }
+}
+
+
 struct StoreInfoRegisterView: View {
+    @StateObject var container : Container<StoreInfoRegisterIntentProtocol, StoreInfoRegisterModelStateProtocol>
+    private var state : StoreInfoRegisterModelStateProtocol {container.model}
+    private var intent : StoreInfoRegisterIntentProtocol {container.intent}
+    
+    
     let category = APIKEY.category_value
     let placeName = "- 광화문 -"
     let kakaoPlaceID = "1543939713"
@@ -19,11 +39,10 @@ struct StoreInfoRegisterView: View {
         "http://imgnews.naver.net/image/5264/2023/08/04/0000616598_002_20230804090202481.jpg"
         
     ]
-    let longitude : Double = 126.9770
+    let longitude : Double = 126.9773
     let latitude : Double = 37.5759
     
     
-    @StateObject private var vm = StoreInfoRegisterViewModel()
     @State private var showTabBar = false
     
     
@@ -144,7 +163,7 @@ struct StoreInfoRegisterView: View {
         }
         .onDisappear{
             showTabBar = true
-            vm.cancelTasks()
+            intent.cancelTasks()
         }
         .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
         .background(.white)
@@ -157,7 +176,7 @@ struct StoreInfoRegisterView: View {
                         currentEditingProduct.image.wrappedValue = newImage
                         
                         let imageData = newImage.jpegData(compressionQuality: 0.7) ?? Data()
-                        vm.uploadFiles(
+                        intent.uploadFiles(
                             imageData: imageData,
                             bindingImageString: Binding(get: {
                                 currentEditingProduct.imageUrl.wrappedValue
@@ -366,7 +385,7 @@ struct StoreInfoRegisterView: View {
             latitude: latitude
         )
         
-        vm.post(postBody: postBody)
+        intent.post(postBody: postBody)
     }
     
     // 취소 기능
@@ -428,105 +447,3 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
-
-@MainActor
-final class StoreInfoRegisterViewModel : ObservableObject {
-//    private var cancellables = Set<AnyCancellable>()
-    private var tasks : [Task<Void, Never>] = []
-    
-    func post(postBody : StoreInfoPostBody) {
-        print("❤️❤️최종 post body❤️❤️", postBody)
-         
-        let task = Task {
-            do {
-                let result = try await NetworkManager2.shared.postStoreData(body : postBody)
-                print("❤️Post 완료❤️", result)
-            } catch {
-                // 에러 처리
-                print("🚨error", error)
-            }
-        }
-        
-        tasks.append(task)
-    }
-    
-    func uploadFiles(imageData : Data, bindingImageString : Binding<String>) {
-        print("❤️❤️❤️imageData❤️❤️", imageData)
-        
-        let task = Task {
-            do {
-                let result = try await NetworkManager2.shared.uploadFiles(fileDatas: [imageData])
-                print("⭐️⭐️⭐️⭐️⭐️result", result)
-                let imageUrl = result.files.first ?? "-"
-                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
-                bindingImageString.wrappedValue = imageUrl
-            } catch {
-                // 에러 처리
-                print("🚨error", error)
-            }
-        }
-        
-        tasks.append(task)
-    }
-    
-    func cancelTasks() {
-        tasks.forEach{$0.cancel()}
-        tasks.removeAll()
-    }
-}
-
-
-
-/*
-class StoreInfoRegisterViewModel : ObservableObject {
-    private var cancellables = Set<AnyCancellable>()
-    
-    func post(postBody : StoreInfoPostBody) {
-        print("❤️❤️최종 post body❤️❤️", postBody)
-        
-        NetworkManager.postStoreData(body : postBody)
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self else { return }
-                switch completion {
-                case .failure(let error):
-                    print("⭐️receiveCompletion - failure", error)
-                case .finished:
-                    break
-                }
-                
-            }, receiveValue: {[weak self] result in
-                guard let self else { return }
-                
-                print("❤️Post 완료❤️", result)
-                
-            })
-            .store(in: &cancellables)
-        
-    }
-    
-    func uploadFiles(imageData : Data, bindingImageString : Binding<String>) {
-        print("❤️❤️❤️imageData❤️❤️", imageData)
-        NetworkManager.uploadFiles(fileDatas: [imageData])
-            .sink(receiveCompletion: {[weak self] completion in
-                guard let self else { return }
-                switch completion {
-                case .failure(let error):
-                    print("⭐️receiveCompletion - failure", error)
-                case .finished:
-                    break
-                }
-                
-            }, receiveValue: {[weak self]  result in
-                guard let self else { return }
-                print("⭐️⭐️⭐️⭐️⭐️result", result)
-                let imageUrl = result.files.first ?? "-"
-                print("⭐️⭐️⭐️⭐️⭐️imageUrl", imageUrl)
-                bindingImageString.wrappedValue = imageUrl
-                
-            })
-            .store(in: &cancellables)
-        
-        
-    }
-}
-*/
