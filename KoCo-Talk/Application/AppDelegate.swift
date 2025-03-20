@@ -9,9 +9,6 @@ import UIKit
 import KakaoMapsSDK
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    
-    @UserDefaultsWrapper(key : .portraitKeyboardHeight, defaultValue: 0.0) var portraitKeyboardHeight : CGFloat
-    @UserDefaultsWrapper(key : .landscapeKeyboardHeight, defaultValue: 0.0) var landscapeKeyboardHeight : CGFloat
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -26,9 +23,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 //            print("🌹 isPortrait", isPortrait)
 //            print("🌹keyboardFrame.height", keyboardFrame.height)
             if isPortrait {
-                portraitKeyboardHeight = keyboardFrame.height
+                UserDefaultsManager.portraitKeyboardHeight = keyboardFrame.height
             }else {
-                landscapeKeyboardHeight = keyboardFrame.height
+                UserDefaultsManager.landscapeKeyboardHeight = keyboardFrame.height
             }
         }
 

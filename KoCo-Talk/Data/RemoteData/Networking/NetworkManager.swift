@@ -270,7 +270,6 @@ extension NetworkManager {
 
 //토큰 리프레시 로직
 final class APIRequestInterceptor: RequestInterceptor {
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     var cancellables = Set<AnyCancellable>()
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
@@ -283,7 +282,7 @@ final class APIRequestInterceptor: RequestInterceptor {
         
 //        if urlRequest.url?.path() != APIURL.version + APIURL.tokenRefresh {
 //            print("🌸🌸🌸토큰 리프레시가 아닐 때만 엑세스 토큰 넣어줌🌸🌸🌸")
-            urlRequest.setValue((userInfo?.access ?? ""), forHTTPHeaderField: APIKEY.accessToken_key)
+        urlRequest.setValue((UserDefaultsManager.userInfo?.access ?? ""), forHTTPHeaderField: APIKEY.accessToken_key)
 //        }
         
         print("- adapt - headers -> ", urlRequest.headers)
@@ -318,7 +317,7 @@ final class APIRequestInterceptor: RequestInterceptor {
                 }, receiveValue: {[weak self]  result in
                     guard let self else { return }
                     
-                    userInfo?.access = result.accessToken
+                    UserDefaultsManager.userInfo?.access = result.accessToken
                     completion(.retry)
                 })
                 .store(in: &cancellables)

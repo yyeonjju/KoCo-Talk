@@ -19,7 +19,6 @@ protocol ChattingRoomIntentProtocol {
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     private var cancellables = Set<AnyCancellable>()
     private weak var model : ChattingRoomModelActionProtocol?
     private var chatRealmManager = ChatRealmManager()
@@ -53,7 +52,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
                 //UI 업데이트를 위해 model업데이트
                 var allChats = prevChats
                 allChats.append(contentsOf: result.data)
-                let rows = ConvertChatContentsToChatRows(data: allChats, myUserId: userInfo?.id ?? "")
+                let rows = ConvertChatContentsToChatRows(data: allChats, myUserId: UserDefaultsManager.userInfo?.id ?? "")
                 model?.updateChatRoomRows(rows)
                 
                 
@@ -93,7 +92,7 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
                 chatRealmManager.add(chat: realmChat)
                 
                 //UI 업데이트
-                model.appendChat(result, myUserId: userInfo?.id ?? "")
+                model.appendChat(result, myUserId: UserDefaultsManager.userInfo?.id ?? "")
                 
 //                ChatContentsStorage.shared.chats.append(result)
 //                output.chatContents = ChatContentsStorage.shared.chats

@@ -15,8 +15,6 @@ struct ChattingRoomView: View {
     private var state : ChattingRoomModelStateProtocol {container.model}
     private var intent : ChattingRoomIntentProtocol {container.intent}
     
-    @UserDefaultsWrapper(key : .portraitKeyboardHeight, defaultValue: 0.0) var portraitKeyboardHeight : CGFloat
-    @UserDefaultsWrapper(key : .landscapeKeyboardHeight, defaultValue: 0.0) var landscapeKeyboardHeight : CGFloat
     @Orientation var orientation
     
     @FocusState private var textFieldFocused: Bool
@@ -88,9 +86,9 @@ struct ChattingRoomView: View {
         
         //가로, 세로 방향에 따라 추가 옵션 뷰의 높이 설정
         if orientation.isPortrait {
-            height = portraitKeyboardHeight > 0 ? portraitKeyboardHeight : 300
+            height = UserDefaultsManager.portraitKeyboardHeight > 0 ? UserDefaultsManager.portraitKeyboardHeight : 300
         }else {
-            height = landscapeKeyboardHeight > 0 ? landscapeKeyboardHeight : 200
+            height = UserDefaultsManager.landscapeKeyboardHeight > 0 ? UserDefaultsManager.landscapeKeyboardHeight : 200
         }
 
         return height

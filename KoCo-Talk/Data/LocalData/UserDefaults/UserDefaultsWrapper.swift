@@ -7,14 +7,15 @@
 
 import Foundation
 
-enum UserDefaultsKey : String {
-    case userInfo // LoginResponse
-    case portraitKeyboardHeight
-    case landscapeKeyboardHeight
-}
-
 @propertyWrapper
 struct UserDefaultsWrapper<T : Codable> {
+    
+    enum UserDefaultsKey : String {
+        case userInfo // LoginResponse
+        case portraitKeyboardHeight
+        case landscapeKeyboardHeight
+    }
+    
     let key : UserDefaultsKey
     let defaultValue : T
     
@@ -34,4 +35,12 @@ struct UserDefaultsWrapper<T : Codable> {
         }
 
     }
+}
+
+
+enum UserDefaultsManager {
+    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) static var userInfo : LoginResponse?
+    
+    @UserDefaultsWrapper(key : .portraitKeyboardHeight, defaultValue: 0.0) static var portraitKeyboardHeight : CGFloat
+    @UserDefaultsWrapper(key : .landscapeKeyboardHeight, defaultValue: 0.0) static var landscapeKeyboardHeight : CGFloat
 }

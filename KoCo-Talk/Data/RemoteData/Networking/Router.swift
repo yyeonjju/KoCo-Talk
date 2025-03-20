@@ -19,8 +19,6 @@ enum SortBy : String {
 }
 
 enum Router {
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) static var userInfo : LoginResponse?
-    
     //Auth
     case tokenRefresh
     case login(body: LoginBody)
@@ -107,26 +105,26 @@ extension Router : TargetType {
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
-                APIKEY.tokenRefresh_key : Router.userInfo?.refresh ?? "-"
+                APIKEY.tokenRefresh_key : UserDefaultsManager.userInfo?.refresh ?? "-"
             ]
         case .getStores, .getLocationBasedStores, .getChatRoomList, .getChatContents, .downloadFile:
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
-                APIKEY.accessToken_key : Router.userInfo?.access ?? "-"
+                APIKEY.accessToken_key : UserDefaultsManager.userInfo?.access ?? "-"
             ]
         case .createChatRoom, .postChat, .uploadFiles, .postStoreData :
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
-                APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
+                APIKEY.accessToken_key : UserDefaultsManager.userInfo?.access ?? "-",
                 APIKEY.contentType_key : APIKEY.contentType_applicationJson
             ]
         case  .updateProfile(let body):
             return [
                 APIKEY.sesacKey_key : APIKEY.sesacKey_value,
                 APIKEY.productId_key : APIKEY.productId_value,
-                APIKEY.accessToken_key : Router.userInfo?.access ?? "-",
+                APIKEY.accessToken_key : UserDefaultsManager.userInfo?.access ?? "-",
                 APIKEY.contentType_key : "\(APIKEY.contentType_multipart); boundary=\(body.boundary)"
             ]
         }

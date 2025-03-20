@@ -20,15 +20,13 @@ enum AuthStatus {
 }
 
 final class AuthManager : ObservableObject{
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
-    
     @Published var status : AuthStatus = .notauthorized
     
     static let shared = AuthManager()
     
     private init() {
-        print("❤️init userInfo -> ", userInfo)
-        if userInfo == nil {
+        print("❤️init userInfo -> ", UserDefaultsManager.userInfo)
+        if UserDefaultsManager.userInfo == nil {
             status = .noUser
         } else {
             status = .userExist

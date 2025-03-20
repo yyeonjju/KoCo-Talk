@@ -66,8 +66,6 @@ struct EmailLoginView: View {
 
 @MainActor
 final class EmailLoginViewModel : ObservableObject {
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
-    
     @Published var loginSuccess : Bool = false
     
     private var tasks : [Task<Void, Never>] = []
@@ -78,7 +76,7 @@ final class EmailLoginViewModel : ObservableObject {
                 let result = try await NetworkManager2.login(body: body)
                 // 값 처리
                 print("❤️ 로그인 했다!, -> ", result.toDomain())
-                userInfo = result.toDomain()
+                UserDefaultsManager.userInfo = result.toDomain()
                 loginSuccess = true
             } catch {
                 // 에러 처리

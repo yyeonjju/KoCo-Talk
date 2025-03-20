@@ -16,16 +16,15 @@ enum Operation {
 
 struct UserProfileView : View {
     @StateObject private var vm = UserProfileViewModel()
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     
     @State private var operation : Operation = .edit
     @State private var profileImage : UIImage? = nil
     @State private var isShowingImagePicker = false
 
     var body : some View {
-        let _ = print("🧡userInfo?.profileImage🧡", userInfo?.profileImage)
+        let _ = print("🧡userInfo?.profileImage🧡", UserDefaultsManager.userInfo?.profileImage)
         VStack{
-            HeaderAsyncImage(url: userInfo?.profileImage, width: 100, height: 100, radius: 5)
+            HeaderAsyncImage(url: UserDefaultsManager.userInfo?.profileImage, width: 100, height: 100, radius: 5)
             
             
             if operation == .edit {
@@ -99,7 +98,6 @@ struct UserProfileView : View {
 //Swift Concurrency로 인한 작업 결과가 메인스레드에서 실행될 수 있도록
 @MainActor
 final class UserProfileViewModel : ObservableObject {
-    @UserDefaultsWrapper(key : .userInfo, defaultValue : nil) var userInfo : LoginResponse?
     
     //실행 중인 여러개의 task를 저장하고 뷰가 사라질 떄 한번에 취소해주기 위해 필요
     private var tasks : [Task<Void, Never>] = []
@@ -113,8 +111,8 @@ final class UserProfileViewModel : ObservableObject {
             do {
                 let result = try await NetworkManager2.updateProfile(body : body)
                 // 값 처리
-                userInfo?.profileImage = result.profileImage
-                print("⭐️⭐️⭐️⭐️⭐️profileImage 바뀐 후  userInfo", userInfo)
+                UserDefaultsManager.userInfo?.profileImage = result.profileImage
+                print("⭐️⭐️⭐️⭐️⭐️profileImage 바뀐 후  userInfo", UserDefaultsManager.userInfo)
             } catch {
                 // 에러 처리
                 print("🚨error", error)
