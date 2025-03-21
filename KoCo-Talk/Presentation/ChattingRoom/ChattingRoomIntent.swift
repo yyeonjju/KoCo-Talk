@@ -19,10 +19,11 @@ protocol ChattingRoomIntentProtocol {
 }
 
 final class ChattingRoomIntent : ChattingRoomIntentProtocol{
-    private let defaultChatRoomRepository = DefaultChatRoomRepository()
+    @Injected private var defaultChatRoomRepository : ChatRoomRepository
+    @Injected private var chatRealmManager : ChatRealmManagerType
+    
     private var cancellables = Set<AnyCancellable>()
     private weak var model : ChattingRoomModelActionProtocol?
-    private var chatRealmManager = ChatRealmManager()
     private var tasks : [Task<Void, Never>] = []
     
     init(model: ChattingRoomModelActionProtocol) {

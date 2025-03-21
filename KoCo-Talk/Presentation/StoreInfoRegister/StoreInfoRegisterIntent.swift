@@ -16,7 +16,8 @@ protocol StoreInfoRegisterIntentProtocol {
 }
 
 final class StoreInfoRegisterIntent : StoreInfoRegisterIntentProtocol {
-    private let defaultStoreInfoRegisterRepository = DefaultStoreInfoRegisterRepository()
+    @Injected private var defaultStoreInfoRegisterRepository : StoreInfoRegisterRepository
+    
     private weak var model :  StoreInfoRegisterModelActionProtocol?
     private var tasks : [Task<Void, Never>] = []
     

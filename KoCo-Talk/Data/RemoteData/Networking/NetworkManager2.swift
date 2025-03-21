@@ -8,8 +8,7 @@
 import Foundation
 import Alamofire
 
-
-final class NetworkManager2 {
+final class NetworkManager2 : NetworkManagerType {
     static let shared = NetworkManager2()
     private init() {}
     
@@ -286,7 +285,28 @@ extension NetworkManager2 {
 
 }
 
-
+protocol NetworkManagerType {
+    func getStores(limit: String, nextCursor: String) async throws -> PostContentResponseDTO
+    func getLocationBasedStores(location: LocationCoordinate) async throws -> PostContentResponseDTO
+    func postStoreData(body: StoreInfoPostBody) async throws -> PostContentDTO
+    
+    //Chat
+    func createChatRoom(body : CreateChatRoomBody) async throws -> ChatRoomResponseDTO
+    func getChatRoomList() async throws -> ChatRoomListResponseDTO
+    func getChatRoomContents(roomId : String, cursorDate : String) async throws -> ChatRoomContentListResponseDTO
+    func postChat(roomId : String, body : PostChatBody) async throws -> ChatRoomContentDTO
+    
+    //Files
+    func uploadFiles(fileDatas : [Data]) async throws -> FileResponse
+    func downloadFiles(url : String) async throws -> Data
+    
+    //Auth
+    func tokenRefresh() async throws -> TokenRefreshResponse
+    func login(body : LoginBody) async throws -> LoginResponseDTO
+    
+    //User
+    func updateProfile(body : UpdateProfileRequestBody) async throws -> UpdateProfileResponseDTO
+}
 
 /*
  //아래처럼 Task를 반환하는 래퍼 메서드들로 처리할 수 있지만 어차피 호출할 때 do catch 내에서 처리??

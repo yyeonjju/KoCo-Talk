@@ -13,14 +13,14 @@ protocol EmailLoginIntentProtocol {
 }
 
 final class EmailLoginIntent : EmailLoginIntentProtocol{
-    private let defaultAuthRepository = DefaultAuthRepository()
+    @Injected private var defaultAuthRepository : AuthRepository
+    
     private weak var model :  EmailLoginModelActionProtocol?
+    private var tasks : [Task<Void, Never>] = []
     
     init(model:  EmailLoginModelActionProtocol) {
         self.model = model
     }
-    
-    private var tasks : [Task<Void, Never>] = []
     
     func login(email : String, password : String){
         

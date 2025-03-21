@@ -8,7 +8,7 @@
 import Foundation
 
 final class DefaultChatListRepository : ChatListRepository {
-    private let networkManager = NetworkManager2.shared
+    @Injected private var networkManager : NetworkManagerType
     
     func getChatRoomList() async throws -> [ChatRoom] {
         let result = try await  networkManager.getChatRoomList()

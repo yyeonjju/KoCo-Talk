@@ -8,7 +8,7 @@
 import Foundation
 
 final class DefaultStoreInfoRegisterRepository : StoreInfoRegisterRepository {
-    private let networkManager = NetworkManager2.shared
+    @Injected private var networkManager : NetworkManagerType
     
     func post(postBody : StoreInfoPostBody) async throws -> String {
         let result = try await networkManager.postStoreData(body : postBody)

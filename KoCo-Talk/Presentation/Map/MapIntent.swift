@@ -20,7 +20,8 @@ protocol MapIntentProtocol {
 
 
 final class MapIntent : MapIntentProtocol{
-    private let defaultMapRepository = DefaultMapRepository()
+    @Injected private var defaultMapRepository : MapRepository
+    
     private weak var model : MapModelActionProtocol?
     private var tasks : [Task<Void, Never>] = []
     

@@ -9,7 +9,8 @@ import Foundation
 
 
 final class DefaultAuthRepository : AuthRepository {
-    private let networkManager = NetworkManager2.shared
+    @Injected private var networkManager : NetworkManagerType
+    
     func login(email : String, password : String) async throws -> BaseUserInfo {
         
         let body = LoginBody(email: email, password: password)

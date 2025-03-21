@@ -8,5 +8,6 @@
 import Foundation
 
 protocol StoreInfoRegisterRepository {
-    
+    func post(postBody : StoreInfoPostBody) async throws -> String
+    func uploadFiles(imageData : Data) async throws -> String 
 }

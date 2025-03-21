@@ -12,7 +12,13 @@ enum RealmError : Error {
     case getObjectsError
 }
 
-final class ChatRealmManager : BaseRealmManager {
+protocol ChatRealmManagerType {
+    func add(chat : RealmChatContent)
+    func add(chats : [RealmChatContent])
+    func getChatsFor(roomId : String) -> [RealmChatContent]
+}
+
+final class ChatRealmManager : BaseRealmManager, ChatRealmManagerType {
     
     func add(chat : RealmChatContent){
         self.checkFileURL()

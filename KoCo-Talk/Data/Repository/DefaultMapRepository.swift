@@ -8,7 +8,7 @@
 import Foundation
 
 final class DefaultMapRepository : MapRepository {
-    private let networkManager = NetworkManager2.shared
+    @Injected private var networkManager : NetworkManagerType
     
     func fetchLocationBasedStores(location : LocationCoordinate) async throws -> [PostContentData] {
         let result = try await networkManager.getLocationBasedStores(location: location)

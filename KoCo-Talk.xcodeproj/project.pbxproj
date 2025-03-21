@@ -104,6 +104,10 @@
 		7DB5D73E2D8C47B100051D27 /* StoreInfoRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D73D2D8C47B100051D27 /* StoreInfoRegisterModel.swift */; };
 		7DB5D7402D8C4BA200051D27 /* StoreInfoRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D73F2D8C4BA100051D27 /* StoreInfoRegisterRepository.swift */; };
 		7DB5D7422D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7412D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift */; };
+		7DB5D7452D8D28F800051D27 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 7DB5D7442D8D28F800051D27 /* Swinject */; };
+		7DB5D7482D8D29D700051D27 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7472D8D29D700051D27 /* DIContainer.swift */; };
+		7DB5D74A2D8D2A2E00051D27 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7492D8D2A2E00051D27 /* Assembly.swift */; };
+		7DB5D74C2D8D36C600051D27 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D74B2D8D36C600051D27 /* Injected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -215,6 +219,9 @@
 		7DB5D73D2D8C47B100051D27 /* StoreInfoRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoRegisterModel.swift; sourceTree = "<group>"; };
 		7DB5D73F2D8C4BA100051D27 /* StoreInfoRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoRegisterRepository.swift; sourceTree = "<group>"; };
 		7DB5D7412D8C4BBA00051D27 /* DefaultStoreInfoRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreInfoRegisterRepository.swift; sourceTree = "<group>"; };
+		7DB5D7472D8D29D700051D27 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		7DB5D7492D8D2A2E00051D27 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		7DB5D74B2D8D36C600051D27 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D68FBE22D7D3F3F00B9B013 /* RealmSwift in Frameworks */,
+				7DB5D7452D8D28F800051D27 /* Swinject in Frameworks */,
 				7D7E67B12D4A0CE30037BD36 /* Alamofire in Frameworks */,
 				7D7E67E62D4CCDE90037BD36 /* SocketIO in Frameworks */,
 				7D68FBF52D7EE41B00B9B013 /* KakaoMapsSDK-SPM in Frameworks */,
@@ -370,6 +378,7 @@
 		7D7E677C2D49146A0037BD36 /* KoCo-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				7DB5D7462D8D29AA00051D27 /* Dependency */,
 				7DB5D7242D8BF2ED00051D27 /* Domain */,
 				7D68FBC42D75E57500B9B013 /* Application */,
 				7D7E67D42D4B16FD0037BD36 /* Common */,
@@ -668,6 +677,16 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		7DB5D7462D8D29AA00051D27 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				7DB5D7472D8D29D700051D27 /* DIContainer.swift */,
+				7DB5D7492D8D2A2E00051D27 /* Assembly.swift */,
+				7DB5D74B2D8D36C600051D27 /* Injected.swift */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -690,6 +709,7 @@
 				7D7E67E52D4CCDE90037BD36 /* SocketIO */,
 				7D68FBE12D7D3F3F00B9B013 /* RealmSwift */,
 				7D68FBF42D7EE41B00B9B013 /* KakaoMapsSDK-SPM */,
+				7DB5D7442D8D28F800051D27 /* Swinject */,
 			);
 			productName = "KoCo-Talk";
 			productReference = 7D7E677A2D49146A0037BD36 /* KoCo-Talk.app */;
@@ -724,6 +744,7 @@
 				7D7E67E42D4CCDE90037BD36 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 				7D68FBE02D7D3F3F00B9B013 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7D68FBF32D7EE41B00B9B013 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
+				7DB5D7432D8D28F800051D27 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 7D7E677B2D49146A0037BD36 /* Products */;
 			projectDirPath = "";
@@ -762,6 +783,7 @@
 				7D2861832D8054720015DD37 /* StoreInfoView.swift in Sources */,
 				7D68FBD42D79D41600B9B013 /* FileResponse.swift in Sources */,
 				7D68FBEF2D7EA1AB00B9B013 /* PostContent.swift in Sources */,
+				7DB5D74C2D8D36C600051D27 /* Injected.swift in Sources */,
 				7D25133E2D880AE2005850B9 /* UserProfileView.swift in Sources */,
 				7D7E67BD2D4A0DC90037BD36 /* APIKEY.swift in Sources */,
 				7D7E67CB2D4A131F0037BD36 /* ChattingListModel.swift in Sources */,
@@ -776,9 +798,11 @@
 				7D7E67E12D4C6FCD0037BD36 /* RoundedCorner.swift in Sources */,
 				7D68FBBF2D7579D300B9B013 /* KeyboardModifier.swift in Sources */,
 				7D7E67CF2D4A137F0037BD36 /* MVIContainer.swift in Sources */,
+				7DB5D74A2D8D2A2E00051D27 /* Assembly.swift in Sources */,
 				7D7E67C92D4A13010037BD36 /* ChattingListIntent.swift in Sources */,
 				7D68FBE92D7E92BE00B9B013 /* MapIntent.swift in Sources */,
 				7D7E67D32D4B114C0037BD36 /* ChattingEntities.swift in Sources */,
+				7DB5D7482D8D29D700051D27 /* DIContainer.swift in Sources */,
 				7DB5D73E2D8C47B100051D27 /* StoreInfoRegisterModel.swift in Sources */,
 				7D7E67B32D4A0D1F0037BD36 /* TargetType.swift in Sources */,
 				7D7E67AE2D4A0C8E0037BD36 /* NetworkManager.swift in Sources */,
@@ -1086,6 +1110,14 @@
 				version = 16.1.1;
 			};
 		};
+		7DB5D7432D8D28F800051D27 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1108,6 +1140,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D7E67E42D4CCDE90037BD36 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		7DB5D7442D8D28F800051D27 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DB5D7432D8D28F800051D27 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

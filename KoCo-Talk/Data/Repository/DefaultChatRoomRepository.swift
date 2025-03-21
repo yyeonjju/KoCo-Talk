@@ -8,9 +8,11 @@
 import Foundation
 
 final class DefaultChatRoomRepository : ChatRoomRepository {
-    private let networkManager = NetworkManager2.shared
-    private let chatRealmManager = ChatRealmManager()
+    @Injected private var networkManager : NetworkManagerType
+    @Injected private var chatRealmManager : ChatRealmManagerType
 //    private let socketIOManager = SocketIOManager.shared
+    
+    nonisolated init(){}
     
     func getPrevRealmChats(roomId : String) -> [ChatRoomContentDTO] {
         let realmChats = chatRealmManager.getChatsFor(roomId: roomId)

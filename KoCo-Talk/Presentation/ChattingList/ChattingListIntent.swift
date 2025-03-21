@@ -15,7 +15,8 @@ protocol ChattingListIntentProtocol {
 }
 
 final class ChattingListIntent : ChattingListIntentProtocol {
-    private let defaultChatListRepository = DefaultChatListRepository()
+    @Injected private var defaultChatListRepository : ChatListRepository
+    
     private weak var model : ChattingListModelActionProtocol?
     private var tasks : [Task<Void, Never>] = []
     
