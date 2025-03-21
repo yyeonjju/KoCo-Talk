@@ -108,6 +108,11 @@
 		7DB5D7482D8D29D700051D27 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7472D8D29D700051D27 /* DIContainer.swift */; };
 		7DB5D74A2D8D2A2E00051D27 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7492D8D2A2E00051D27 /* Assembly.swift */; };
 		7DB5D74C2D8D36C600051D27 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D74B2D8D36C600051D27 /* Injected.swift */; };
+		7DB5D7532D8D98DA00051D27 /* StorePostsMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D7512D8D98DA00051D27 /* StorePostsMockData.json */; };
+		7DB5D7592D8D992F00051D27 /* ChatListMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D7572D8D992F00051D27 /* ChatListMockData.json */; };
+		7DB5D75C2D8D9B7000051D27 /* UnreadMessagesMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D75A2D8D9B7000051D27 /* UnreadMessagesMockData.json */; };
+		7DB5D75F2D8D9BD900051D27 /* LoginResponseMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D75D2D8D9BD900051D27 /* LoginResponseMockData.json */; };
+		7DB5D7612D8D9C2A00051D27 /* MockDataLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -222,6 +227,11 @@
 		7DB5D7472D8D29D700051D27 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		7DB5D7492D8D2A2E00051D27 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		7DB5D74B2D8D36C600051D27 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		7DB5D7522D8D98DA00051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/StorePostsMockData.json; sourceTree = "<group>"; };
+		7DB5D7582D8D992F00051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/ChatListMockData.json; sourceTree = "<group>"; };
+		7DB5D75B2D8D9B7000051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/UnreadMessagesMockData.json; sourceTree = "<group>"; };
+		7DB5D75E2D8D9BD900051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/LoginResponseMockData.json; sourceTree = "<group>"; };
+		7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +496,7 @@
 		7D7E67AA2D4A0C2D0037BD36 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7DB5D74D2D8D430800051D27 /* MockData */,
 				7DB5D7262D8BF50A00051D27 /* Repository */,
 				7D7E67ED2D4F60250037BD36 /* LocalData */,
 				7D7E67D02D4B10D60037BD36 /* Domain */,
@@ -687,6 +698,18 @@
 			path = Dependency;
 			sourceTree = "<group>";
 		};
+		7DB5D74D2D8D430800051D27 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				7DB5D7512D8D98DA00051D27 /* StorePostsMockData.json */,
+				7DB5D7572D8D992F00051D27 /* ChatListMockData.json */,
+				7DB5D75A2D8D9B7000051D27 /* UnreadMessagesMockData.json */,
+				7DB5D75D2D8D9BD900051D27 /* LoginResponseMockData.json */,
+				7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -763,10 +786,14 @@
 				7D7E67B72D4A0D800037BD36 /* .gitignore in Resources */,
 				7D7E67A22D49E3630037BD36 /* NanumSquareEB.ttf in Resources */,
 				7D7E678D2D491BCA0037BD36 /* Colors.xcassets in Resources */,
+				7DB5D7592D8D992F00051D27 /* ChatListMockData.json in Resources */,
 				7D7E67A32D49E3630037BD36 /* NanumSquareR.ttf in Resources */,
+				7DB5D75C2D8D9B7000051D27 /* UnreadMessagesMockData.json in Resources */,
+				7DB5D75F2D8D9BD900051D27 /* LoginResponseMockData.json in Resources */,
 				7D7E67A52D49E3630037BD36 /* NanumSquareB.ttf in Resources */,
 				7D7E67852D49146C0037BD36 /* Preview Assets.xcassets in Resources */,
 				7D7E67A42D49E3630037BD36 /* NanumSquareL.ttf in Resources */,
+				7DB5D7532D8D98DA00051D27 /* StorePostsMockData.json in Resources */,
 				7D7E67822D49146C0037BD36 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,6 +864,7 @@
 				7DB5D71C2D8A670900051D27 /* NetworkManager2.swift in Sources */,
 				7DB5D7322D8C0F7000051D27 /* DefaultChatRoomRepository.swift in Sources */,
 				7D68FBDF2D7D3EDF00B9B013 /* BaseRealmManager.swift in Sources */,
+				7DB5D7612D8D9C2A00051D27 /* MockDataLoadManager.swift in Sources */,
 				7D68FBC12D757A1500B9B013 /* View++.swift in Sources */,
 				7DB5D7362D8C3B6C00051D27 /* EmailLoginModel.swift in Sources */,
 				7D28618E2D814BED0015DD37 /* StoreInfoButtonsView.swift in Sources */,
@@ -869,6 +897,41 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7DB5D7512D8D98DA00051D27 /* StorePostsMockData.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB5D7522D8D98DA00051D27 /* en */,
+			);
+			name = StorePostsMockData.json;
+			sourceTree = "<group>";
+		};
+		7DB5D7572D8D992F00051D27 /* ChatListMockData.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB5D7582D8D992F00051D27 /* en */,
+			);
+			name = ChatListMockData.json;
+			sourceTree = "<group>";
+		};
+		7DB5D75A2D8D9B7000051D27 /* UnreadMessagesMockData.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB5D75B2D8D9B7000051D27 /* en */,
+			);
+			name = UnreadMessagesMockData.json;
+			sourceTree = "<group>";
+		};
+		7DB5D75D2D8D9BD900051D27 /* LoginResponseMockData.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB5D75E2D8D9BD900051D27 /* en */,
+			);
+			name = LoginResponseMockData.json;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7D7E67862D49146C0037BD36 /* Debug */ = {

@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "chat_id": "67dc0f496d8a1073757cecc8",
+            "room_id": "67d903356d8a1073757cc593",
+            "content": "그럼 가장 인기있는 핸드크림은 무엇인가요??",
+            "createdAt": "2025-03-20T12:51:21.463Z",
+            "sender": {
+                "user_id": "67d57db26d8a1073757c9e6e",
+                "nick": "Heidi",
+                "profileImage": "uploads/profiles/1742538472700.png"
+            },
+            "files": []
+        },
+        {
+            "chat_id": "67dd05a56d8a1073757cedbd",
+            "room_id": "67d903356d8a1073757cc593",
+            "content": "레저렉션 핸드크림이 가장 인기있는것 같은데 맞을까요??",
+            "createdAt": "2025-03-21T06:22:29.097Z",
+            "sender": {
+                "user_id": "67d57db26d8a1073757c9e6e",
+                "nick": "Heidi",
+                "profileImage": "uploads/profiles/1742538472700.png"
+            },
+            "files": []
+        },
+        {
+            "chat_id": "67dd06d06d8a1073757cee8f",
+            "room_id": "67d903356d8a1073757cc593",
+            "content": "ㅎㅎ",
+            "createdAt": "2025-03-21T06:27:28.494Z",
+            "sender": {
+                "user_id": "67d57db26d8a1073757c9e6e",
+                "nick": "Heidi",
+                "profileImage": "uploads/profiles/1742538472700.png"
+            },
+            "files": []
+        }
+    ]
+}

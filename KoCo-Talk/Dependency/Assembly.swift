@@ -13,6 +13,7 @@ final class DataSourceAssembly : Assembly {
         
         container.register(NetworkManagerType.self) { _ in
             return NetworkManager2.shared
+//            return MockDataLoadManager.shared
         }.inObjectScope(.container)
         
         container.register(ChatRealmManagerType.self) { _ in

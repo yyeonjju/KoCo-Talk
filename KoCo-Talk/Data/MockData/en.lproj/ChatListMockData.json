@@ -1,0 +1,91 @@
+{
+    "data": [
+        {
+            "room_id": "67d903356d8a1073757cc593",
+            "createdAt": "2025-03-18T05:23:01.572Z",
+            "updatedAt": "2025-03-21T06:27:28.499Z",
+            "participants": [
+                {
+                    "user_id": "67d57db26d8a1073757c9e6e",
+                    "nick": "Heidi",
+                    "profileImage": "uploads/profiles/1742538472700.png"
+                },
+                {
+                    "user_id": "67d57bc96d8a1073757c9e4f",
+                    "nick": "Aesop",
+                    "profileImage": "uploads/profiles/1742275283921.png"
+                }
+            ],
+            "lastChat": {
+                "chat_id": "67dd06d06d8a1073757cee8f",
+                "room_id": "67d903356d8a1073757cc593",
+                "content": "ㅎㅎ",
+                "createdAt": "2025-03-21T06:27:28.494Z",
+                "sender": {
+                    "user_id": "67d57db26d8a1073757c9e6e",
+                    "nick": "Heidi",
+                    "profileImage": "uploads/profiles/1742538472700.png"
+                },
+                "files": []
+            }
+        },
+        {
+            "room_id": "67d6c5576d8a1073757ca654",
+            "createdAt": "2025-03-16T12:34:31.581Z",
+            "updatedAt": "2025-03-18T03:49:55.954Z",
+            "participants": [
+                {
+                    "user_id": "67d57db26d8a1073757c9e6e",
+                    "nick": "Heidi",
+                    "profileImage": "uploads/profiles/1742538472700.png"
+                },
+                {
+                    "user_id": "67d57acf6d8a1073757c9e41",
+                    "nick": "딥디크_가로수길_매장",
+                    "profileImage": "uploads/profiles/1742267336076.png"
+                }
+            ],
+            "lastChat": {
+                "chat_id": "67d8ed636d8a1073757cbff8",
+                "room_id": "67d6c5576d8a1073757ca654",
+                "content": "인기 있는 향 중 하나로 플레르 드 뽀 오 드 퍼퓸 추천드립니다😊 \n\n아이리스 플로럴 향과 머스크 향이 함께 어우러져 매력적이고 시간이 지나면 파우더리한 향이 더해져 포근함을 더해줍니다 :)",
+                "createdAt": "2025-03-18T03:49:55.950Z",
+                "sender": {
+                    "user_id": "67d57acf6d8a1073757c9e41",
+                    "nick": "딥디크_가로수길_매장",
+                    "profileImage": "uploads/profiles/1742267336076.png"
+                },
+                "files": []
+            }
+        },
+        {
+            "room_id": "67d6c8236d8a1073757ca70d",
+            "createdAt": "2025-03-16T12:46:27.765Z",
+            "updatedAt": "2025-03-17T06:52:33.992Z",
+            "participants": [
+                {
+                    "user_id": "67d57db26d8a1073757c9e6e",
+                    "nick": "Heidi",
+                    "profileImage": "uploads/profiles/1742538472700.png"
+                },
+                {
+                    "user_id": "67d57b5f6d8a1073757c9e48",
+                    "nick": "탬버린즈_플래그십스토어(신사점)",
+                    "profileImage": "uploads/profiles/1742267139721.png"
+                }
+            ],
+            "lastChat": {
+                "chat_id": "67d7c6b16d8a1073757cb698",
+                "room_id": "67d6c8236d8a1073757ca70d",
+                "content": "용량이나 가격이 부담스러우시다면 같은 향으로 핸드크림, 고체향수도 있습니다 :)",
+                "createdAt": "2025-03-17T06:52:33.991Z",
+                "sender": {
+                    "user_id": "67d57b5f6d8a1073757c9e48",
+                    "nick": "탬버린즈_플래그십스토어(신사점)",
+                    "profileImage": "uploads/profiles/1742267139721.png"
+                },
+                "files": []
+            }
+        }
+    ]
+}
