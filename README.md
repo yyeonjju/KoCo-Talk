@@ -1,7 +1,7 @@
 # KoCo-Talk
 
-![KoCoTalk_1](https://github.com/user-attachments/assets/b666bbf4-9fd7-4fd7-a2ce-43cdf3226deb) |![KoCoTalk_2](https://github.com/user-attachments/assets/1589f472-4cc1-49ed-a4a2-1f4c50eddb8d) |![KoCoTalk_3](https://github.com/user-attachments/assets/ed9f50b3-9d33-4ab3-b98a-8f4c3bf2079c) |![KoCoTalk_4](https://github.com/user-attachments/assets/76aadadc-aa60-4f7b-a82f-f5b30b90d486) |![KoCoTalk_5](https://github.com/user-attachments/assets/0512bb6f-1c0e-445f-96de-196080987bdf)
---- | --- | --- | --- | --- |
+![KoCoTalk_1](https://github.com/user-attachments/assets/b666bbf4-9fd7-4fd7-a2ce-43cdf3226deb) |![KoCoTalk_2](https://github.com/user-attachments/assets/1589f472-4cc1-49ed-a4a2-1f4c50eddb8d) |![KoCoTalk_3](https://github.com/user-attachments/assets/4f8843a5-273a-4c34-a279-78ef88fc51b2) |![KoCoTalk_4](https://github.com/user-attachments/assets/ed9f50b3-9d33-4ab3-b98a-8f4c3bf2079c) |![KoCoTalk_5](https://github.com/user-attachments/assets/76aadadc-aa60-4f7b-a82f-f5b30b90d486) |![KoCoTalk_6](https://github.com/user-attachments/assets/0512bb6f-1c0e-445f-96de-196080987bdf)
+--- | --- | --- | --- | --- | --- |
 
 
 <br/><br/>
