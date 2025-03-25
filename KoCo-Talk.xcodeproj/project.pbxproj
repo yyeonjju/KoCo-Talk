@@ -113,6 +113,7 @@
 		7DB5D75C2D8D9B7000051D27 /* UnreadMessagesMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D75A2D8D9B7000051D27 /* UnreadMessagesMockData.json */; };
 		7DB5D75F2D8D9BD900051D27 /* LoginResponseMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D75D2D8D9BD900051D27 /* LoginResponseMockData.json */; };
 		7DB5D7612D8D9C2A00051D27 /* MockDataLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */; };
+		7DB5D7712D928A7D00051D27 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D7702D928A7D00051D27 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -232,6 +233,7 @@
 		7DB5D75B2D8D9B7000051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/UnreadMessagesMockData.json; sourceTree = "<group>"; };
 		7DB5D75E2D8D9BD900051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/LoginResponseMockData.json; sourceTree = "<group>"; };
 		7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoadManager.swift; sourceTree = "<group>"; };
+		7DB5D7702D928A7D00051D27 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 		7D7E67712D49146A0037BD36 = {
 			isa = PBXGroup;
 			children = (
+				7DB5D7702D928A7D00051D27 /* README.md */,
 				7D7E67B62D4A0D800037BD36 /* .gitignore */,
 				7D7E677C2D49146A0037BD36 /* KoCo-Talk */,
 				7D7E677B2D49146A0037BD36 /* Products */,
@@ -787,6 +790,7 @@
 				7D7E67A22D49E3630037BD36 /* NanumSquareEB.ttf in Resources */,
 				7D7E678D2D491BCA0037BD36 /* Colors.xcassets in Resources */,
 				7DB5D7592D8D992F00051D27 /* ChatListMockData.json in Resources */,
+				7DB5D7712D928A7D00051D27 /* README.md in Resources */,
 				7D7E67A32D49E3630037BD36 /* NanumSquareR.ttf in Resources */,
 				7DB5D75C2D8D9B7000051D27 /* UnreadMessagesMockData.json in Resources */,
 				7DB5D75F2D8D9BD900051D27 /* LoginResponseMockData.json in Resources */,
