@@ -12,8 +12,8 @@ final class DataSourceAssembly : Assembly {
     func assemble(container: Swinject.Container) {
         
         container.register(NetworkManagerType.self) { _ in
-            return NetworkManager2.shared
-//            return MockDataLoadManager.shared
+//            return NetworkManager2.shared
+            return MockDataLoadManager.shared
         }.inObjectScope(.container)
         
         container.register(ChatRealmManagerType.self) { _ in
