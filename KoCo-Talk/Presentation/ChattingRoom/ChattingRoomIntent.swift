@@ -33,8 +33,6 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
     func getChats(roomId : String) {
         
         //✅ Realm에서 이미 본 메시지 데이터 로드
-        defaultChatRoomRepository.getPrevRealmChats(roomId: roomId)
-
         let prevChats = defaultChatRoomRepository.getPrevRealmChats(roomId: roomId)
         let lastChatCreatedAt = prevChats.last?.createdAt ?? ""
         
@@ -44,12 +42,13 @@ final class ChattingRoomIntent : ChattingRoomIntentProtocol{
             
             do {
                 //✅ 서버에서 확인하지 않은 최근 메시지 데이터 로드
-                let newChats = try await defaultChatRoomRepository.getChats(roomId: roomId, cursorDate: lastChatCreatedAt)
+                let newChats = try await defaultChatRoomRepository.getUnreadChats(roomId: roomId, cursorDate: lastChatCreatedAt)
                 
 
                 //UI 업데이트를 위해 model업데이트
                 var allChats = prevChats
                 allChats.append(contentsOf:newChats)
+                print("✅✅✅✅✅allChats✅✅✅✅", allChats)
                 
                 let rows = ConvertChatContentsToChatRows(data: allChats, myUserId: UserDefaultsManager.userInfo?.id ?? "")
                 model.updateChatRoomRows(rows)

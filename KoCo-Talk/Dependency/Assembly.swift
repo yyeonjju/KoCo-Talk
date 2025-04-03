@@ -45,7 +45,8 @@ final class ChatAssembly : Assembly{
         }.inObjectScope(.container)
         
         container.register(ChatRoomRepository.self) { _ in
-            return DefaultChatRoomRepository()
+//            return DefaultChatRoomRepository()
+            return MockChatRoomRepository()
             //ChatRoomRepository 프로토콜이 @MainActor를 채택하기 때문에 생기는 아래 에러
             //Call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
             // DefaultChatRoomRepository 구현체에 `nonisolated init(){}`을 함으로써 해결

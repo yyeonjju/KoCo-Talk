@@ -23,7 +23,7 @@ final class DefaultChatRoomRepository : ChatRoomRepository {
         return prevChats
     }
  
-    func getChats(roomId : String, cursorDate : String) async throws -> [ChatRoomContentDTO] {
+    func getUnreadChats(roomId : String, cursorDate : String) async throws -> [ChatRoomContentDTO] {
         let result = try await networkManager.getChatRoomContents(roomId: roomId, cursorDate: cursorDate)
         print("🍀🍀🍀🍀🍀🍀🍀isMainThread🍀🍀🍀🍀🍀🍀🍀", Thread.isMainThread)
         print("🍀🍀🍀🍀🍀🍀🍀서버 chat result🍀🍀🍀🍀🍀🍀🍀", result)

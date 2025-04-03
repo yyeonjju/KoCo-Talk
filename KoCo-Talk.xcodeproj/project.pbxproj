@@ -114,6 +114,7 @@
 		7DB5D75F2D8D9BD900051D27 /* LoginResponseMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D75D2D8D9BD900051D27 /* LoginResponseMockData.json */; };
 		7DB5D7612D8D9C2A00051D27 /* MockDataLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */; };
 		7DB5D7712D928A7D00051D27 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7DB5D7702D928A7D00051D27 /* README.md */; };
+		7DB5D7792D9D407A00051D27 /* MockChatRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB5D7782D9D407A00051D27 /* MockChatRoomRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -234,6 +235,7 @@
 		7DB5D75E2D8D9BD900051D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/LoginResponseMockData.json; sourceTree = "<group>"; };
 		7DB5D7602D8D9C2A00051D27 /* MockDataLoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoadManager.swift; sourceTree = "<group>"; };
 		7DB5D7702D928A7D00051D27 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7DB5D7782D9D407A00051D27 /* MockChatRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatRoomRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +501,7 @@
 		7D7E67AA2D4A0C2D0037BD36 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7DB5D7772D9D405D00051D27 /* MockRepository */,
 				7DB5D74D2D8D430800051D27 /* MockData */,
 				7DB5D7262D8BF50A00051D27 /* Repository */,
 				7D7E67ED2D4F60250037BD36 /* LocalData */,
@@ -705,6 +708,14 @@
 			path = MockData;
 			sourceTree = "<group>";
 		};
+		7DB5D7772D9D405D00051D27 /* MockRepository */ = {
+			isa = PBXGroup;
+			children = (
+				7DB5D7782D9D407A00051D27 /* MockChatRoomRepository.swift */,
+			);
+			path = MockRepository;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -846,6 +857,7 @@
 				7D68FBCE2D76ED8F00B9B013 /* PhotoGridItem.swift in Sources */,
 				7D68FBEB2D7E92FB00B9B013 /* MapModel.swift in Sources */,
 				7DB5D71F2D8BC71E00051D27 /* KeyChainManager.swift in Sources */,
+				7DB5D7792D9D407A00051D27 /* MockChatRoomRepository.swift in Sources */,
 				7D28619B2D82A9000015DD37 /* StoreDetailInformantionlView.swift in Sources */,
 				7D7E67F52D50D1D70037BD36 /* Auth.swift in Sources */,
 				7D7E67EF2D4F60450037BD36 /* UserDefaultsWrapper.swift in Sources */,
